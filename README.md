@@ -1,50 +1,31 @@
 # AI Divination Skills
 
-Practical divination skills for AI agents: tarot, I Ching, Xiao Liu Ren, and more.
+Direct, practical divination skills for AI agents.
 
-This project treats divination systems as symbolic reasoning and reflection tools, not deterministic prediction engines. The scripts produce the draw or cast. The AI agent interprets the result with clear boundaries.
+`ai-divination-skills` is an open-source skill collection for tarot, I Ching, Xiao Liu Ren, and other symbolic systems. It is designed for agent workflows where the random draw or cast is produced by a local script, and the AI agent interprets the result with clear safety boundaries.
 
-## MVP Skills
+This project treats divination as symbolic reasoning and reflection, not deterministic prediction.
 
-- `tarot`: card draws for reflection, decisions, creative blocks, and project reframing.
-- `iching`: six-line I Ching casts with primary and resulting hexagrams.
-- `xiaoliuren`: lightweight Xiao Liu Ren casts from lunar numbers or a Gregorian time fallback.
+## Included Skills
 
-## Design Principles
+| Skill | What it does | Script |
+|---|---|---|
+| `tarot` | Draws tarot cards for reflection, decisions, creative blocks, and project reframing. | `skills/tarot/scripts/draw.py` |
+| `iching` | Casts six-line I Ching hexagrams with primary and resulting hexagrams. | `skills/iching/scripts/cast.py` |
+| `xiaoliuren` | Casts Xiao Liu Ren from lunar-style numbers or a Gregorian time fallback. | `skills/xiaoliuren/scripts/cast.py` |
 
-- Direct skill names. Users should know what a skill does from its folder name.
-- Randomness is externalized. Agents do not choose cards, lines, or positions by intuition.
-- JSON first. Scripts emit machine-readable data for reliable agent workflows.
-- Offline by default. The MVP has no network calls and uses only Python standard library.
-- Bounded interpretation. No medical, legal, financial, or crisis advice.
-- Modular structure. Each system can be installed and used independently.
+## Why This Exists
 
-## Repository Layout
+Most AI divination prompts let the model invent the result. This project separates the two jobs:
 
-```text
-skills/
-  tarot/
-    SKILL.md
-    scripts/draw.py
-    references/
-  iching/
-    SKILL.md
-    scripts/cast.py
-    references/
-  xiaoliuren/
-    SKILL.md
-    scripts/cast.py
-    references/
-shared/
-  response-contract.md
-  safety-policy.md
-  randomness-protocol.md
-  interpretation-style.md
-examples/
-tests/
-```
+1. Scripts produce the card draw, hexagram, or position.
+2. The AI agent interprets the generated result.
 
-## Quick Try
+That makes readings easier to test, reproduce, audit, and reuse across agents.
+
+## Quick Start
+
+Run any script directly:
 
 ```bash
 python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals
@@ -52,16 +33,18 @@ python3 skills/iching/scripts/cast.py --method coins
 python3 skills/xiaoliuren/scripts/cast.py --method numbers --month 3 --day 12 --hour 7
 ```
 
-For reproducible demos and tests, pass `--seed` where supported:
+Use a seed for reproducible demos:
 
 ```bash
 python3 skills/tarot/scripts/draw.py --spread decision --seed demo
 python3 skills/iching/scripts/cast.py --method random --seed demo
 ```
 
-## Install as Skills
+All scripts output JSON.
 
-Copy the skill folders you want into your agent's skill directory, for example:
+## Install as Agent Skills
+
+Copy the skill folders you want into your agent's skill directory:
 
 ```bash
 cp -R skills/tarot ~/.codex/skills/tarot
@@ -69,16 +52,87 @@ cp -R skills/iching ~/.codex/skills/iching
 cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren
 ```
 
-Use only the individual skill folder when installing a single skill. The root docs and shared protocol are for maintainers and contributors.
+Each skill is self-contained:
+
+```text
+skills/name/
+  SKILL.md
+  agents/openai.yaml
+  scripts/
+  references/
+```
+
+Install individual folders, not the entire repository, when you only want one skill.
+
+## Agent Behavior
+
+Each skill instructs the agent to:
+
+- generate or accept a concrete draw/cast result
+- read concise reference material only when needed
+- interpret with the shared response contract
+- avoid certainty, fatalism, and professional advice
+
+Shared guidance lives in:
+
+- `shared/response-contract.md`
+- `shared/randomness-protocol.md`
+- `shared/safety-policy.md`
+- `shared/interpretation-style.md`
+
+## Examples
+
+- `examples/tarot-decision.md`
+- `examples/iching-strategy.md`
+- `examples/xiaoliuren-daily.md`
+
+## Safety Boundaries
+
+These skills are not for medical, legal, financial, or crisis guidance.
+
+Good readings should:
+
+- frame the result as symbolic reflection
+- connect claims to the generated result
+- preserve user agency
+- offer small, reversible next steps
+- state uncertainty clearly
+
+See `ETHICS.md` for the full project stance.
 
 ## Development
 
-Run the standard-library test suite:
+No runtime dependencies are required beyond Python 3.
+
+Run tests:
 
 ```bash
 python3 -m unittest discover -s tests
 ```
 
-## Status
+Current coverage checks:
 
-This is an initial scaffold. The first goal is a small, reliable core rather than a large collection of half-finished systems.
+- tarot spread output
+- I Ching cast structure and manual lines
+- Xiao Liu Ren number and time fallback behavior
+
+## Roadmap
+
+Near-term:
+
+- Add richer reference material for each MVP skill.
+- Add more example readings.
+- Add a simple installer script.
+- Add optional Chinese-language docs.
+
+Later:
+
+- `meihua`
+- `liuyao`
+- `runes`
+- `numerology`
+- `astrology`
+
+## License
+
+MIT
