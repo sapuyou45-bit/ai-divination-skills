@@ -1,0 +1,6 @@
+interface:
+  display_name: "I Ching"
+  short_description: "Cast I Ching hexagrams for change analysis"
+  default_prompt: "Use $iching to cast an I Ching reading for a strategic decision."
+policy:
+  allow_implicit_invocation: true

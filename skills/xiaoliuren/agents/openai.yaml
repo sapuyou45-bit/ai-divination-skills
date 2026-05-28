@@ -1,0 +1,6 @@
+interface:
+  display_name: "Xiao Liu Ren"
+  short_description: "Cast Xiao Liu Ren for quick timing reflection"
+  default_prompt: "Use $xiaoliuren to cast a quick Xiao Liu Ren reading for today."
+policy:
+  allow_implicit_invocation: true
