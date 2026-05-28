@@ -6,6 +6,26 @@ Direct, practical divination skills for AI agents.
 
 This project treats divination as symbolic reasoning and reflection, not deterministic prediction.
 
+## Multilingual Docs
+
+The project includes a GitHub Pages-ready docs site with in-page language switching:
+
+- English
+- 简体中文
+- 日本語
+
+Local preview:
+
+```bash
+python3 -m http.server 8000 -d docs
+```
+
+Published site:
+
+```text
+https://sapuyou45-bit.github.io/ai-divination-skills/
+```
+
 ## Included Skills
 
 | Skill | What it does | Script |

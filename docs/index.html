@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>AI Divination Skills</title>
+    <meta
+      name="description"
+      content="Direct, practical divination skills for AI agents: tarot, I Ching, Xiao Liu Ren, and more."
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="#top" aria-label="AI Divination Skills home">
+        <span class="brand-mark" aria-hidden="true">ADS</span>
+        <span>AI Divination Skills</span>
+      </a>
+
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#quick-start" data-i18n="nav.quickStart">Quick start</a>
+        <a href="#safety" data-i18n="nav.safety">Safety</a>
+        <a href="https://github.com/sapuyou45-bit/ai-divination-skills" data-i18n="nav.github">GitHub</a>
+      </nav>
+
+      <div class="language-switcher" role="group" aria-label="Language selector">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <canvas id="system-map" aria-hidden="true"></canvas>
+        <div class="hero-inner">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Open-source skills for AI agents</p>
+          <h1 id="hero-title" data-i18n="hero.title">Direct divination tools, grounded agent workflows.</h1>
+          <p class="hero-copy" data-i18n="hero.copy">
+            Tarot, I Ching, and Xiao Liu Ren skills that separate the draw from the interpretation.
+            Scripts produce JSON. Agents interpret with clear boundaries.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/sapuyou45-bit/ai-divination-skills" data-i18n="hero.github">View on GitHub</a>
+            <a class="button secondary" href="#quick-start" data-i18n="hero.quickStart">Try the scripts</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro" aria-labelledby="intro-title">
+        <div>
+          <p class="section-label" data-i18n="intro.label">Why it exists</p>
+          <h2 id="intro-title" data-i18n="intro.title">The model should not invent the oracle result.</h2>
+        </div>
+        <p data-i18n="intro.copy">
+          This project treats divination systems as symbolic reasoning and reflection tools, not deterministic prediction engines.
+          A local script creates the card draw, hexagram, or position; the AI agent interprets that concrete result.
+        </p>
+      </section>
+
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <p class="section-label" data-i18n="skills.label">Included skills</p>
+          <h2 id="skills-title" data-i18n="skills.title">Three practical modules to start.</h2>
+        </div>
+
+        <div class="skill-grid">
+          <article class="skill-card">
+            <span class="system-token tarot-token">Tarot</span>
+            <h3 data-i18n="skills.tarot.title">Tarot</h3>
+            <p data-i18n="skills.tarot.copy">Draw cards for reflection, decisions, creative blocks, and project reframing.</p>
+            <code>skills/tarot/scripts/draw.py</code>
+          </article>
+
+          <article class="skill-card">
+            <span class="system-token iching-token">I Ching</span>
+            <h3 data-i18n="skills.iching.title">I Ching</h3>
+            <p data-i18n="skills.iching.copy">Cast six-line hexagrams with primary and resulting hexagram output.</p>
+            <code>skills/iching/scripts/cast.py</code>
+          </article>
+
+          <article class="skill-card">
+            <span class="system-token xlr-token">Xiao Liu Ren</span>
+            <h3 data-i18n="skills.xiaoliuren.title">Xiao Liu Ren</h3>
+            <p data-i18n="skills.xiaoliuren.copy">Cast from lunar-style numbers or a lightweight Gregorian time fallback.</p>
+            <code>skills/xiaoliuren/scripts/cast.py</code>
+          </article>
+        </div>
+      </section>
+
+      <section class="section command-section" id="quick-start" aria-labelledby="quick-start-title">
+        <div class="section-heading">
+          <p class="section-label" data-i18n="quick.label">Quick start</p>
+          <h2 id="quick-start-title" data-i18n="quick.title">Run any script directly.</h2>
+          <p data-i18n="quick.copy">The MVP has no runtime dependencies beyond Python 3. Every script emits JSON.</p>
+        </div>
+
+        <div class="command-list" aria-label="Example commands">
+          <pre><code>python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals</code></pre>
+          <pre><code>python3 skills/iching/scripts/cast.py --method coins</code></pre>
+          <pre><code>python3 skills/xiaoliuren/scripts/cast.py --method numbers --month 3 --day 12 --hour 7</code></pre>
+        </div>
+      </section>
+
+      <section class="section install-section" aria-labelledby="install-title">
+        <div>
+          <p class="section-label" data-i18n="install.label">Install</p>
+          <h2 id="install-title" data-i18n="install.title">Copy only the skills you need.</h2>
+        </div>
+        <div class="install-copy">
+          <p data-i18n="install.copy">
+            Each skill is self-contained with a SKILL.md file, OpenAI agent metadata, scripts, and references.
+          </p>
+          <pre><code>cp -R skills/tarot ~/.codex/skills/tarot
+cp -R skills/iching ~/.codex/skills/iching
+cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren</code></pre>
+        </div>
+      </section>
+
+      <section class="section safety-section" id="safety" aria-labelledby="safety-title">
+        <div class="section-heading">
+          <p class="section-label" data-i18n="safety.label">Safety</p>
+          <h2 id="safety-title" data-i18n="safety.title">Symbolic reflection, not certainty.</h2>
+        </div>
+        <ul class="safety-list">
+          <li data-i18n="safety.item1">Do not use readings as medical, legal, financial, or crisis guidance.</li>
+          <li data-i18n="safety.item2">Tie every interpretation to the generated result.</li>
+          <li data-i18n="safety.item3">Preserve user agency and offer small, reversible next steps.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>MIT</span>
+      <a href="https://github.com/sapuyou45-bit/ai-divination-skills/releases/tag/v0.1.0">v0.1.0</a>
+      <a href="https://github.com/sapuyou45-bit/ai-divination-skills/blob/main/ETHICS.md" data-i18n="footer.ethics">Ethics</a>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
