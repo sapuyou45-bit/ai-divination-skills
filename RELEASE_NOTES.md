@@ -1,5 +1,23 @@
 # Release Notes
 
+## v0.1.1 - Multilingual Docs Site
+
+This release adds a GitHub Pages-ready documentation site with in-page language switching.
+
+### What's New
+
+- **Multilingual page**: English, Simplified Chinese, and Japanese copy.
+- **Language switching**: page-level buttons switch visible content without leaving the page.
+- **GitHub Pages support**: static files live in `docs/` and can be published from the `main` branch.
+- **Visual docs landing page**: a lightweight canvas scene gives the project a clearer first impression.
+- **Docs tests**: coverage checks that the language switcher and published docs URL are present.
+
+### Page URL
+
+```text
+https://sapuyou45-bit.github.io/ai-divination-skills/
+```
+
 ## v0.1.0 - Initial Public Release
 
 `ai-divination-skills` starts as a small, practical toolkit for AI agents that need concrete divination results before interpretation.
@@ -9,7 +27,6 @@
 - **Tarot skill**: draw single-card, three-card, decision, creative, and project spreads.
 - **I Ching skill**: cast six-line hexagrams with primary and resulting hexagram output.
 - **Xiao Liu Ren skill**: cast from lunar-style numbers or a lightweight Gregorian time fallback.
-- **Multilingual docs site**: GitHub Pages-ready documentation with English, Simplified Chinese, and Japanese switching.
 - **Shared interpretation protocol**: response format, randomness rules, safety boundaries, and tone guidance.
 - **Examples**: sample readings for a decision, strategic change, and daily focus.
 - **Tests**: standard-library unit tests for all three MVP scripts.
