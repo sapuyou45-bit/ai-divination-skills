@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sapuyou45-bit.github.io/ai-divination-skills/schemas/iching-cast.schema.json",
+  "title": "I Ching Cast",
+  "type": "object",
+  "required": [
+    "system",
+    "method",
+    "requested_method",
+    "randomness",
+    "line_order",
+    "method_details",
+    "line_probabilities",
+    "lines",
+    "changing_lines",
+    "primary_hexagram",
+    "resulting_hexagram"
+  ],
+  "properties": {
+    "system": {"type": "string"},
+    "method": {"type": "string"},
+    "requested_method": {"type": "string"},
+    "randomness": {"type": "string"},
+    "line_order": {"type": "string"},
+    "method_details": {"type": "object"},
+    "line_probabilities": {"type": "object"},
+    "lines": {"type": "array"},
+    "changing_lines": {"type": "array"},
+    "primary_hexagram": {"type": "object"},
+    "resulting_hexagram": {"type": "object"}
+  }
+}

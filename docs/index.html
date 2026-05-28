@@ -20,6 +20,7 @@
 
       <nav class="top-nav" aria-label="Primary navigation">
         <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#rigor" data-i18n="nav.rigor">Method</a>
         <a href="#quick-start" data-i18n="nav.quickStart">Quick start</a>
         <a href="#safety" data-i18n="nav.safety">Safety</a>
         <a href="https://github.com/sapuyou45-bit/ai-divination-skills" data-i18n="nav.github">GitHub</a>
@@ -39,8 +40,8 @@
           <p class="eyebrow" data-i18n="hero.eyebrow">Open-source skills for AI agents</p>
           <h1 id="hero-title" data-i18n="hero.title">Direct divination tools, grounded agent workflows.</h1>
           <p class="hero-copy" data-i18n="hero.copy">
-            Tarot, I Ching, and Xiao Liu Ren skills that separate the draw from the interpretation.
-            Scripts produce JSON. Agents interpret with clear boundaries.
+            Tarot, I Ching, and Xiao Liu Ren skills that separate the divination process from interpretation.
+            Scripts perform the draw or cast and emit JSON. AI only interprets.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="https://github.com/sapuyou45-bit/ai-divination-skills" data-i18n="hero.github">View on GitHub</a>
@@ -58,6 +59,23 @@
           This project treats divination systems as symbolic reasoning and reflection tools, not deterministic prediction engines.
           A local script creates the card draw, hexagram, or position; the AI agent interprets that concrete result.
         </p>
+      </section>
+
+      <section class="section rigor-section" id="rigor" aria-labelledby="rigor-title">
+        <div class="section-heading">
+          <p class="section-label" data-i18n="rigor.label">Methodological rigor</p>
+          <h2 id="rigor-title" data-i18n="rigor.title">Randomness and interpretation stay separate.</h2>
+          <p data-i18n="rigor.copy">
+            For real readings, the divination result comes from system randomness, a traditional probability model,
+            or explicit user-provided physical input. Seeded mode is reserved for tests and reproducible demos.
+          </p>
+        </div>
+        <ul class="safety-list">
+          <li data-i18n="rigor.item1">Tarot uses an explicit Fisher-Yates shuffle.</li>
+          <li data-i18n="rigor.item2">I Ching supports three-coin casts and digital yarrow-equivalent probabilities.</li>
+          <li data-i18n="rigor.item3">Xiao Liu Ren prefers lunar numbers, with optional lunar-time conversion.</li>
+          <li data-i18n="rigor.item4">Approximate modes are labeled with warnings.</li>
+        </ul>
       </section>
 
       <section class="section" id="skills" aria-labelledby="skills-title">
@@ -100,6 +118,7 @@
         <div class="command-list" aria-label="Example commands">
           <pre><code>python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals</code></pre>
           <pre><code>python3 skills/iching/scripts/cast.py --method coins</code></pre>
+          <pre><code>python3 skills/iching/scripts/cast.py --method yarrow</code></pre>
           <pre><code>python3 skills/xiaoliuren/scripts/cast.py --method numbers --month 3 --day 12 --hour 7</code></pre>
         </div>
       </section>
@@ -134,7 +153,7 @@ cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren</code></pre>
 
     <footer class="site-footer">
       <span>MIT</span>
-      <a href="https://github.com/sapuyou45-bit/ai-divination-skills/releases/tag/v0.1.1">v0.1.1</a>
+      <a href="https://github.com/sapuyou45-bit/ai-divination-skills/releases/tag/v0.2.0">v0.2.0</a>
       <a href="https://github.com/sapuyou45-bit/ai-divination-skills/blob/main/ETHICS.md" data-i18n="footer.ethics">Ethics</a>
     </footer>
 

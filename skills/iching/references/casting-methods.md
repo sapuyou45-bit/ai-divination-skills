@@ -13,9 +13,31 @@ Values:
 
 The script generates six lines from bottom to top.
 
+Probability:
+
+- 6: 1/8
+- 7: 3/8
+- 8: 3/8
+- 9: 1/8
+
+Each output line includes the raw coin tosses and coin values.
+
+## yarrow
+
+Digital equivalent of the traditional yarrow-stalk probability model.
+
+Probability:
+
+- 6: 1/16
+- 7: 5/16
+- 8: 7/16
+- 9: 3/16
+
+This preserves the yarrow line distribution but does not simulate the physical stalk ritual.
+
 ## random
 
-Same line value space as `coins`, intended for simple randomized casts and seeded tests.
+Compatibility alias for `coins`. Prefer explicit `coins` or `yarrow`.
 
 ## manual
 

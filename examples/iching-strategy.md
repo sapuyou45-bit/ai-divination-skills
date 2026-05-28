@@ -7,7 +7,7 @@ Prompt:
 Command:
 
 ```bash
-python3 skills/iching/scripts/cast.py --method random --seed strategy
+python3 skills/iching/scripts/cast.py --method yarrow --seed strategy
 ```
 
 Script result:
@@ -16,27 +16,29 @@ Script result:
 {
   "system": "iching",
   "line_order": "bottom-to-top",
-  "changing_lines": [],
+  "method": "yarrow",
+  "line_probabilities": {"6": "1/16", "7": "5/16", "8": "7/16", "9": "3/16"},
+  "changing_lines": [1, 2],
   "primary_hexagram": {
-    "number": 47,
-    "name": "Kun / Oppression",
-    "binary": "010110",
-    "upper_trigram": "Lake",
-    "lower_trigram": "Water"
+    "number": 34,
+    "name": "Da Zhuang / Great Power",
+    "binary": "111100",
+    "upper_trigram": "Thunder",
+    "lower_trigram": "Heaven"
   },
   "resulting_hexagram": {
-    "number": 47,
-    "name": "Kun / Oppression",
-    "binary": "010110"
+    "number": 62,
+    "name": "Xiao Guo / Small Preponderance",
+    "binary": "001100"
   }
 }
 ```
 
 Reading shape:
 
-1. Result: Hexagram 47, Oppression, with no changing lines.
-2. Symbolic Reading: The situation is constrained and may not respond to direct pressure.
-3. Situation Mapping: A strategic change can still be right, but the current container may lack resources, consent, or timing.
-4. Hidden Variables: Exhaustion and bottlenecks may matter more than the idea itself.
-5. Actionable Guidance: Reduce load first. Identify one constraint that can be removed before asking people to move.
-6. Boundaries: This does not decide the strategy. It frames the condition under which the strategy is being attempted.
+1. Result: Hexagram 34, Great Power, changing lines 1 and 2, moving to Hexagram 62, Small Preponderance.
+2. Symbolic Reading: The situation has force, but the changing early lines warn against pushing before the base is disciplined.
+3. Situation Mapping: A strategic change may have energy behind it, but the path narrows toward careful, modest execution.
+4. Hidden Variables: Power at the start can become overreach if small constraints are ignored.
+5. Actionable Guidance: Start with a contained pilot, define limits, and treat details as the main risk surface.
+6. Boundaries: This frames strategic posture; it does not decide the strategy or guarantee adoption.

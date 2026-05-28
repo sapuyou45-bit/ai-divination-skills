@@ -1,5 +1,18 @@
 # Release Notes
 
+## v0.2.0 - Traditional Rigor and Auditable Randomness
+
+This release separates the divination process from AI interpretation more strictly.
+
+### What's New
+
+- **Methodology**: project-level rules for randomness, traditional sources, reproducibility, and limits.
+- **Tarot**: explicit Fisher-Yates shuffle with deck size, draw count, drawn indices, and RNG mode metadata.
+- **I Ching**: auditable three-coin lines, digital yarrow probability mode, and a compatibility warning for `random`.
+- **Xiao Liu Ren**: optional `lunar-time` mode via `lunar_python`, stronger Gregorian fallback warning, and leap-month rejection.
+- **Schemas**: JSON schema files for all three script outputs.
+- **CI**: GitHub Actions runs the unittest suite on push and pull requests.
+
 ## v0.1.2 - Clickable Language Switchers
 
 This release makes language switching work like common multilingual open-source repositories.

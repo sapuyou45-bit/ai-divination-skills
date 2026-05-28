@@ -8,6 +8,18 @@ AI agent のための、直接的で実用的な占術 skill 集です。
 
 このプロジェクトは占術を、決定論的な予言ではなく、象徴的推論と内省の道具として扱います。
 
+## 方法論的厳密性
+
+基本ルールは明確です。スクリプト、またはユーザーが物理的に得た結果がカード、卦、位置を生成します。AI はその生成済みの結果を解釈するだけで、占術結果そのものは生成しません。
+
+これは占術の科学的有効性を証明するものではありません。象徴的推論をより監査しやすくするための workflow です。
+
+- 実際の reading はデフォルトでシステム乱数を使う
+- seed はテストと再現可能な demo のみ
+- 各 skill が伝統的方法と制限を記録する
+- JSON 出力に監査可能な方法メタデータを含める
+- 近似モードは warning を出し、伝統的精度を装わない
+
 ## 多言語ドキュメント
 
 プロジェクトには、ページ内で言語切り替えできる GitHub Pages ドキュメントがあります。
@@ -52,6 +64,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja
 ```bash
 python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals
 python3 skills/iching/scripts/cast.py --method coins
+python3 skills/iching/scripts/cast.py --method yarrow
 python3 skills/xiaoliuren/scripts/cast.py --method numbers --month 3 --day 12 --hour 7
 ```
 
@@ -59,7 +72,7 @@ python3 skills/xiaoliuren/scripts/cast.py --method numbers --month 3 --day 12 --
 
 ```bash
 python3 skills/tarot/scripts/draw.py --spread decision --seed demo
-python3 skills/iching/scripts/cast.py --method random --seed demo
+python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 ```
 
 すべてのスクリプトは JSON を出力します。

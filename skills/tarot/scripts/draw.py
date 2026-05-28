@@ -47,14 +47,14 @@ SPREADS = {
 
 
 def build_deck(deck_name: str) -> list[dict[str, str]]:
-    major = [{"name": name, "arcana": "major", "suit": ""} for name in MAJOR_ARCANA]
+    major = [{"name": name, "arcana": "major", "suit": "", "index": str(index)} for index, name in enumerate(MAJOR_ARCANA)]
     if deck_name == "major":
         return major
 
     minor = [
-        {"name": f"{rank} of {suit}", "arcana": "minor", "suit": suit}
-        for suit in SUITS
-        for rank in RANKS
+        {"name": f"{rank} of {suit}", "arcana": "minor", "suit": suit, "index": str(22 + suit_index * len(RANKS) + rank_index)}
+        for suit_index, suit in enumerate(SUITS)
+        for rank_index, rank in enumerate(RANKS)
     ]
     return major + minor
 
@@ -65,6 +65,14 @@ def make_rng(seed: str | None) -> random.Random | random.SystemRandom:
     return random.SystemRandom()
 
 
+def fisher_yates_shuffle(deck: list[dict[str, str]], rng: random.Random | random.SystemRandom) -> list[dict[str, str]]:
+    shuffled = list(deck)
+    for index in range(len(shuffled) - 1, 0, -1):
+        swap_index = rng.randrange(index + 1)
+        shuffled[index], shuffled[swap_index] = shuffled[swap_index], shuffled[index]
+    return shuffled
+
+
 def draw(deck_name: str, spread_name: str, reversals: bool, seed: str | None) -> dict[str, Any]:
     positions = SPREADS[spread_name]
     deck = build_deck(deck_name)
@@ -72,7 +80,8 @@ def draw(deck_name: str, spread_name: str, reversals: bool, seed: str | None) ->
         raise ValueError("spread has more positions than available cards")
 
     rng = make_rng(seed)
-    selected = rng.sample(deck, len(positions))
+    shuffled = fisher_yates_shuffle(deck, rng)
+    selected = shuffled[: len(positions)]
     cards = []
     for position, card in zip(positions, selected):
         reversed_card = bool(rng.choice([False, True])) if reversals else False
@@ -80,6 +89,7 @@ def draw(deck_name: str, spread_name: str, reversals: bool, seed: str | None) ->
             {
                 "position": position,
                 "name": card["name"],
+                "index": int(card["index"]),
                 "arcana": card["arcana"],
                 "suit": card["suit"],
                 "reversed": reversed_card,
@@ -91,6 +101,11 @@ def draw(deck_name: str, spread_name: str, reversals: bool, seed: str | None) ->
         "system": "tarot",
         "deck": deck_name,
         "spread": spread_name,
+        "deck_size": len(deck),
+        "draw_count": len(selected),
+        "drawn_indices": [int(card["index"]) for card in selected],
+        "shuffle_algorithm": "fisher-yates",
+        "rng_mode": "seeded-demo" if seed is not None else "system",
         "randomness": "seeded" if seed is not None else "system",
         "reversals_enabled": reversals,
         "cards": cards,

@@ -104,6 +104,26 @@ def coin_line(rng: random.Random | random.SystemRandom) -> int:
     return sum(rng.choice([2, 3]) for _ in range(3))
 
 
+def coin_line_record(index: int, rng: random.Random | random.SystemRandom) -> dict[str, Any]:
+    tosses = [rng.choice(["heads", "tails"]) for _ in range(3)]
+    values = [3 if toss == "heads" else 2 for toss in tosses]
+    record = line_record(index, sum(values))
+    record["coin_tosses"] = tosses
+    record["coin_values"] = values
+    return record
+
+
+def yarrow_line_value(rng: random.Random | random.SystemRandom) -> int:
+    roll = rng.randrange(16)
+    if roll == 0:
+        return 6
+    if roll <= 5:
+        return 7
+    if roll <= 12:
+        return 8
+    return 9
+
+
 def parse_manual_lines(raw: str) -> list[int]:
     values = [int(part.strip()) for part in raw.split(",") if part.strip()]
     if len(values) != 6:
@@ -142,39 +162,70 @@ def hexagram_for_binary(binary: str) -> dict[str, Any]:
 
 
 def cast(method: str, seed: str | None, manual_lines: str | None) -> dict[str, Any]:
+    requested_method = method
+    warning = None
+    if method == "random":
+        method = "coins"
+        warning = "Compatibility alias: --method random now uses the three-coin method. Use --method coins or --method yarrow for explicit traditional casting."
+
     if method == "manual":
         if not manual_lines:
             raise ValueError("--lines is required for manual casts")
         values = parse_manual_lines(manual_lines)
         randomness = "manual"
+        lines = [line_record(index, value) for index, value in enumerate(values, start=1)]
+        method_details = {"name": "manual", "line_order": "bottom-to-top"}
+        line_probabilities = {}
+    elif method == "yarrow":
+        rng = make_rng(seed)
+        values = [yarrow_line_value(rng) for _ in range(6)]
+        randomness = "seeded" if seed is not None else "system"
+        lines = [line_record(index, value) for index, value in enumerate(values, start=1)]
+        method_details = {
+            "name": "digital yarrow equivalent",
+            "probability_model": "digital-yarrow-equivalent",
+            "note": "Uses the traditional yarrow-stalk line probability distribution without simulating physical stalk manipulation.",
+        }
+        line_probabilities = {"6": "1/16", "7": "5/16", "8": "7/16", "9": "3/16"}
     else:
         rng = make_rng(seed)
-        values = [coin_line(rng) for _ in range(6)]
+        lines = [coin_line_record(index, rng) for index in range(1, 7)]
+        values = [line["value"] for line in lines]
         randomness = "seeded" if seed is not None else "system"
+        method_details = {
+            "name": "three coins",
+            "coin_value_map": {"heads": 3, "tails": 2},
+            "line_order": "bottom-to-top",
+        }
+        line_probabilities = {"6": "1/8", "7": "3/8", "8": "3/8", "9": "1/8"}
 
     primary_bits = "".join("1" if value in [7, 9] else "0" for value in values)
     resulting_bits = "".join(
         "0" if value == 9 else "1" if value == 6 else "1" if value == 7 else "0"
         for value in values
     )
-    lines = [line_record(index, value) for index, value in enumerate(values, start=1)]
     changing_lines = [line["line"] for line in lines if line["changing"]]
-
-    return {
+    result = {
         "system": "iching",
         "method": method,
+        "requested_method": requested_method,
         "randomness": randomness,
         "line_order": "bottom-to-top",
+        "method_details": method_details,
+        "line_probabilities": line_probabilities,
         "lines": lines,
         "changing_lines": changing_lines,
         "primary_hexagram": hexagram_for_binary(primary_bits),
         "resulting_hexagram": hexagram_for_binary(resulting_bits),
     }
+    if warning:
+        result["warning"] = warning
+    return result
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Cast an I Ching hexagram for AI agent interpretation.")
-    parser.add_argument("--method", choices=["random", "coins", "manual"], default="coins")
+    parser.add_argument("--method", choices=["random", "coins", "yarrow", "manual"], default="coins")
     parser.add_argument("--seed", help="Optional deterministic seed for tests and reproducible demos.")
     parser.add_argument("--lines", help="Manual bottom-to-top line values, for example: 6,7,8,9,7,8")
     return parser.parse_args()

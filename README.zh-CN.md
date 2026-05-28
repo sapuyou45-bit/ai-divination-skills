@@ -8,6 +8,18 @@
 
 本项目将占卜视为象征推理与反思工具，而不是确定性预言。
 
+## 方法论严谨性
+
+核心规则很简单：脚本或用户提供的实体占卜结果负责生成牌面、卦象或位置；AI 只解释这个已经生成的结果，不负责生成占卜结果本身。
+
+这不是在证明占卜具有科学有效性，而是让象征推理工作流更严格：
+
+- 真实 reading 默认使用系统随机
+- seed 只用于测试和可复现 demo
+- 每个 skill 都记录传统方法和限制
+- JSON 输出包含可审计的方法元数据
+- 近似模式必须输出 warning，不能伪装成传统准确起法
+
 ## 多语言文档
 
 项目包含一个 GitHub Pages 文档页，支持页面内语言切换：
@@ -52,6 +64,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh
 ```bash
 python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals
 python3 skills/iching/scripts/cast.py --method coins
+python3 skills/iching/scripts/cast.py --method yarrow
 python3 skills/xiaoliuren/scripts/cast.py --method numbers --month 3 --day 12 --hour 7
 ```
 
@@ -59,7 +72,7 @@ python3 skills/xiaoliuren/scripts/cast.py --method numbers --month 3 --day 12 --
 
 ```bash
 python3 skills/tarot/scripts/draw.py --spread decision --seed demo
-python3 skills/iching/scripts/cast.py --method random --seed demo
+python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 ```
 
 所有脚本都会输出 JSON。

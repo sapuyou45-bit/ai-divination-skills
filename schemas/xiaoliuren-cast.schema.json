@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sapuyou45-bit.github.io/ai-divination-skills/schemas/xiaoliuren-cast.schema.json",
+  "title": "Xiao Liu Ren Cast",
+  "type": "object",
+  "required": [
+    "system",
+    "method",
+    "accuracy",
+    "inputs",
+    "formula",
+    "position"
+  ],
+  "properties": {
+    "system": {"type": "string"},
+    "method": {"type": "string"},
+    "accuracy": {"type": "string"},
+    "inputs": {"type": "object"},
+    "formula": {"type": "string"},
+    "position": {"type": "object"},
+    "datetime": {"type": "string"},
+    "lunar_date": {"type": "object"},
+    "warning": {"type": "string"}
+  }
+}

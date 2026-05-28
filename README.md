@@ -8,6 +8,18 @@ Direct, practical divination skills for AI agents.
 
 This project treats divination as symbolic reasoning and reflection, not deterministic prediction.
 
+## Methodological Rigor
+
+The core rule is simple: scripts or user-provided physical casts generate the divination result; AI interprets that result and does not generate the divination result.
+
+This is not scientific proof of divination efficacy. It is a stricter workflow for symbolic reasoning:
+
+- real readings use system randomness by default
+- seeded mode is only for tests and reproducible demos
+- traditional methods and limitations are documented per skill
+- outputs include enough JSON metadata to audit the method
+- approximate modes emit warnings instead of pretending to be traditional
+
 ## Multilingual Docs
 
 The project includes a GitHub Pages-ready docs site with in-page language switching:
@@ -52,6 +64,7 @@ Run any script directly:
 ```bash
 python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals
 python3 skills/iching/scripts/cast.py --method coins
+python3 skills/iching/scripts/cast.py --method yarrow
 python3 skills/xiaoliuren/scripts/cast.py --method numbers --month 3 --day 12 --hour 7
 ```
 
@@ -59,7 +72,7 @@ Use a seed for reproducible demos:
 
 ```bash
 python3 skills/tarot/scripts/draw.py --spread decision --seed demo
-python3 skills/iching/scripts/cast.py --method random --seed demo
+python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 ```
 
 All scripts output JSON.
@@ -97,6 +110,7 @@ Each skill instructs the agent to:
 
 Shared guidance lives in:
 
+- `shared/methodology.md`
 - `shared/response-contract.md`
 - `shared/randomness-protocol.md`
 - `shared/safety-policy.md`

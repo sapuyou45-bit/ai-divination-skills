@@ -6,9 +6,17 @@ Traditional Xiao Liu Ren commonly uses:
 - Lunar day number: 1-30.
 - Chinese hour branch index: 1-12.
 
-The MVP script does not calculate the Chinese lunar calendar. For traditional accuracy, ask the user for lunar numbers or use an external lunar calendar before running `--method numbers`.
+For maximum traditional control, ask the user for lunar numbers and run `--method numbers`.
 
-The `--method time` fallback uses Gregorian month/day. If the Gregorian day is 31, the script clamps it to 30 so the value stays inside the lunar day input range.
+The `--method lunar-time` mode uses optional `lunar_python` to convert a Gregorian datetime to lunar month and lunar day. Install it with:
+
+```bash
+pip install ".[lunar]"
+```
+
+The `--method time` fallback uses Gregorian month/day and is only a rough demo mode. If the Gregorian day is 31, the script clamps it to 30 so the value stays inside the lunar day input range.
+
+Leap lunar months are rejected by default. If a reading falls in a leap month, ask the user to provide explicit lunar inputs with `--method numbers`.
 
 ## Hour Index
 

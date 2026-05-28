@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sapuyou45-bit.github.io/ai-divination-skills/schemas/tarot-draw.schema.json",
+  "title": "Tarot Draw",
+  "type": "object",
+  "required": [
+    "system",
+    "deck",
+    "spread",
+    "deck_size",
+    "draw_count",
+    "drawn_indices",
+    "shuffle_algorithm",
+    "rng_mode",
+    "randomness",
+    "reversals_enabled",
+    "cards"
+  ],
+  "properties": {
+    "system": {"type": "string"},
+    "deck": {"type": "string"},
+    "spread": {"type": "string"},
+    "deck_size": {"type": "integer"},
+    "draw_count": {"type": "integer"},
+    "drawn_indices": {"type": "array"},
+    "shuffle_algorithm": {"type": "string"},
+    "rng_mode": {"type": "string"},
+    "randomness": {"type": "string"},
+    "reversals_enabled": {"type": "boolean"},
+    "cards": {"type": "array"}
+  }
+}

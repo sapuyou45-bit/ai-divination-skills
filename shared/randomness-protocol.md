@@ -20,4 +20,4 @@ Unacceptable sources:
 
 Scripts that use randomness should support seeded mode for tests and demos.
 
-Production readings should default to OS randomness unless the user explicitly wants reproducibility.
+Production readings should default to OS randomness. Seeded mode is for tests and reproducible demos, not real readings.
