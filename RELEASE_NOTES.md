@@ -1,5 +1,16 @@
 # Release Notes
 
+## v0.1.2 - Clickable Language Switchers
+
+This release makes language switching work like common multilingual open-source repositories.
+
+### What's New
+
+- **README language links**: English, Simplified Chinese, and Japanese README files link to each other.
+- **Localized README files**: added `README.zh-CN.md` and `README.ja.md`.
+- **Shareable docs languages**: the GitHub Pages language switcher now uses links such as `?lang=zh` and `?lang=ja`.
+- **Docs UI fix**: language controls are real anchors while still switching content without leaving the page.
+
 ## v0.1.1 - Multilingual Docs Site
 
 This release adds a GitHub Pages-ready documentation site with in-page language switching.

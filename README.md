@@ -1,5 +1,7 @@
 # AI Divination Skills
 
+[English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
+
 Direct, practical divination skills for AI agents.
 
 `ai-divination-skills` is an open-source skill collection for tarot, I Ching, Xiao Liu Ren, and other symbolic systems. It is designed for agent workflows where the random draw or cast is produced by a local script, and the AI agent interprets the result with clear safety boundaries.
@@ -10,9 +12,9 @@ This project treats divination as symbolic reasoning and reflection, not determi
 
 The project includes a GitHub Pages-ready docs site with in-page language switching:
 
-- English
-- 简体中文
-- 日本語
+- [English](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=en)
+- [简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh)
+- [日本語](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja)
 
 Local preview:
 

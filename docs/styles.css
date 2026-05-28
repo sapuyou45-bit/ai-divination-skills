@@ -97,7 +97,9 @@ pre,
   background: var(--panel);
 }
 
-.language-switcher button {
+.language-switcher a {
+  display: inline-grid;
+  place-items: center;
   min-width: 48px;
   height: 36px;
   border: 0;
@@ -106,13 +108,14 @@ pre,
   color: var(--muted);
   cursor: pointer;
   font-size: 0.78rem;
+  text-decoration: none;
 }
 
-.language-switcher button:last-child {
+.language-switcher a:last-child {
   border-right: 0;
 }
 
-.language-switcher button[aria-pressed="true"] {
+.language-switcher a[aria-pressed="true"] {
   background: var(--ink);
   color: var(--paper);
 }
@@ -388,7 +391,7 @@ pre {
     display: none;
   }
 
-  .language-switcher button {
+  .language-switcher a {
     min-width: 42px;
     font-size: 0.72rem;
   }

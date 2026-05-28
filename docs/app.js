@@ -109,11 +109,17 @@ const translations = {
   }
 };
 
-const langButtons = Array.from(document.querySelectorAll("[data-lang]"));
+const langLinks = Array.from(document.querySelectorAll("[data-lang]"));
 const translatable = Array.from(document.querySelectorAll("[data-i18n]"));
 const supportedLanguages = Object.keys(translations);
 
 function preferredLanguage() {
+  const params = new URLSearchParams(window.location.search);
+  const queryLanguage = params.get("lang");
+  if (supportedLanguages.includes(queryLanguage)) {
+    return queryLanguage;
+  }
+
   const stored = localStorage.getItem("ads-language");
   if (supportedLanguages.includes(stored)) {
     return stored;
@@ -141,13 +147,20 @@ function setLanguage(lang) {
     }
   });
 
-  langButtons.forEach((button) => {
-    button.setAttribute("aria-pressed", String(button.dataset.lang === lang));
+  langLinks.forEach((link) => {
+    link.setAttribute("aria-pressed", String(link.dataset.lang === lang));
   });
 }
 
-langButtons.forEach((button) => {
-  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+langLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const lang = link.dataset.lang;
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", lang);
+    window.history.pushState({}, "", url);
+    setLanguage(lang);
+  });
 });
 
 setLanguage(preferredLanguage());
