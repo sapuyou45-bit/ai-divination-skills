@@ -59,7 +59,27 @@ That makes readings easier to test, reproduce, audit, and reuse across agents.
 
 ## Quick Start
 
-Run any script directly:
+Install the local CLI from a checkout:
+
+```bash
+pip install -e .
+```
+
+Use one command for every system:
+
+```bash
+ai-divination tarot --deck major --spread three-card --reversals
+ai-divination iching --method yarrow
+ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
+```
+
+Ask for an agent interpretation template:
+
+```bash
+ai-divination template tarot
+```
+
+You can still run the underlying scripts directly:
 
 ```bash
 python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals
@@ -111,6 +131,7 @@ Each skill instructs the agent to:
 Shared guidance lives in:
 
 - `shared/methodology.md`
+- `shared/interpretation-protocol.md`
 - `shared/response-contract.md`
 - `shared/randomness-protocol.md`
 - `shared/safety-policy.md`
@@ -148,6 +169,8 @@ python3 -m unittest discover -s tests
 
 Current coverage checks:
 
+- unified CLI routing
+- interpretation protocol templates
 - tarot spread output
 - I Ching cast structure and manual lines
 - Xiao Liu Ren number and time fallback behavior
@@ -156,10 +179,10 @@ Current coverage checks:
 
 Near-term:
 
+- Make the package friendlier for non-editable installs.
 - Add richer reference material for each MVP skill.
 - Add more example readings.
-- Add a simple installer script.
-- Add optional Chinese-language docs.
+- Add more agent integration examples.
 
 Later:
 

@@ -1,9 +1,9 @@
 [project]
 name = "ai-divination-skills"
-version = "0.2.0"
+version = "0.3.0"
 description = "Direct, practical divination skills for AI agents."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 license = {text = "MIT"}
 dependencies = []
 
@@ -11,3 +11,13 @@ dependencies = []
 lunar = [
   "lunar-python>=1.4.4"
 ]
+
+[project.scripts]
+ai-divination = "ai_divination_skills.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ai_divination_skills"]

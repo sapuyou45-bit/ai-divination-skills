@@ -1,5 +1,17 @@
 # Release Notes
 
+## v0.3.0 - Unified CLI and Agent Interpretation Templates
+
+This release makes the toolkit easier for agents and humans to call consistently.
+
+### What's New
+
+- **Unified CLI**: `ai-divination tarot`, `ai-divination iching`, and `ai-divination xiaoliuren` route to the existing audited scripts.
+- **Install entry point**: `pip install -e .` exposes the `ai-divination` command for local development and agent workflows.
+- **Agent templates**: `ai-divination template tarot` prints the shared interpretation protocol plus the skill-specific template.
+- **Interpretation boundary**: shared and per-skill templates explicitly state that AI interprets generated results and must not invent, redraw, or recast.
+- **Docs and tests**: README examples and unit tests cover the CLI and interpretation templates.
+
 ## v0.2.0 - Traditional Rigor and Auditable Randomness
 
 This release separates the divination process from AI interpretation more strictly.

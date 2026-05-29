@@ -12,9 +12,10 @@ I Ching readings analyze change, timing, tension, and response. They are not det
 1. Clarify the question if it is vague or high-stakes.
 2. Run `scripts/cast.py` unless the user provides six line values.
 3. Read `references/casting-methods.md` when the casting method matters.
-4. Read `references/sources.md` when method rigor or adjacent systems matter.
-5. Read `references/hexagrams.md` for the primary and resulting hexagram.
-6. Interpret using the shared response contract:
+4. Read `references/interpretation-template.md` before writing the interpretation.
+5. Read `references/sources.md` when method rigor or adjacent systems matter.
+6. Read `references/hexagrams.md` for the primary and resulting hexagram.
+7. Interpret using the shared response contract:
    - Result
    - Symbolic Reading
    - Situation Mapping

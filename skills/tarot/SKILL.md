@@ -12,9 +12,10 @@ Tarot is used here as a symbolic reflection tool, not a prediction engine.
 1. Clarify the user's question if needed.
 2. Choose a spread from `references/spreads.md`.
 3. Run `scripts/draw.py` unless the user provides a physical draw.
-4. Read `references/sources.md` when method or licensing rigor matters.
-5. Read `references/cards.md` for concise card and suit meanings.
-6. Interpret using the shared response contract:
+4. Read `references/interpretation-template.md` before writing the interpretation.
+5. Read `references/sources.md` when method or licensing rigor matters.
+6. Read `references/cards.md` for concise card and suit meanings.
+7. Interpret using the shared response contract:
    - Result
    - Symbolic Reading
    - Situation Mapping

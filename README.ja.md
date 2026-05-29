@@ -59,7 +59,27 @@ https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja
 
 ## クイックスタート
 
-任意のスクリプトを直接実行できます。
+ローカル checkout から統一 CLI をインストールします。
+
+```bash
+pip install -e .
+```
+
+3 つの体系を同じ入口で呼び出せます。
+
+```bash
+ai-divination tarot --deck major --spread three-card --reversals
+ai-divination iching --method yarrow
+ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
+```
+
+agent 用の解釈テンプレートも表示できます。
+
+```bash
+ai-divination template tarot
+```
+
+従来どおり、下層のスクリプトを直接実行することもできます。
 
 ```bash
 python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals
@@ -110,6 +130,8 @@ skills/name/
 
 共有ガイド：
 
+- `shared/methodology.md`
+- `shared/interpretation-protocol.md`
 - `shared/response-contract.md`
 - `shared/randomness-protocol.md`
 - `shared/safety-policy.md`
@@ -149,10 +171,10 @@ python3 -m unittest discover -s tests
 
 近いうちに：
 
+- 非 editable install でも扱いやすくする。
 - MVP skills の参照資料を拡充する。
 - 例の読みを増やす。
-- 簡単なインストーラーを追加する。
-- 中国語と日本語ドキュメントをさらに整える。
+- agent 連携例を増やす。
 
 将来：
 

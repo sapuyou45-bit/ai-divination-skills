@@ -59,7 +59,27 @@ https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh
 
 ## 快速开始
 
-直接运行任意脚本：
+从本地 checkout 安装统一 CLI：
+
+```bash
+pip install -e .
+```
+
+三个体系使用同一个入口：
+
+```bash
+ai-divination tarot --deck major --spread three-card --reversals
+ai-divination iching --method yarrow
+ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
+```
+
+查看给 agent 使用的解读模板：
+
+```bash
+ai-divination template tarot
+```
+
+也可以继续直接运行底层脚本：
 
 ```bash
 python3 skills/tarot/scripts/draw.py --deck major --spread three-card --reversals
@@ -110,6 +130,8 @@ skills/name/
 
 共享规范位于：
 
+- `shared/methodology.md`
+- `shared/interpretation-protocol.md`
 - `shared/response-contract.md`
 - `shared/randomness-protocol.md`
 - `shared/safety-policy.md`
@@ -149,10 +171,10 @@ python3 -m unittest discover -s tests
 
 近期：
 
+- 让包在非 editable 安装下更友好。
 - 为 MVP skills 增加更丰富的参考资料。
 - 增加更多示例解读。
-- 增加简单安装脚本。
-- 继续完善中文和日文文档。
+- 增加更多 agent 集成示例。
 
 后续：
 

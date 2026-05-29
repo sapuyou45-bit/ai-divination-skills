@@ -12,10 +12,11 @@ Xiao Liu Ren is used here as a lightweight symbolic timing tool. It should not b
 1. Prefer user-provided lunar month, lunar day, and Chinese hour index when available.
 2. Use `--method lunar-time` only when `lunar_python` is installed and the user gives a datetime.
 3. If the user asks for a quick current-time cast without lunar support, run the Gregorian fallback and disclose its warning.
-4. Read `references/sources.md` when method rigor matters.
-5. Read `references/positions.md` for the resulting position.
-6. Read `references/lunar-time.md` if the user asks about inputs or hour conversion.
-7. Interpret using the shared response contract:
+4. Read `references/interpretation-template.md` before writing the interpretation.
+5. Read `references/sources.md` when method rigor matters.
+6. Read `references/positions.md` for the resulting position.
+7. Read `references/lunar-time.md` if the user asks about inputs or hour conversion.
+8. Interpret using the shared response contract:
    - Result
    - Symbolic Reading
    - Situation Mapping
