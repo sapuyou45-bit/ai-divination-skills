@@ -62,6 +62,12 @@ That makes readings easier to test, reproduce, audit, and reuse across agents.
 Install the local CLI from a checkout:
 
 ```bash
+pip install .
+```
+
+Use editable mode while developing:
+
+```bash
 pip install -e .
 ```
 
@@ -77,6 +83,14 @@ Ask for an agent interpretation template:
 
 ```bash
 ai-divination template tarot
+```
+
+Use the Python API directly:
+
+```python
+from ai_divination_skills.tarot import draw
+from ai_divination_skills.iching import cast
+from ai_divination_skills.xiaoliuren import cast_numbers
 ```
 
 You can still run the underlying scripts directly:
@@ -170,6 +184,8 @@ python3 -m unittest discover -s tests
 Current coverage checks:
 
 - unified CLI routing
+- package-only CLI execution
+- importable Python APIs
 - interpretation protocol templates
 - tarot spread output
 - I Ching cast structure and manual lines
@@ -179,7 +195,7 @@ Current coverage checks:
 
 Near-term:
 
-- Make the package friendlier for non-editable installs.
+- Add a published package workflow.
 - Add richer reference material for each MVP skill.
 - Add more example readings.
 - Add more agent integration examples.

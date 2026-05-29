@@ -62,6 +62,12 @@ https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh
 从本地 checkout 安装统一 CLI：
 
 ```bash
+pip install .
+```
+
+开发时可以用 editable 模式：
+
+```bash
 pip install -e .
 ```
 
@@ -77,6 +83,14 @@ ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
 
 ```bash
 ai-divination template tarot
+```
+
+也可以直接用 Python API：
+
+```python
+from ai_divination_skills.tarot import draw
+from ai_divination_skills.iching import cast
+from ai_divination_skills.xiaoliuren import cast_numbers
 ```
 
 也可以继续直接运行底层脚本：
@@ -171,7 +185,7 @@ python3 -m unittest discover -s tests
 
 近期：
 
-- 让包在非 editable 安装下更友好。
+- 增加正式发布 Python package 的 workflow。
 - 为 MVP skills 增加更丰富的参考资料。
 - 增加更多示例解读。
 - 增加更多 agent 集成示例。

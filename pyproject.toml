@@ -1,6 +1,6 @@
 [project]
 name = "ai-divination-skills"
-version = "0.3.0"
+version = "0.4.0"
 description = "Direct, practical divination skills for AI agents."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -19,5 +19,8 @@ ai-divination = "ai_divination_skills.cli:main"
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-packages = ["ai_divination_skills"]
+[tool.setuptools.packages.find]
+include = ["ai_divination_skills*"]
+
+[tool.setuptools.package-data]
+ai_divination_skills = ["templates/*.md"]

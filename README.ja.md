@@ -62,6 +62,12 @@ https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja
 ローカル checkout から統一 CLI をインストールします。
 
 ```bash
+pip install .
+```
+
+開発中は editable mode も使えます。
+
+```bash
 pip install -e .
 ```
 
@@ -77,6 +83,14 @@ agent 用の解釈テンプレートも表示できます。
 
 ```bash
 ai-divination template tarot
+```
+
+Python API から直接使うこともできます。
+
+```python
+from ai_divination_skills.tarot import draw
+from ai_divination_skills.iching import cast
+from ai_divination_skills.xiaoliuren import cast_numbers
 ```
 
 従来どおり、下層のスクリプトを直接実行することもできます。
@@ -171,7 +185,7 @@ python3 -m unittest discover -s tests
 
 近いうちに：
 
-- 非 editable install でも扱いやすくする。
+- Python package 公開用 workflow を追加する。
 - MVP skills の参照資料を拡充する。
 - 例の読みを増やす。
 - agent 連携例を増やす。

@@ -1,5 +1,18 @@
 # Release Notes
 
+## v0.4.0 - Installable Package Runtime
+
+This release makes the CLI work from a normal package install, not only from an editable checkout.
+
+### What's New
+
+- **Packaged runtime**: tarot, I Ching, and Xiao Liu Ren logic now lives in importable `ai_divination_skills` modules.
+- **Package-only CLI**: `ai-divination` no longer depends on top-level `skills/` files being present after installation.
+- **Python API**: callers can import `draw`, `cast`, and `cast_numbers` directly.
+- **Packaged templates**: interpretation templates are bundled inside the package for installed CLI use.
+- **Compatibility wrappers**: existing `skills/*/scripts/*.py` paths still work and delegate to the package modules.
+- **Install tests**: coverage checks package-only CLI execution and importable APIs.
+
 ## v0.3.0 - Unified CLI and Agent Interpretation Templates
 
 This release makes the toolkit easier for agents and humans to call consistently.
