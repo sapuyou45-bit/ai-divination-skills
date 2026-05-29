@@ -1,6 +1,9 @@
 interface:
   display_name: "I Ching"
   short_description: "Cast I Ching hexagrams for change analysis"
+  icon_small: "./assets/icon-small.svg"
+  icon_large: "./assets/icon-large.svg"
+  brand_color: "#111827"
   default_prompt: "Use $iching to cast an I Ching reading for a strategic decision."
 policy:
   allow_implicit_invocation: true

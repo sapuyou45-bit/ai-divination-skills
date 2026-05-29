@@ -1,11 +1,23 @@
 ---
 name: iching
-description: Cast and interpret I Ching hexagrams for AI agent readings, symbolic decision reflection, change analysis, or when the user asks for I Ching, Yi Jing, Zhouyi, hexagrams, coins, or 易经/周易.
+description: Use when the user asks for I Ching, Yi Jing, Zhouyi, 易经, 周易, hexagrams, coin casting, yarrow-style casting, change analysis, or interpretation of user-provided line values.
 ---
 
 # I Ching
 
 I Ching readings analyze change, timing, tension, and response. They are not deterministic commands.
+
+## When to Use
+
+- The user asks for I Ching, Yi Jing, Zhouyi, 易经, 周易, hexagrams, coins, or yarrow.
+- The user wants symbolic reflection on timing, change, tension, strategy, or response.
+- The user provides six bottom-to-top line values and wants an interpretation.
+
+## When Not to Use
+
+- The request needs medical, legal, financial, emergency, or crisis advice.
+- The user wants a guaranteed prediction or deterministic command.
+- The user asks the agent to invent line values or recast for a nicer result.
 
 ## Workflow
 

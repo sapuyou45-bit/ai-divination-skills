@@ -133,6 +133,8 @@ skills/name/
 
 如果只需要某个 skill，复制对应单个文件夹即可。
 
+每个 skill 脚本也支持单文件夹模式。如果已经安装 Python package，脚本会调用包内 runtime；如果只复制了 skill 文件夹，脚本会退回到该 skill 自带的 standalone 脚本。
+
 ## Agent 行为
 
 每个 skill 都要求 agent：
@@ -186,6 +188,7 @@ python3 -m unittest discover -s tests
 近期：
 
 - 增加正式发布 Python package 的 workflow。
+- 继续扩展 CI 中的自动 skill validation。
 - 为 MVP skills 增加更丰富的参考资料。
 - 增加更多示例解读。
 - 增加更多 agent 集成示例。

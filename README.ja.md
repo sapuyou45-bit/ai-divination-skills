@@ -133,6 +133,8 @@ skills/name/
 
 必要な skill だけを個別にコピーしてください。
 
+各 skill スクリプトは単独フォルダでも動作します。Python package がインストール済みなら package runtime に委譲し、skill フォルダだけをコピーした場合は、その skill に同梱された standalone スクリプトへ fallback します。
+
 ## Agent の振る舞い
 
 各 skill は agent に次のことを求めます。
@@ -186,6 +188,7 @@ python3 -m unittest discover -s tests
 近いうちに：
 
 - Python package 公開用 workflow を追加する。
+- CI の自動 skill validation をさらに拡充する。
 - MVP skills の参照資料を拡充する。
 - 例の読みを増やす。
 - agent 連携例を増やす。

@@ -133,6 +133,8 @@ skills/name/
 
 Install individual folders, not the entire repository, when you only want one skill.
 
+Each skill script also works in single-folder mode. If the Python package is installed, the script delegates to the package runtime. If only the skill folder is copied, it falls back to the bundled standalone script in that skill.
+
 ## Agent Behavior
 
 Each skill instructs the agent to:
@@ -186,6 +188,8 @@ Current coverage checks:
 - unified CLI routing
 - package-only CLI execution
 - importable Python APIs
+- single-folder skill execution
+- skill metadata and asset contracts
 - interpretation protocol templates
 - tarot spread output
 - I Ching cast structure and manual lines
@@ -196,6 +200,7 @@ Current coverage checks:
 Near-term:
 
 - Add a published package workflow.
+- Expand automated skill validation in CI.
 - Add richer reference material for each MVP skill.
 - Add more example readings.
 - Add more agent integration examples.

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tarot icon">
+  <rect width="64" height="64" rx="12" fill="#7C3AED"/>
+  <rect x="18" y="10" width="28" height="44" rx="4" fill="#FAF9F4" stroke="#2F185F" stroke-width="2"/>
+  <circle cx="32" cy="32" r="8" fill="none" stroke="#7C3AED" stroke-width="3"/>
+  <path d="M32 17v8M32 39v8M24 32h-4M44 32h-4" stroke="#7C3AED" stroke-width="3" stroke-linecap="round"/>
+</svg>

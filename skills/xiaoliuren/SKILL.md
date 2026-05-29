@@ -1,11 +1,23 @@
 ---
 name: xiaoliuren
-description: Cast Xiao Liu Ren for lightweight AI agent divination, quick timing reflection, daily guidance, yes/no-style folk questions, or when the user asks for 小六壬 or xiaoliuren.
+description: Use when the user asks for Xiao Liu Ren, 小六壬, xiaoliuren, quick symbolic timing reflection, daily guidance, folk-style yes/no reflection, or interpretation from lunar month/day/hour inputs.
 ---
 
 # Xiao Liu Ren
 
 Xiao Liu Ren is used here as a lightweight symbolic timing tool. It should not be framed as certainty.
+
+## When to Use
+
+- The user asks for Xiao Liu Ren, 小六壬, or xiaoliuren.
+- The user wants lightweight symbolic timing reflection or quick daily guidance.
+- The user provides lunar month, lunar day, and Chinese hour index.
+
+## When Not to Use
+
+- The request needs medical, legal, financial, emergency, or crisis advice.
+- The user expects a traditional lunar cast but cannot provide lunar inputs and `lunar_python` is unavailable.
+- The user asks the agent to invent lunar dates, hour branches, or positions.
 
 ## Workflow
 

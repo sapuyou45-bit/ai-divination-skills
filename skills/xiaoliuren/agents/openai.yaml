@@ -1,6 +1,9 @@
 interface:
   display_name: "Xiao Liu Ren"
   short_description: "Cast Xiao Liu Ren for quick timing reflection"
+  icon_small: "./assets/icon-small.svg"
+  icon_large: "./assets/icon-large.svg"
+  brand_color: "#B45309"
   default_prompt: "Use $xiaoliuren to cast a quick Xiao Liu Ren reading for today."
 policy:
   allow_implicit_invocation: true

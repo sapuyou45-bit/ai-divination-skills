@@ -1,5 +1,18 @@
 # Release Notes
 
+## v0.5.0 - Skill Spec Hardening
+
+This release makes the repository stronger as an Agent skill collection, not just as a Python package.
+
+### What's New
+
+- **Standalone skill scripts**: copied single-skill folders now run without requiring the top-level Python package.
+- **Skill frontmatter hardening**: descriptions now use `Use when...` trigger wording and avoid workflow summaries.
+- **Usage boundaries**: every skill has explicit `When to Use` and `When Not to Use` sections.
+- **OpenAI metadata polish**: every skill now has brand color plus small and large SVG icons.
+- **Skill contract tests**: coverage checks frontmatter, referenced files, metadata assets, and single-folder script execution.
+- **Dev extra**: `.[dev]` includes build, twine, and PyYAML for package and skill validation work.
+
 ## v0.4.0 - Installable Package Runtime
 
 This release makes the CLI work from a normal package install, not only from an editable checkout.

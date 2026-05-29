@@ -1,6 +1,9 @@
 interface:
   display_name: "Tarot"
   short_description: "Draw tarot cards for reflective AI readings"
+  icon_small: "./assets/icon-small.svg"
+  icon_large: "./assets/icon-large.svg"
+  brand_color: "#7C3AED"
   default_prompt: "Use $tarot to draw a three-card tarot reading for a decision I am considering."
 policy:
   allow_implicit_invocation: true

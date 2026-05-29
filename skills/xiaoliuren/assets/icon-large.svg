@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Xiao Liu Ren icon">
+  <rect width="256" height="256" rx="36" fill="#B45309"/>
+  <circle cx="128" cy="128" r="76" fill="none" stroke="#FAF9F4" stroke-width="14"/>
+  <circle cx="128" cy="52" r="15" fill="#FAF9F4"/>
+  <circle cx="194" cy="90" r="15" fill="#FAF9F4"/>
+  <circle cx="194" cy="166" r="15" fill="#FAF9F4"/>
+  <circle cx="128" cy="204" r="15" fill="#FAF9F4"/>
+  <circle cx="62" cy="166" r="15" fill="#FAF9F4"/>
+  <circle cx="62" cy="90" r="15" fill="#FAF9F4"/>
+</svg>

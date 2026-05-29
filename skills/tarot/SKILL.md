@@ -1,11 +1,23 @@
 ---
 name: tarot
-description: Draw and interpret tarot cards for AI agent readings, symbolic reframing, decisions, creative blocks, project reflection, or when the user asks for tarot, a card pull, or a card reading.
+description: Use when the user asks for tarot, a card pull, a card reading, symbolic reframing, decision reflection, creative blocks, project reflection, or interpretation of a user-provided tarot draw.
 ---
 
 # Tarot
 
 Tarot is used here as a symbolic reflection tool, not a prediction engine.
+
+## When to Use
+
+- The user asks for tarot, a card pull, or a card reading.
+- The user wants symbolic reflection for a decision, creative block, project review, or personal question.
+- The user provides physical tarot cards and wants an interpretation.
+
+## When Not to Use
+
+- The request needs medical, legal, financial, emergency, or crisis advice.
+- The user wants a deterministic prediction or certainty about future events.
+- The user asks the agent to choose cards without a script or physical draw.
 
 ## Workflow
 

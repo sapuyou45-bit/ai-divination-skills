@@ -11,7 +11,10 @@ ROOT = Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from ai_divination_skills.xiaoliuren import main
+try:
+    from ai_divination_skills.xiaoliuren import main
+except ImportError:
+    from _standalone_xiaoliuren import main
 
 
 if __name__ == "__main__":
