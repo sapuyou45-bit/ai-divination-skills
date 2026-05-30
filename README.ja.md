@@ -2,13 +2,22 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
-AI agent のための、直接的で実用的な占術 skill 集です。
+✨ AI agent のためのオープンソース占術 skill 集です。乱数、カードドロー、起卦はツールが行い、AI は具体的な結果だけを解釈します。
 
-`ai-divination-skills` は、タロット、易経、小六壬、そして今後追加される象徴体系のためのオープンソース skill コレクションです。agent ワークフロー向けに設計されており、ローカルスクリプトがカード、卦、位置を生成し、AI agent が明確な安全境界の中で解釈します。
+`ai-divination-skills` は、タロット、易経、小六壬、そして今後追加される象徴体系のための実用的な skill コレクションです。agent ワークフロー向けに、監査可能なランダム性、明確な方法境界、再利用できる解釈テンプレートを重視しています。
 
 このプロジェクトは占術を、決定論的な予言ではなく、象徴的推論と内省の道具として扱います。
 
-## 方法論的厳密性
+## ✨ 概要
+
+多くの AI 占いプロンプトでは、モデルが結果そのものを作ってしまいます。このリポジトリは役割を分けます。
+
+1. ローカルスクリプトがカード、卦、小六壬の位置を生成する。
+2. AI agent がその具体的な結果を、安全境界の中で解釈する。
+
+これにより、読みはテスト、再現、監査、再利用がしやすくなります。
+
+## 🧭 方法論的厳密性
 
 基本ルールは明確です。スクリプト、またはユーザーが物理的に得た結果がカード、卦、位置を生成します。AI はその生成済みの結果を解釈するだけで、占術結果そのものは生成しません。
 
@@ -20,10 +29,11 @@ AI agent のための、直接的で実用的な占術 skill 集です。
 - JSON 出力に監査可能な方法メタデータを含める
 - 近似モードは warning を出し、伝統的精度を装わない
 
-## 多言語ドキュメント
+## 🌐 多言語ドキュメント
 
-プロジェクトには、ページ内で言語切り替えできる GitHub Pages ドキュメントがあります。
+GitHub Pages のルートページは、デフォルトで簡体中文を表示します。ページ内で 3 言語に切り替えできます。
 
+- [Default / 简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/)
 - [English](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=en)
 - [简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh)
 - [日本語](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja)
@@ -37,10 +47,10 @@ python3 -m http.server 8000 -d docs
 公開ページ：
 
 ```text
-https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja
+https://sapuyou45-bit.github.io/ai-divination-skills/
 ```
 
-## 含まれる Skills
+## 🧩 含まれる Skills
 
 | Skill | 内容 | スクリプト |
 |---|---|---|
@@ -48,16 +58,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja
 | `iching` | 六本の爻から本卦と之卦を出力します。 | `skills/iching/scripts/cast.py` |
 | `xiaoliuren` | 旧暦風の数値、または軽量なグレゴリオ暦 fallback から小六壬を起こします。 | `skills/xiaoliuren/scripts/cast.py` |
 
-## なぜ作るのか
-
-多くの AI 占いプロンプトでは、モデルが結果そのものを作ってしまいます。このプロジェクトは役割を分けます。
-
-1. スクリプトがカード、卦、位置を生成する。
-2. AI agent がその具体的な結果を解釈する。
-
-これにより、読みはテスト、再現、監査、再利用がしやすくなります。
-
-## クイックスタート
+## 🚀 クイックスタート
 
 ローカル checkout から統一 CLI をインストールします。
 
@@ -111,7 +112,7 @@ python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 
 すべてのスクリプトは JSON を出力します。
 
-## Agent Skill としてインストール
+## 📦 Agent Skill としてインストール
 
 必要な skill フォルダを agent の skill ディレクトリへコピーします。
 
@@ -135,7 +136,7 @@ skills/name/
 
 各 skill スクリプトは単独フォルダでも動作します。Python package がインストール済みなら package runtime に委譲し、skill フォルダだけをコピーした場合は、その skill に同梱された standalone スクリプトへ fallback します。
 
-## Agent の振る舞い
+## 🤖 Agent の振る舞い
 
 各 skill は agent に次のことを求めます。
 
@@ -153,13 +154,13 @@ skills/name/
 - `shared/safety-policy.md`
 - `shared/interpretation-style.md`
 
-## Examples
+## 🧪 Examples
 
 - `examples/tarot-decision.md`
 - `examples/iching-strategy.md`
 - `examples/xiaoliuren-daily.md`
 
-## 安全境界
+## 🛡️ 安全境界
 
 これらの skills は、医療、法律、金融、危機対応の助言には使いません。
 
@@ -173,7 +174,7 @@ skills/name/
 
 詳しくは `ETHICS.md` を参照してください。
 
-## 開発
+## 🛠️ 開発
 
 Python 3 以外の実行時依存はありません。
 
@@ -183,7 +184,7 @@ Python 3 以外の実行時依存はありません。
 python3 -m unittest discover -s tests
 ```
 
-## ロードマップ
+## 🗺️ ロードマップ
 
 近いうちに：
 
@@ -201,6 +202,6 @@ python3 -m unittest discover -s tests
 - `numerology`
 - `astrology`
 
-## License
+## 📄 License
 
 MIT

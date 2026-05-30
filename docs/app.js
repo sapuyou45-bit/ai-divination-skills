@@ -1,5 +1,7 @@
 const translations = {
   en: {
+    "meta.title": "AI Divination Skills",
+    "meta.description": "Direct, practical divination skills for AI agents: tarot, I Ching, Xiao Liu Ren, and more.",
     "nav.skills": "Skills",
     "nav.rigor": "Method",
     "nav.quickStart": "Quick start",
@@ -45,6 +47,8 @@ const translations = {
     "footer.ethics": "Ethics"
   },
   zh: {
+    "meta.title": "AI 占卜 Skills",
+    "meta.description": "给 AI agent 使用的直接、实用占卜技能集：塔罗、易经、小六壬，以及更多象征系统。",
     "nav.skills": "技能",
     "nav.rigor": "方法",
     "nav.quickStart": "快速开始",
@@ -90,6 +94,8 @@ const translations = {
     "footer.ethics": "伦理说明"
   },
   ja: {
+    "meta.title": "AI Divination Skills",
+    "meta.description": "AI agent のための、直接的で実用的な占術 skill 集です。タロット、易経、小六壬などに対応します。",
     "nav.skills": "スキル",
     "nav.rigor": "方法",
     "nav.quickStart": "クイックスタート",
@@ -152,19 +158,17 @@ function preferredLanguage() {
     return stored;
   }
 
-  const browserLanguage = navigator.language.toLowerCase();
-  if (browserLanguage.startsWith("zh")) {
-    return "zh";
-  }
-  if (browserLanguage.startsWith("ja")) {
-    return "ja";
-  }
-  return "en";
+  return "zh";
 }
 
 function setLanguage(lang) {
-  const dictionary = translations[lang] || translations.en;
+  const dictionary = translations[lang] || translations.zh;
   document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+  document.title = dictionary["meta.title"];
+  const description = document.querySelector('meta[name="description"]');
+  if (description) {
+    description.setAttribute("content", dictionary["meta.description"]);
+  }
   localStorage.setItem("ads-language", lang);
 
   translatable.forEach((node) => {

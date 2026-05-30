@@ -1,34 +1,34 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
-    <title>AI Divination Skills</title>
+    <title>AI 占卜 Skills</title>
     <meta
       name="description"
-      content="Direct, practical divination skills for AI agents: tarot, I Ching, Xiao Liu Ren, and more."
+      content="给 AI agent 使用的直接、实用占卜技能集：塔罗、易经、小六壬，以及更多象征系统。"
     >
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <header class="site-header" aria-label="Site header">
-      <a class="brand" href="#top" aria-label="AI Divination Skills home">
+    <header class="site-header" aria-label="站点页眉">
+      <a class="brand" href="#top" aria-label="AI 占卜 Skills 首页">
         <span class="brand-mark" aria-hidden="true">ADS</span>
-        <span>AI Divination Skills</span>
+        <span>AI 占卜 Skills</span>
       </a>
 
-      <nav class="top-nav" aria-label="Primary navigation">
-        <a href="#skills" data-i18n="nav.skills">Skills</a>
-        <a href="#rigor" data-i18n="nav.rigor">Method</a>
-        <a href="#quick-start" data-i18n="nav.quickStart">Quick start</a>
-        <a href="#safety" data-i18n="nav.safety">Safety</a>
+      <nav class="top-nav" aria-label="主导航">
+        <a href="#skills" data-i18n="nav.skills">技能</a>
+        <a href="#rigor" data-i18n="nav.rigor">方法</a>
+        <a href="#quick-start" data-i18n="nav.quickStart">快速开始</a>
+        <a href="#safety" data-i18n="nav.safety">安全边界</a>
         <a href="https://github.com/sapuyou45-bit/ai-divination-skills" data-i18n="nav.github">GitHub</a>
       </nav>
 
       <div class="language-switcher" role="group" aria-label="Language selector">
-        <a href="?lang=en" data-lang="en" aria-pressed="true">EN</a>
-        <a href="?lang=zh" data-lang="zh" aria-pressed="false">中文</a>
+        <a href="?lang=en" data-lang="en" aria-pressed="false">EN</a>
+        <a href="?lang=zh" data-lang="zh" aria-pressed="true">中文</a>
         <a href="?lang=ja" data-lang="ja" aria-pressed="false">日本語</a>
       </div>
     </header>
@@ -37,72 +37,71 @@
       <section class="hero" aria-labelledby="hero-title">
         <canvas id="system-map" aria-hidden="true"></canvas>
         <div class="hero-inner">
-          <p class="eyebrow" data-i18n="hero.eyebrow">Open-source skills for AI agents</p>
-          <h1 id="hero-title" data-i18n="hero.title">Direct divination tools, grounded agent workflows.</h1>
+          <p class="eyebrow" data-i18n="hero.eyebrow">给 AI agent 使用的开源技能</p>
+          <h1 id="hero-title" data-i18n="hero.title">直接、可验证的占卜工具，服务于稳健的 agent 工作流。</h1>
           <p class="hero-copy" data-i18n="hero.copy">
-            Tarot, I Ching, and Xiao Liu Ren skills that separate the divination process from interpretation.
-            Scripts perform the draw or cast and emit JSON. AI only interprets.
+            塔罗、易经、小六壬技能将占卜过程与解释分开：脚本负责抽取或起课并输出 JSON，AI 只负责解读。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="https://github.com/sapuyou45-bit/ai-divination-skills" data-i18n="hero.github">View on GitHub</a>
-            <a class="button secondary" href="#quick-start" data-i18n="hero.quickStart">Try the scripts</a>
+            <a class="button primary" href="https://github.com/sapuyou45-bit/ai-divination-skills" data-i18n="hero.github">查看 GitHub</a>
+            <a class="button secondary" href="#quick-start" data-i18n="hero.quickStart">试用脚本</a>
           </div>
         </div>
       </section>
 
       <section class="section intro" aria-labelledby="intro-title">
         <div>
-          <p class="section-label" data-i18n="intro.label">Why it exists</p>
-          <h2 id="intro-title" data-i18n="intro.title">The model should not invent the oracle result.</h2>
+          <p class="section-label" data-i18n="intro.label">为什么做这个</p>
+          <h2 id="intro-title" data-i18n="intro.title">模型不应该自己编出占卜结果。</h2>
         </div>
         <p data-i18n="intro.copy">
-          This project treats divination systems as symbolic reasoning and reflection tools, not deterministic prediction engines.
-          A local script creates the card draw, hexagram, or position; the AI agent interprets that concrete result.
+          本项目将占卜体系视为象征推理与反思工具，而不是确定性预言机器。
+          本地脚本生成牌面、卦象或位置，AI agent 基于这个具体结果进行解释。
         </p>
       </section>
 
       <section class="section rigor-section" id="rigor" aria-labelledby="rigor-title">
         <div class="section-heading">
-          <p class="section-label" data-i18n="rigor.label">Methodological rigor</p>
-          <h2 id="rigor-title" data-i18n="rigor.title">Randomness and interpretation stay separate.</h2>
+          <p class="section-label" data-i18n="rigor.label">方法论严谨性</p>
+          <h2 id="rigor-title" data-i18n="rigor.title">随机过程和 AI 解读清楚分开。</h2>
           <p data-i18n="rigor.copy">
-            For real readings, the divination result comes from system randomness, a traditional probability model,
-            or explicit user-provided physical input. Seeded mode is reserved for tests and reproducible demos.
+            真实 reading 的占卜结果来自系统随机、传统概率模型，或用户自己提供的实体占卜输入。
+            seed 只用于测试和可复现 demo。
           </p>
         </div>
         <ul class="safety-list">
-          <li data-i18n="rigor.item1">Tarot uses an explicit Fisher-Yates shuffle.</li>
-          <li data-i18n="rigor.item2">I Ching supports three-coin casts and digital yarrow-equivalent probabilities.</li>
-          <li data-i18n="rigor.item3">Xiao Liu Ren prefers lunar numbers, with optional lunar-time conversion.</li>
-          <li data-i18n="rigor.item4">Approximate modes are labeled with warnings.</li>
+          <li data-i18n="rigor.item1">塔罗使用显式 Fisher-Yates 洗牌。</li>
+          <li data-i18n="rigor.item2">易经支持三枚硬币法和数字蓍草等价概率。</li>
+          <li data-i18n="rigor.item3">小六壬优先使用农历数字，也支持可选 lunar-time 转换。</li>
+          <li data-i18n="rigor.item4">近似模式必须带 warning，不伪装成传统准确起法。</li>
         </ul>
       </section>
 
       <section class="section" id="skills" aria-labelledby="skills-title">
         <div class="section-heading">
-          <p class="section-label" data-i18n="skills.label">Included skills</p>
-          <h2 id="skills-title" data-i18n="skills.title">Three practical modules to start.</h2>
+          <p class="section-label" data-i18n="skills.label">已包含技能</p>
+          <h2 id="skills-title" data-i18n="skills.title">先从三个实用模块开始。</h2>
         </div>
 
         <div class="skill-grid">
           <article class="skill-card">
             <span class="system-token tarot-token">Tarot</span>
-            <h3 data-i18n="skills.tarot.title">Tarot</h3>
-            <p data-i18n="skills.tarot.copy">Draw cards for reflection, decisions, creative blocks, and project reframing.</p>
+            <h3 data-i18n="skills.tarot.title">塔罗</h3>
+            <p data-i18n="skills.tarot.copy">用于反思、决策、创作卡点和项目复盘的抽牌工具。</p>
             <code>skills/tarot/scripts/draw.py</code>
           </article>
 
           <article class="skill-card">
             <span class="system-token iching-token">I Ching</span>
-            <h3 data-i18n="skills.iching.title">I Ching</h3>
-            <p data-i18n="skills.iching.copy">Cast six-line hexagrams with primary and resulting hexagram output.</p>
+            <h3 data-i18n="skills.iching.title">易经</h3>
+            <p data-i18n="skills.iching.copy">生成六爻卦象，输出本卦、变爻与之卦。</p>
             <code>skills/iching/scripts/cast.py</code>
           </article>
 
           <article class="skill-card">
             <span class="system-token xlr-token">Xiao Liu Ren</span>
-            <h3 data-i18n="skills.xiaoliuren.title">Xiao Liu Ren</h3>
-            <p data-i18n="skills.xiaoliuren.copy">Cast from lunar-style numbers or a lightweight Gregorian time fallback.</p>
+            <h3 data-i18n="skills.xiaoliuren.title">小六壬</h3>
+            <p data-i18n="skills.xiaoliuren.copy">支持用农历式数字起课，也支持轻量公历时间 fallback。</p>
             <code>skills/xiaoliuren/scripts/cast.py</code>
           </article>
         </div>
@@ -110,9 +109,9 @@
 
       <section class="section command-section" id="quick-start" aria-labelledby="quick-start-title">
         <div class="section-heading">
-          <p class="section-label" data-i18n="quick.label">Quick start</p>
-          <h2 id="quick-start-title" data-i18n="quick.title">Install once, call one CLI.</h2>
-          <p data-i18n="quick.copy">Use pip install . from a checkout, then call tarot, I Ching, Xiao Liu Ren, or agent templates through ai-divination.</p>
+          <p class="section-label" data-i18n="quick.label">快速开始</p>
+          <h2 id="quick-start-title" data-i18n="quick.title">安装一次，用一个 CLI 调用。</h2>
+          <p data-i18n="quick.copy">在 checkout 中使用 pip install .，之后通过 ai-divination 调用塔罗、易经、小六壬或 agent 解读模板。</p>
         </div>
 
         <div class="command-list" aria-label="Example commands">
@@ -126,12 +125,12 @@
 
       <section class="section install-section" aria-labelledby="install-title">
         <div>
-          <p class="section-label" data-i18n="install.label">Install</p>
-          <h2 id="install-title" data-i18n="install.title">Copy only the skills you need.</h2>
+          <p class="section-label" data-i18n="install.label">安装</p>
+          <h2 id="install-title" data-i18n="install.title">只复制你需要的技能。</h2>
         </div>
         <div class="install-copy">
           <p data-i18n="install.copy">
-            Each skill is self-contained with a SKILL.md file, OpenAI agent metadata, scripts, and references.
+            每个 skill 都是自包含目录，包含 SKILL.md、OpenAI agent 元数据、脚本和参考资料。
           </p>
           <pre><code>cp -R skills/tarot ~/.codex/skills/tarot
 cp -R skills/iching ~/.codex/skills/iching
@@ -141,13 +140,13 @@ cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren</code></pre>
 
       <section class="section safety-section" id="safety" aria-labelledby="safety-title">
         <div class="section-heading">
-          <p class="section-label" data-i18n="safety.label">Safety</p>
-          <h2 id="safety-title" data-i18n="safety.title">Symbolic reflection, not certainty.</h2>
+          <p class="section-label" data-i18n="safety.label">安全边界</p>
+          <h2 id="safety-title" data-i18n="safety.title">象征性反思，不是确定性预言。</h2>
         </div>
         <ul class="safety-list">
-          <li data-i18n="safety.item1">Do not use readings as medical, legal, financial, or crisis guidance.</li>
-          <li data-i18n="safety.item2">Tie every interpretation to the generated result.</li>
-          <li data-i18n="safety.item3">Preserve user agency and offer small, reversible next steps.</li>
+          <li data-i18n="safety.item1">不要把解读用作医疗、法律、金融或危机处置建议。</li>
+          <li data-i18n="safety.item2">每个主要解释都要回到脚本生成的具体结果。</li>
+          <li data-i18n="safety.item3">保留用户自主性，并给出小而可逆的下一步。</li>
         </ul>
       </section>
     </main>
@@ -155,7 +154,7 @@ cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren</code></pre>
     <footer class="site-footer">
       <span>MIT</span>
       <a href="https://github.com/sapuyou45-bit/ai-divination-skills/releases/tag/v0.5.0">v0.5.0</a>
-      <a href="https://github.com/sapuyou45-bit/ai-divination-skills/blob/main/ETHICS.md" data-i18n="footer.ethics">Ethics</a>
+      <a href="https://github.com/sapuyou45-bit/ai-divination-skills/blob/main/ETHICS.md" data-i18n="footer.ethics">伦理说明</a>
     </footer>
 
     <script src="./app.js"></script>

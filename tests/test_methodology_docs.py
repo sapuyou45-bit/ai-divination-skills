@@ -24,7 +24,7 @@ class MethodologyDocsTests(unittest.TestCase):
     def test_readme_mentions_methodological_rigor(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
 
-        self.assertIn("## Methodological Rigor", readme)
+        self.assertIn("## 🧭 Methodological Rigor", readme)
         self.assertIn("AI interprets", readme)
 
     def test_docs_site_mentions_interpretation_boundary(self):

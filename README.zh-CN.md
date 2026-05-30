@@ -2,13 +2,22 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
-给 AI agent 使用的直接、实用占卜技能集。
+✨ 给 AI agent 使用的开源占卜技能集：工具负责随机、抽牌和起课，**AI 只负责解读**具体结果。
 
-`ai-divination-skills` 是一个开源 skill 集合，覆盖塔罗、易经、小六壬，以及后续更多象征系统。它面向 agent 工作流：本地脚本负责生成抽牌、起卦或位置结果，AI agent 在清晰安全边界内解释结果。
+`ai-divination-skills` 是一个实用的 skill 集合，覆盖塔罗、易经、小六壬，以及后续更多象征系统。它面向 agent 工作流，强调可审计的随机过程、清晰的方法边界，以及可复用的解读模板。
 
 本项目将占卜视为象征推理与反思工具，而不是确定性预言。
 
-## 方法论严谨性
+## ✨ 项目概览
+
+很多 AI 占卜 prompt 会让模型自己编出结果。本项目把两件事分开：
+
+1. 本地脚本生成牌面、卦象或小六壬位置。
+2. AI agent 基于具体结果，在安全边界内进行解释。
+
+这样读法更容易测试、复现、审计，也更适合在不同 agent 中复用。
+
+## 🧭 方法论严谨性
 
 核心规则很简单：脚本或用户提供的实体占卜结果负责生成牌面、卦象或位置；AI 只解释这个已经生成的结果，不负责生成占卜结果本身。
 
@@ -20,10 +29,11 @@
 - JSON 输出包含可审计的方法元数据
 - 近似模式必须输出 warning，不能伪装成传统准确起法
 
-## 多语言文档
+## 🌐 多语言文档
 
-项目包含一个 GitHub Pages 文档页，支持页面内语言切换：
+GitHub Pages 根页面现在默认显示简体中文，同时保留页面内三语切换：
 
+- [默认 / 简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/)
 - [English](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=en)
 - [简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh)
 - [日本語](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja)
@@ -37,10 +47,10 @@ python3 -m http.server 8000 -d docs
 线上页面：
 
 ```text
-https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh
+https://sapuyou45-bit.github.io/ai-divination-skills/
 ```
 
-## 已包含技能
+## 🧩 已包含 Skills
 
 | Skill | 作用 | 脚本 |
 |---|---|---|
@@ -48,16 +58,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh
 | `iching` | 生成六爻易经卦象，输出本卦与之卦。 | `skills/iching/scripts/cast.py` |
 | `xiaoliuren` | 使用农历式数字或轻量公历时间 fallback 起小六壬。 | `skills/xiaoliuren/scripts/cast.py` |
 
-## 为什么做这个
-
-很多 AI 占卜 prompt 会让模型自己编出结果。本项目把两件事分开：
-
-1. 脚本生成牌面、卦象或位置。
-2. AI agent 基于具体结果进行解释。
-
-这样读法更容易测试、复现、审计，也更适合在不同 agent 中复用。
-
-## 快速开始
+## 🚀 快速开始
 
 从本地 checkout 安装统一 CLI：
 
@@ -111,7 +112,7 @@ python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 
 所有脚本都会输出 JSON。
 
-## 安装为 Agent Skills
+## 📦 安装为 Agent Skills
 
 把需要的 skill 文件夹复制到 agent 的 skill 目录：
 
@@ -135,7 +136,7 @@ skills/name/
 
 每个 skill 脚本也支持单文件夹模式。如果已经安装 Python package，脚本会调用包内 runtime；如果只复制了 skill 文件夹，脚本会退回到该 skill 自带的 standalone 脚本。
 
-## Agent 行为
+## 🤖 Agent 行为
 
 每个 skill 都要求 agent：
 
@@ -153,13 +154,13 @@ skills/name/
 - `shared/safety-policy.md`
 - `shared/interpretation-style.md`
 
-## 示例
+## 🧪 示例
 
 - `examples/tarot-decision.md`
 - `examples/iching-strategy.md`
 - `examples/xiaoliuren-daily.md`
 
-## 安全边界
+## 🛡️ 安全边界
 
 这些 skills 不用于医疗、法律、金融或危机处置建议。
 
@@ -173,7 +174,7 @@ skills/name/
 
 完整立场见 `ETHICS.md`。
 
-## 开发
+## 🛠️ 开发
 
 除 Python 3 外没有运行依赖。
 
@@ -183,7 +184,7 @@ skills/name/
 python3 -m unittest discover -s tests
 ```
 
-## 路线图
+## 🗺️ 路线图
 
 近期：
 
@@ -191,7 +192,7 @@ python3 -m unittest discover -s tests
 - 继续扩展 CI 中的自动 skill validation。
 - 为 MVP skills 增加更丰富的参考资料。
 - 增加更多示例解读。
-- 增加更多 agent 集成示例。
+- 增加更多 agent 集成例子。
 
 后续：
 
@@ -201,6 +202,6 @@ python3 -m unittest discover -s tests
 - `numerology`
 - `astrology`
 
-## License
+## 📄 License
 
 MIT

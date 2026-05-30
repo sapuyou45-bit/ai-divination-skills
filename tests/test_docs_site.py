@@ -18,6 +18,21 @@ class DocsSiteTests(unittest.TestCase):
         self.assertIn('href="?lang=ja"', html)
         self.assertIn('aria-label="Language selector"', html)
 
+    def test_docs_site_static_default_is_chinese(self):
+        html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn('<html lang="zh-CN">', html)
+        self.assertIn("<title>AI 占卜 Skills</title>", html)
+        self.assertIn("给 AI agent 使用的直接、实用占卜技能集", html)
+        self.assertIn('data-lang="zh" aria-pressed="true"', html)
+        self.assertIn("直接、可验证的占卜工具", html)
+
+    def test_docs_site_default_language_falls_back_to_chinese(self):
+        js = (ROOT / "docs" / "app.js").read_text(encoding="utf-8")
+
+        self.assertNotIn("navigator.language", js)
+        self.assertRegex(js, re.compile(r"function preferredLanguage\(\).*return \"zh\";", re.S))
+
     def test_translation_dictionary_contains_required_languages(self):
         js = (ROOT / "docs" / "app.js").read_text(encoding="utf-8")
 
@@ -40,6 +55,13 @@ class DocsSiteTests(unittest.TestCase):
         self.assertIn("[日本語](README.ja.md)", readme)
         self.assertTrue((ROOT / "README.zh-CN.md").exists())
         self.assertTrue((ROOT / "README.ja.md").exists())
+
+    def test_readmes_use_emoji_section_headings(self):
+        for path in [ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "README.ja.md"]:
+            readme = path.read_text(encoding="utf-8")
+            with self.subTest(path=path.name):
+                for heading in ["## ✨", "## 🧭", "## 🚀", "## 🧩", "## 🛡️", "## 🗺️", "## 📄"]:
+                    self.assertIn(heading, readme)
 
 
 if __name__ == "__main__":
