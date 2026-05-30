@@ -31,12 +31,9 @@ This is not scientific proof of divination efficacy. It is a stricter workflow f
 
 ## 🌐 Multilingual Docs
 
-The GitHub Pages site now defaults to Simplified Chinese, with in-page switching for all three languages:
+The GitHub Pages site now defaults to Simplified Chinese. Use the page header switcher there when you want English or Japanese.
 
-- [Default / 简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/)
-- [English](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=en)
-- [简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh)
-- [日本語](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja)
+[Open the published site](https://sapuyou45-bit.github.io/ai-divination-skills/)
 
 Local preview:
 

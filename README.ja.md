@@ -31,12 +31,9 @@
 
 ## 🌐 多言語ドキュメント
 
-GitHub Pages のルートページは、デフォルトで簡体中文を表示します。ページ内で 3 言語に切り替えできます。
+GitHub Pages のルートページは、デフォルトで簡体中文を表示します。English や 日本語に切り替える場合は、ページ上部の言語スイッチャーを使います。
 
-- [Default / 简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/)
-- [English](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=en)
-- [简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh)
-- [日本語](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja)
+[公開ページを開く](https://sapuyou45-bit.github.io/ai-divination-skills/)
 
 ローカルプレビュー：
 

@@ -31,12 +31,9 @@
 
 ## 🌐 多语言文档
 
-GitHub Pages 根页面现在默认显示简体中文，同时保留页面内三语切换：
+GitHub Pages 根页面现在默认显示简体中文；如果要切到 English 或 日本語，直接用页面顶部的语言切换即可。
 
-- [默认 / 简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/)
-- [English](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=en)
-- [简体中文](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=zh)
-- [日本語](https://sapuyou45-bit.github.io/ai-divination-skills/?lang=ja)
+[打开线上页面](https://sapuyou45-bit.github.io/ai-divination-skills/)
 
 本地预览：
 

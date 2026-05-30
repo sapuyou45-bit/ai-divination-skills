@@ -56,6 +56,14 @@ class DocsSiteTests(unittest.TestCase):
         self.assertTrue((ROOT / "README.zh-CN.md").exists())
         self.assertTrue((ROOT / "README.ja.md").exists())
 
+    def test_readmes_do_not_repeat_docs_language_switcher(self):
+        for path in [ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "README.ja.md"]:
+            readme = path.read_text(encoding="utf-8")
+            with self.subTest(path=path.name):
+                self.assertNotIn("?lang=en", readme)
+                self.assertNotIn("?lang=zh", readme)
+                self.assertNotIn("?lang=ja", readme)
+
     def test_readmes_use_emoji_section_headings(self):
         for path in [ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "README.ja.md"]:
             readme = path.read_text(encoding="utf-8")
