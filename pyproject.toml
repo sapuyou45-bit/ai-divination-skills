@@ -1,6 +1,6 @@
 [project]
 name = "ai-divination-skills"
-version = "0.5.3"
+version = "0.5.4"
 description = "Direct, practical divination skills for AI agents."
 readme = "README.md"
 requires-python = ">=3.9"

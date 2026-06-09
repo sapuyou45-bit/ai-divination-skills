@@ -1,0 +1,56 @@
+name: 🛡️ Safety / Ethics Concern
+description: Report a way a shipped skill could harm a user, violate the safety policy, or mishandle a sensitive domain.
+labels: ["safety"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for **non-sensitive** safety reports — e.g. a skill failing to refuse a medical / legal / financial / crisis prompt, an interpretation template that drifts into deterministic prediction, or a missing warning.
+
+        For **sensitive** vulnerability reports (anything that could harm a user if disclosed before a fix lands), please use
+        [private vulnerability reporting](https://github.com/sapuyou45-bit/ai-divination-skills/security/advisories/new) instead. See `SECURITY.md`.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of concern is this?
+      options:
+        - Skill failed to refuse a medical / legal / financial / crisis prompt
+        - Interpretation template encourages fatalism or deterministic prediction
+        - Adapter (claude/gemini/cursor/openai) allows model-invented draws
+        - Reference material has cultural / sourcing issue
+        - Missing or misleading warning
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where does it show up?
+      options:
+        - tarot
+        - iching
+        - xiaoliuren
+        - shared/ (cross-skill)
+        - docs site / README
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: Prompt, host, exact command (with seed if applicable), and the output you saw.
+      placeholder: |
+        Host: Claude Desktop
+        Prompt: "..."
+        ai-divination tarot --spread three-card --seed demo
+        Result: ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should happen instead?
+      description: Cite `shared/safety-policy.md`, `shared/methodology.md`, or `ETHICS.md` where useful.
+    validations:
+      required: true
