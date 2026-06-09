@@ -7,6 +7,17 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [0.5.2] - 2026-06-09
+
+### Added
+- Per-skill Claude (`claude.yaml`), Gemini (`gemini.yaml`), and Cursor (`cursor.mdc`) adapters for tarot / I Ching / Xiao Liu Ren. Every adapter routes through the existing audited CLI so the agent never invents a draw.
+- `ROADMAP.md` linking the open issues that drive the next releases.
+- New `tests/test_agent_adapters.py` (5 tests, 49 total) covering presence, CLI routing, frontmatter, and a "no invented draws" lint.
+
+### Changed
+- `main` branch is now protected: linear history, no force-pushes, no deletions, required conversation resolution, and all four `unittest (3.9|3.10|3.11|3.12)` checks must pass before merge.
+
+
 ## [0.5.1] - 2026-06-09
 
 ### Added
@@ -36,6 +47,7 @@ See `RELEASE_NOTES.md`.
 
 See `RELEASE_NOTES.md` and `git log`.
 
-[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/sapuyou45-bit/ai-divination-skills/releases/tag/v0.5.0

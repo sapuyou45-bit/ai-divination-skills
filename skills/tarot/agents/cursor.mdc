@@ -1,0 +1,26 @@
+---
+description: "Tarot skill — call the local CLI, never invent the draw"
+globs: ["**/*"]
+alwaysApply: false
+---
+
+# Cursor adapter — Tarot
+
+This skill lets the Cursor agent perform a Tarot reading.
+
+## Hard rules
+1. Never invent the cards / hexagram / position. Run the CLI:
+   ```bash
+   ai-divination tarot --spread three-card
+   ```
+   (Omit `--seed` for real readings; seeded mode is for tests and reproducible demos only.)
+2. Parse the JSON output. Interpret using `../SKILL.md` plus
+   `../references/interpretation-template.md`.
+3. Refuse medical / legal / financial / emergency / crisis advice — see
+   `../../../shared/safety-policy.md`.
+
+## When to trigger
+Draw tarot cards for reflective AI readings.
+
+## Default example
+> Should I take the offer from Project X?
