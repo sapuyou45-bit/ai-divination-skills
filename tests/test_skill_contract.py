@@ -24,6 +24,10 @@ SKILLS = {
         "script": ("scripts", "cast.py"),
         "args": ["--method", "numbers", "--month", "3", "--day", "12", "--hour", "7"],
     },
+    "bazi": {
+        "script": ("scripts", "cast.py"),
+        "args": ["--datetime", "1990-05-20T14:30:00"],
+    },
 }
 
 

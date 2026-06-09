@@ -1,5 +1,26 @@
 # Release Notes
 
+## v0.7.0 - Bazi (Four Pillars) + Client Configs
+
+This release adds the bazi (八字 / Four Pillars) divination skill and ships ready-to-paste MCP client configs for the four most common hosts.
+
+### What's New
+
+- **Bazi skill** — `ai-divination bazi --datetime <ISO 8601>` returns the four pillars (年/月/日/时), each with 天干 + 地支, element, polarity, and 纳音, plus the day master and a Five Elements tally. The model never invents a pillar — it interprets the JSON.
+- **`bazi.cast` MCP tool** — drop-in for Claude Desktop, Codex, Cursor, Continue, or any MCP host. Five tools total now.
+- **Client setup docs** — `docs/clients/{claude-desktop,codex,cursor,continue}.md` with one-click JSON snippets, install steps, and example calls for each of the five tools.
+- **Demo image** — README now opens with a terminal-style demo so visitors see what the tools do at a glance.
+
+### Why
+
+Bazi was the last classical system on the v0.x roadmap. With the per-client config pages, "how do I actually use this in Claude Desktop / Codex?" now has a one-screen answer in every supported language.
+
+### Notes
+
+- The bazi skill needs `lunar-python`; install with `pip install 'ai-divination-skills[lunar]'`.
+- Without an exact birth hour the hour pillar is unreliable; the skill surfaces this limitation in its template and refuses to fabricate one.
+- Closes #11.
+
 ## v0.6.2 - MCP Registry listing
 
 This release prepares the project for publication on the official MCP Server Registry (https://registry.modelcontextprotocol.io/).

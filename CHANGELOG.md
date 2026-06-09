@@ -7,6 +7,22 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-06-09
+
+### Added
+- **Bazi (八字 / Four Pillars) divination skill** — Gregorian birth datetime → year/month/day/hour pillars (天干地支), NaYin (纳音), day master (日主), and Five Elements (五行) tally. Backed by the audited `lunar-python` engine; the model never invents pillars, stems, branches, or wuxing.
+- New CLI: `ai-divination bazi --datetime 1990-05-20T14:30:00`.
+- New MCP tool: `bazi.cast` (5 tools total now).
+- New skill folder: `skills/bazi/` with SKILL.md, references, agent adapters (OpenAI / Claude / Gemini / Cursor), and standalone wrapper.
+- New interpretation template: `ai-divination template bazi`.
+- New client-config docs: `docs/clients/{claude-desktop,codex,cursor,continue}.md` — copy-paste JSON snippets for the four most common MCP hosts, plus install steps and example tool calls.
+- README (EN / 中文 / 日本語) now links to the per-client setup pages.
+- Demo SVG/PNG at the top of all three READMEs (`docs/assets/demo.svg`).
+
+### Notes
+- `lunar-python` is required for the bazi skill; install with `pip install 'ai-divination-skills[lunar]'`.
+- Closes #11.
+
 ## [0.6.2] - 2026-06-09
 
 ### Added

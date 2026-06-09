@@ -17,13 +17,13 @@ class HandleTests(unittest.TestCase):
         self.assertIn("Never invent", result["instructions"])
         self.assertIn("tools", result["capabilities"])
 
-    def test_tools_list_returns_all_four_tools(self):
+    def test_tools_list_returns_all_tools(self):
         resp = mcp_server.handle({"jsonrpc": "2.0", "id": 2, "method": "tools/list"})
         tools = resp["result"]["tools"]
         names = [t["name"] for t in tools]
         self.assertEqual(
             sorted(names),
-            sorted(["tarot.draw", "iching.cast", "xiaoliuren.cast", "interpretation_template"]),
+            sorted(["tarot.draw", "iching.cast", "xiaoliuren.cast", "bazi.cast", "interpretation_template"]),
         )
         for tool in tools:
             self.assertIn("description", tool)

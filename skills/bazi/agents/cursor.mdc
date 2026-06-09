@@ -1,0 +1,26 @@
+---
+description: "Bazi (Four Pillars / 八字) skill — call the local CLI, never invent the chart"
+globs: ["**/*"]
+alwaysApply: false
+---
+
+# Cursor adapter — Bazi (Four Pillars)
+
+This skill lets the Cursor agent read a bazi chart.
+
+## Hard rules
+1. Never invent stems, branches, wuxing, or NaYin. Run the CLI:
+   ```bash
+   ai-divination bazi --datetime 1990-05-20T14:30:00
+   ```
+   The user must supply an exact birth hour; if they cannot, refuse to fabricate one.
+2. Parse the JSON output. Interpret using `../SKILL.md` plus
+   `../references/interpretation-template.md` and `../references/pillars.md`.
+3. Refuse medical / legal / financial / emergency / crisis advice — see
+   `../../../shared/safety-policy.md`.
+
+## When to trigger
+Cast a bazi (Four Pillars) chart from a Gregorian birth date and exact time.
+
+## Default example
+> Read my bazi: born 1990-05-20 at 14:30.

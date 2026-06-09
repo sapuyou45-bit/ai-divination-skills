@@ -65,6 +65,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 | `tarot` | 内省、意思決定、創作の停滞、プロジェクトの見直しのためにカードを引きます。 | `skills/tarot/scripts/draw.py` |
 | `iching` | 六本の爻から本卦と之卦を出力します。 | `skills/iching/scripts/cast.py` |
 | `xiaoliuren` | 旧暦風の数値、または軽量なグレゴリオ暦 fallback から小六壬を起こします。 | `skills/xiaoliuren/scripts/cast.py` |
+| `bazi` | グレゴリオ暦の生年月日時から八字（四柱）を立てます。オプションの `lunar-python` 拡張が必要です。 | `skills/bazi/scripts/cast.py` |
 
 ## 🚀 クイックスタート
 
@@ -178,8 +179,8 @@ skills/name/
 
 `ai-divination-skills` には **MCP サーバー**（`ai-divination-mcp`）が同梱されています。
 [Model Context Protocol](https://modelcontextprotocol.io/) 対応ホスト（Claude Desktop、Codex、
-Continue、Cursor など）は 1 行の設定でマウントでき、モデルは 4 つのツール
-`tarot.draw`、`iching.cast`、`xiaoliuren.cast`、`interpretation_template` を使えます。
+Continue、Cursor など）は 1 行の設定でマウントでき、モデルは 5 つのツール
+`tarot.draw`、`iching.cast`、`xiaoliuren.cast`、`bazi.cast`、`interpretation_template` を使えます。
 
 モデルが結果を捏造することはありません。サーバーがローカルで監査済みスクリプトを実行します。
 
@@ -203,6 +204,15 @@ pip install ai-divination-skills
 ```
 
 Claude Desktop を再起動。「今日の決断のために 3 枚タロットを引いて」と話しかけてください。
+
+### クライアント別セットアップガイド
+
+コピペ用の JSON 設定と例プロンプト：
+
+- [Claude Desktop](docs/clients/claude-desktop.md)
+- [Codex CLI](docs/clients/codex.md)
+- [Cursor](docs/clients/cursor.md)
+- [Continue](docs/clients/continue.md)
 
 ## 🛡️ 安全境界
 

@@ -5,16 +5,17 @@ from __future__ import annotations
 import sys
 from importlib import resources
 
-from ai_divination_skills import iching, tarot, xiaoliuren
+from ai_divination_skills import bazi, iching, tarot, xiaoliuren
 
 
 COMMANDS = {
     "tarot": tarot.main,
     "iching": iching.main,
     "xiaoliuren": xiaoliuren.main,
+    "bazi": bazi.main,
 }
 
-TEMPLATE_NAMES = {"shared", "tarot", "iching", "xiaoliuren"}
+TEMPLATE_NAMES = {"shared", "tarot", "iching", "xiaoliuren", "bazi"}
 
 
 def print_usage() -> None:
@@ -25,13 +26,15 @@ Usage:
   ai-divination tarot [draw options]
   ai-divination iching [cast options]
   ai-divination xiaoliuren [cast options]
-  ai-divination template [shared|tarot|iching|xiaoliuren]
+  ai-divination bazi --datetime <ISO 8601>
+  ai-divination template [shared|tarot|iching|xiaoliuren|bazi]
 
 Examples:
   ai-divination tarot --deck major --spread three-card
   ai-divination iching --method yarrow
   ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
-  ai-divination template tarot
+  ai-divination bazi --datetime 1990-05-20T14:30:00
+  ai-divination template bazi
 """
     )
 
@@ -42,7 +45,7 @@ def template_text(name: str) -> str:
 
 def print_template(args: list[str]) -> int:
     if len(args) != 1 or args[0] not in TEMPLATE_NAMES:
-        print("Usage: ai-divination template [shared|tarot|iching|xiaoliuren]", file=sys.stderr)
+        print("Usage: ai-divination template [shared|tarot|iching|xiaoliuren|bazi]", file=sys.stderr)
         return 2
 
     template_name = args[0]

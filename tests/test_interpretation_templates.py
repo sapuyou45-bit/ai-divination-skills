@@ -15,7 +15,7 @@ class InterpretationTemplateTests(unittest.TestCase):
         self.assertIn("Generated Result", text)
 
     def test_each_skill_has_interpretation_template(self):
-        for skill in ["tarot", "iching", "xiaoliuren"]:
+        for skill in ["tarot", "iching", "xiaoliuren", "bazi"]:
             path = ROOT / "skills" / skill / "references" / "interpretation-template.md"
             self.assertTrue(path.exists(), f"{skill} should have an interpretation template")
             text = path.read_text(encoding="utf-8")

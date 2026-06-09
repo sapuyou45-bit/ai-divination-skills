@@ -14,7 +14,7 @@ class MethodologyDocsTests(unittest.TestCase):
         self.assertIn("not scientific proof", text)
 
     def test_each_skill_has_sources_reference(self):
-        for skill in ["tarot", "iching", "xiaoliuren"]:
+        for skill in ["tarot", "iching", "xiaoliuren", "bazi"]:
             path = ROOT / "skills" / skill / "references" / "sources.md"
             self.assertTrue(path.exists(), f"{skill} should have references/sources.md")
             text = path.read_text(encoding="utf-8")

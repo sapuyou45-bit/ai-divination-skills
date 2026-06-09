@@ -26,7 +26,7 @@ import json
 import sys
 from typing import Any, Callable, Dict
 
-from ai_divination_skills import __version__, iching, tarot, xiaoliuren
+from ai_divination_skills import __version__, bazi, iching, tarot, xiaoliuren
 from ai_divination_skills.cli import template_text, TEMPLATE_NAMES
 
 
@@ -78,6 +78,12 @@ def tool_xiaoliuren_cast(args: Dict[str, Any]) -> Dict[str, Any]:
     if method == "lunar_time":
         return _ok(xiaoliuren.cast_lunar_time(args.get("datetime")))
     raise ValueError(f"Unknown xiaoliuren method: {method}")
+
+
+
+
+def tool_bazi_cast(args: Dict[str, Any]) -> Dict[str, Any]:
+    return _ok(bazi.cast(raw_datetime=args.get("datetime")))
 
 
 def tool_interpretation_template(args: Dict[str, Any]) -> Dict[str, Any]:
@@ -160,6 +166,25 @@ TOOLS = [
             },
         },
         "_call": tool_xiaoliuren_cast,
+    },
+    {
+        "name": "bazi.cast",
+        "description": (
+            "Cast a Bazi (\u516b\u5b57 / Four Pillars) chart from a Gregorian birth datetime. "
+            "The host MUST NOT invent pillars, stems, branches, or wuxing. "
+            "Requires the optional lunar-python dependency."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "datetime": {
+                    "type": "string",
+                    "description": "Gregorian ISO 8601 birth datetime, e.g. 1990-05-20T14:30:00. The hour pillar requires an exact birth time.",
+                },
+            },
+            "required": ["datetime"],
+        },
+        "_call": tool_bazi_cast,
     },
     {
         "name": "interpretation_template",

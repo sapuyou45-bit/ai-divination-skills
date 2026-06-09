@@ -65,6 +65,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 | `tarot` | Draws tarot cards for reflection, decisions, creative blocks, and project reframing. | `skills/tarot/scripts/draw.py` |
 | `iching` | Casts six-line I Ching hexagrams with primary and resulting hexagrams. | `skills/iching/scripts/cast.py` |
 | `xiaoliuren` | Casts Xiao Liu Ren from lunar-style numbers or a Gregorian time fallback. | `skills/xiaoliuren/scripts/cast.py` |
+| `bazi` | Casts a Bazi (Four Pillars / 八字) chart from a Gregorian birth datetime. Requires the optional `lunar-python` extra. | `skills/bazi/scripts/cast.py` |
 
 ## 🚀 Quick Start
 
@@ -168,8 +169,8 @@ All four adapters route through the same audited `ai-divination <skill>` CLI, so
 
 `ai-divination-skills` ships a built-in **MCP server** (`ai-divination-mcp`). Any
 [Model Context Protocol](https://modelcontextprotocol.io/) host — Claude Desktop, Codex,
-Continue, Cursor — can mount it with a single config line, and the model gets four tools:
-`tarot.draw`, `iching.cast`, `xiaoliuren.cast`, and `interpretation_template`.
+Continue, Cursor — can mount it with a single config line, and the model gets five tools:
+`tarot.draw`, `iching.cast`, `xiaoliuren.cast`, `bazi.cast`, and `interpretation_template`.
 
 The model never invents the draw; the server runs the audited scripts locally.
 
@@ -201,6 +202,15 @@ Restart Claude Desktop. Ask "draw three tarot cards for my decision" — Claude 
 
 Any MCP-aware host follows the same pattern. The server speaks JSON-RPC 2.0 over stdio
 with no third-party dependencies.
+
+### Per-client setup guides
+
+Copy-paste JSON configs and example prompts for each host:
+
+- [Claude Desktop](docs/clients/claude-desktop.md)
+- [Codex CLI](docs/clients/codex.md)
+- [Cursor](docs/clients/cursor.md)
+- [Continue](docs/clients/continue.md)
 
 ## 🤖 Agent Behavior
 
