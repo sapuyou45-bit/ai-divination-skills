@@ -11,6 +11,8 @@ permissions:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
+    outputs:
+      pypi-token-available: ${{ steps.has-token.outputs.available }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
@@ -32,3 +34,36 @@ jobs:
         with:
           generate_release_notes: true
           files: dist/*
+      - name: Check PYPI_API_TOKEN availability
+        id: has-token
+        env:
+          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          if [ -n "${PYPI_API_TOKEN}" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "PYPI_API_TOKEN secret not set — skipping PyPI publish. See docs/maintainer/release-and-pypi.md."
+          fi
+
+  pypi-publish:
+    needs: build-and-release
+    if: needs.build-and-release.outputs.pypi-token-available == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          name: dist
+          path: dist
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Install twine
+        run: |
+          python -m pip install --upgrade pip
+          pip install twine
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: python -m twine upload --non-interactive dist/*
