@@ -4,6 +4,8 @@
 
 [![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
 [![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
+[![PyPI](https://img.shields.io/pypi/v/ai-divination-skills?color=blue)](https://pypi.org/project/ai-divination-skills/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/ai-divination-skills)](https://pypi.org/project/ai-divination-skills/)
 [![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/ai-divination-skills?sort=semver)](https://github.com/sapuyou45-bit/ai-divination-skills/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
@@ -64,7 +66,13 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 
 ## 🚀 快速开始
 
-从本地 checkout 安装统一 CLI：
+从 PyPI 安装：
+
+```bash
+pip install ai-divination-skills
+```
+
+或者从本地 checkout 安装：
 
 ```bash
 pip install .
@@ -139,6 +147,36 @@ skills/name/
 如果只需要某个 skill，复制对应单个文件夹即可。
 
 每个 skill 脚本也支持单文件夹模式。如果已经安装 Python package，脚本会调用包内 runtime；如果只复制了 skill 文件夹，脚本会退回到该 skill 自带的 standalone 脚本。
+
+## 🧠 在 Claude Desktop / Codex 等 MCP 宿主里使用
+
+`ai-divination-skills` 自带 **MCP server**（`ai-divination-mcp`）。任何支持
+[Model Context Protocol](https://modelcontextprotocol.io/) 的宿主 —— Claude Desktop、Codex、
+Continue、Cursor —— 都能用一行配置挂载它，模型会得到 4 个工具：
+`tarot.draw`、`iching.cast`、`xiaoliuren.cast`、`interpretation_template`。
+
+模型永远不会自己编造结果；server 在本地运行经过审计的脚本。
+
+### Claude Desktop 配置
+
+```bash
+pip install ai-divination-skills
+```
+
+然后编辑 `~/Library/Application Support/Claude/claude_desktop_config.json`（macOS）或
+`%APPDATA%\Claude\claude_desktop_config.json`（Windows）：
+
+```json
+{
+  "mcpServers": {
+    "divination": {
+      "command": "ai-divination-mcp"
+    }
+  }
+}
+```
+
+重启 Claude Desktop。之后对它说"帮我抽三张塔罗看一下今天的决策"即可。
 
 ## 🤖 Agent 行为
 

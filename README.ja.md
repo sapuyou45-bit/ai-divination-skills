@@ -4,6 +4,8 @@
 
 [![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
 [![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
+[![PyPI](https://img.shields.io/pypi/v/ai-divination-skills?color=blue)](https://pypi.org/project/ai-divination-skills/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/ai-divination-skills)](https://pypi.org/project/ai-divination-skills/)
 [![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/ai-divination-skills?sort=semver)](https://github.com/sapuyou45-bit/ai-divination-skills/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
@@ -64,7 +66,13 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 
 ## 🚀 クイックスタート
 
-ローカル checkout から統一 CLI をインストールします。
+PyPI からインストール：
+
+```bash
+pip install ai-divination-skills
+```
+
+またはローカル checkout から：
 
 ```bash
 pip install .
@@ -163,6 +171,36 @@ skills/name/
 - `examples/tarot-decision.md`
 - `examples/iching-strategy.md`
 - `examples/xiaoliuren-daily.md`
+
+## 🧠 Claude Desktop / Codex など MCP ホストから使う
+
+`ai-divination-skills` には **MCP サーバー**（`ai-divination-mcp`）が同梱されています。
+[Model Context Protocol](https://modelcontextprotocol.io/) 対応ホスト（Claude Desktop、Codex、
+Continue、Cursor など）は 1 行の設定でマウントでき、モデルは 4 つのツール
+`tarot.draw`、`iching.cast`、`xiaoliuren.cast`、`interpretation_template` を使えます。
+
+モデルが結果を捏造することはありません。サーバーがローカルで監査済みスクリプトを実行します。
+
+### Claude Desktop での設定
+
+```bash
+pip install ai-divination-skills
+```
+
+その後 `~/Library/Application Support/Claude/claude_desktop_config.json`（macOS）または
+`%APPDATA%\Claude\claude_desktop_config.json`（Windows）を編集：
+
+```json
+{
+  "mcpServers": {
+    "divination": {
+      "command": "ai-divination-mcp"
+    }
+  }
+}
+```
+
+Claude Desktop を再起動。「今日の決断のために 3 枚タロットを引いて」と話しかけてください。
 
 ## 🛡️ 安全境界
 
