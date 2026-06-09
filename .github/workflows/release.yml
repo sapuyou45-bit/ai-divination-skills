@@ -51,7 +51,7 @@ jobs:
     if: needs.build-and-release.outputs.pypi-token-available == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v7
+      - uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist
