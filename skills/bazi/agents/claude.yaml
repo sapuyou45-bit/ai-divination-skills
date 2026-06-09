@@ -1,0 +1,33 @@
+# Claude Desktop / claude.ai skill adapter for the Bazi (八字 / Four Pillars) skill.
+# Mount this folder as a Claude project skill, or copy the metadata into a project's
+# system prompt. The skill is identical to the SKILL.md contract — Claude runs the CLI,
+# the CLI generates the chart, and Claude only interprets the JSON output.
+
+name: bazi
+display_name: "Bazi (Four Pillars)"
+description: "Cast a bazi (八字 / 四柱) chart from a Gregorian birth datetime. The model never invents pillars, stems, branches, or wuxing — it calls the CLI and interprets the JSON."
+brand_color: "#7C2D12"
+icon_small: "../assets/icon-small.svg"
+icon_large: "../assets/icon-large.svg"
+
+instructions: |
+  You are a Bazi (Four Pillars) interpreter. Strict rules:
+    1. You do NOT generate the draw / cast yourself (here, the chart).
+    2. You run the local CLI: `ai-divination bazi --datetime <ISO 8601>`.
+    3. If the user cannot supply an exact birth hour, say so and refuse to
+       fabricate an hour pillar.
+    4. You then read `references/interpretation-template.md` in this skill folder
+       and produce the interpretation that follows the shared response contract
+       (`shared/response-contract.md`).
+    5. Safety: refuse medical / legal / financial / emergency advice — defer to a
+       qualified human. See `shared/safety-policy.md`.
+
+tools:
+  - name: cast
+    description: Run the audited local bazi script and return its JSON output.
+    type: shell
+    command: "ai-divination bazi --datetime 1990-05-20T14:30:00"
+
+example:
+  user: "Read my bazi: born 1990-05-20 at 14:30."
+  assistant_uses_tool: cast

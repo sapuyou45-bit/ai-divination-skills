@@ -1,6 +1,6 @@
 [project]
 name = "ai-divination-skills"
-version = "0.6.2"
+version = "0.7.0"
 description = "Direct, practical divination skills for AI agents."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -14,7 +14,8 @@ lunar = [
 dev = [
   "build",
   "twine",
-  "PyYAML>=6"
+  "PyYAML>=6",
+  "lunar-python>=1.4.4"
 ]
 
 [project.scripts]

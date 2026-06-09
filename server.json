@@ -2,17 +2,17 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.sapuyou45-bit/ai-divination-skills",
   "title": "AI Divination Skills",
-  "description": "Audited tarot, I Ching, and Xiao Liu Ren divination. Model never invents results.",
+  "description": "Audited tarot, I Ching, Xiao Liu Ren, and Bazi (Four Pillars) divination. Model never invents results.",
   "repository": {
     "url": "https://github.com/sapuyou45-bit/ai-divination-skills",
     "source": "github"
   },
-  "version": "0.6.2",
+  "version": "0.7.0",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "ai-divination-skills",
-      "version": "0.6.2",
+      "version": "0.7.0",
       "transport": {
         "type": "stdio"
       }

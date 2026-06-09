@@ -1,0 +1,9 @@
+interface:
+  display_name: "Bazi (Four Pillars)"
+  short_description: "Cast a bazi (八字) chart from a Gregorian birth datetime"
+  icon_small: "./assets/icon-small.svg"
+  icon_large: "./assets/icon-large.svg"
+  brand_color: "#7C2D12"
+  default_prompt: "Use $bazi to read a Four Pillars chart from a birth date and exact hour."
+policy:
+  allow_implicit_invocation: true

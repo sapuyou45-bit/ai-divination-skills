@@ -5,13 +5,14 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILLS = ["tarot", "iching", "xiaoliuren"]
+SKILLS = ["tarot", "iching", "xiaoliuren", "bazi"]
 ADAPTERS = ["openai.yaml", "claude.yaml", "gemini.yaml", "cursor.mdc"]
 
 CLI = {
     "tarot": "ai-divination tarot",
     "iching": "ai-divination iching",
     "xiaoliuren": "ai-divination xiaoliuren",
+    "bazi": "ai-divination bazi",
 }
 
 

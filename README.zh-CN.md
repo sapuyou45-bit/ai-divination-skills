@@ -72,6 +72,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 | `tarot` | 用于反思、决策、创作卡点和项目复盘的塔罗抽牌。 | `skills/tarot/scripts/draw.py` |
 | `iching` | 生成六爻易经卦象，输出本卦与之卦。 | `skills/iching/scripts/cast.py` |
 | `xiaoliuren` | 使用农历式数字或轻量公历时间 fallback 起小六壬。 | `skills/xiaoliuren/scripts/cast.py` |
+| `bazi` | 根据公历出生日期时间起八字（四柱）盘，需要可选的 `lunar-python` 依赖。 | `skills/bazi/scripts/cast.py` |
 
 ## 🚀 快速开始
 
@@ -162,7 +163,7 @@ skills/name/
 `ai-divination-skills` 自带 **MCP server**（`ai-divination-mcp`）。任何支持
 [Model Context Protocol](https://modelcontextprotocol.io/) 的宿主 —— Claude Desktop、Codex、
 Continue、Cursor —— 都能用一行配置挂载它，模型会得到 4 个工具：
-`tarot.draw`、`iching.cast`、`xiaoliuren.cast`、`interpretation_template`。
+`tarot.draw`、`iching.cast`、`xiaoliuren.cast`、`bazi.cast`、`interpretation_template`。
 
 模型永远不会自己编造结果；server 在本地运行经过审计的脚本。
 
@@ -186,6 +187,15 @@ pip install ai-divination-skills
 ```
 
 重启 Claude Desktop。之后对它说"帮我抽三张塔罗看一下今天的决策"即可。
+
+### 各客户端配置教程
+
+复制即用的 JSON 配置和示例 prompt：
+
+- [Claude Desktop](docs/clients/claude-desktop.md)
+- [Codex CLI](docs/clients/codex.md)
+- [Cursor](docs/clients/cursor.md)
+- [Continue](docs/clients/continue.md)
 
 ## 🤖 Agent 行为
 

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Bazi icon">
+  <rect width="64" height="64" rx="12" fill="#7C2D12"/>
+  <g fill="#FAF9F4" font-family="serif" font-weight="700" text-anchor="middle">
+    <text x="16" y="26" font-size="14">年</text>
+    <text x="48" y="26" font-size="14">月</text>
+    <text x="16" y="52" font-size="14">日</text>
+    <text x="48" y="52" font-size="14">時</text>
+  </g>
+  <line x1="32" y1="10" x2="32" y2="54" stroke="#FAF9F4" stroke-width="2"/>
+  <line x1="8" y1="32" x2="56" y2="32" stroke="#FAF9F4" stroke-width="2"/>
+</svg>
