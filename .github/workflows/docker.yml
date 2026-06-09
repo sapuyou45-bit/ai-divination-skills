@@ -1,0 +1,59 @@
+name: docker
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Dockerfile"
+      - ".dockerignore"
+      - "pyproject.toml"
+      - "ai_divination_skills/**"
+      - ".github/workflows/docker.yml"
+  pull_request:
+    paths:
+      - "Dockerfile"
+      - ".dockerignore"
+      - "pyproject.toml"
+      - "ai_divination_skills/**"
+      - ".github/workflows/docker.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: ai-divination-mcp:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: MCP initialize smoke test
+        run: |
+          set -euo pipefail
+          REQ='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}'
+          RESP=$(printf '%s\n' "$REQ" | docker run -i --rm ai-divination-mcp:ci)
+          echo "$RESP"
+          echo "$RESP" | grep -q '"serverInfo"' || { echo "MCP initialize response missing serverInfo"; exit 1; }
+          echo "$RESP" | grep -q '"name": "ai-divination-skills"' || { echo "MCP serverInfo.name unexpected"; exit 1; }
+
+      - name: MCP tools/list smoke test
+        run: |
+          set -euo pipefail
+          REQ='{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
+          RESP=$(printf '%s\n' "$REQ" | docker run -i --rm ai-divination-mcp:ci)
+          echo "$RESP"
+          for tool in tarot.draw iching.cast xiaoliuren.cast interpretation_template; do
+            echo "$RESP" | grep -q "\"$tool\"" || { echo "Expected tool $tool not advertised"; exit 1; }
+          done
