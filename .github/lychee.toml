@@ -6,7 +6,8 @@ exclude_loopback = true
 exclude = [
   # Anonymous fetches cannot see private settings pages.
   "^https://github\\.com/[^/]+/[^/]+/settings(/|$)",
-  # Compare URLs for tags that have not been pushed yet (e.g. the [Unreleased] anchor and the just-bumped tag).
+  # Compare URLs for tags that have not been pushed yet (e.g. [Unreleased] anchor).
   "^https://github\\.com/[^/]+/[^/]+/compare/.*\\.\\.\\.HEAD$",
-  "^https://github\\.com/sapuyou45-bit/ai-divination-skills/compare/v0\\.5\\.2\\.\\.\\.v0\\.5\\.3$",
+  # Compare URLs for our own version bumps — the tag is pushed only after this PR merges.
+  "^https://github\\.com/sapuyou45-bit/ai-divination-skills/compare/v[0-9]+\\.[0-9]+\\.[0-9]+\\.\\.\\.v[0-9]+\\.[0-9]+\\.[0-9]+$",
 ]
