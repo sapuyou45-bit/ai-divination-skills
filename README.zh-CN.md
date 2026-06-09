@@ -1,5 +1,7 @@
 # AI 占卜 Skills
 
+<!-- mcp-name: io.github.sapuyou45-bit/ai-divination-skills -->
+
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
 [![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
