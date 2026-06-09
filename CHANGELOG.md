@@ -7,6 +7,11 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-06-09
+
+### Added
+- MCP Registry support: `server.json` with PyPI package metadata + `mcp-name` ownership token in READMEs, ready for publishing to https://registry.modelcontextprotocol.io/.
+
 ## [0.6.1] - 2026-06-09
 
 ### Added
@@ -95,7 +100,8 @@ See `RELEASE_NOTES.md`.
 
 See `RELEASE_NOTES.md` and `git log`.
 
-[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.6.1...HEAD
+[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.6.2...HEAD
+[0.6.2]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.4...v0.6.0
 [0.5.4]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.3...v0.5.4

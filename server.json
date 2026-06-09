@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.sapuyou45-bit/ai-divination-skills",
+  "title": "AI Divination Skills",
+  "description": "Audited tarot, I Ching, and Xiao Liu Ren divination MCP server. Local seeded-or-system-entropy scripts; the model never invents the result, it only interprets the JSON output.",
+  "repository": {
+    "url": "https://github.com/sapuyou45-bit/ai-divination-skills",
+    "source": "github"
+  },
+  "version": "0.6.2",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "ai-divination-skills",
+      "version": "0.6.2",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

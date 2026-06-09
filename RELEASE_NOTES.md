@@ -1,5 +1,18 @@
 # Release Notes
 
+## v0.6.2 - MCP Registry listing
+
+This release prepares the project for publication on the official MCP Server Registry (https://registry.modelcontextprotocol.io/).
+
+### What's New
+
+- `server.json` describing the package as a stdio MCP server backed by PyPI.
+- `mcp-name: io.github.sapuyou45-bit/ai-divination-skills` ownership token added to README.md, README.zh-CN.md, README.ja.md so PyPI mirrors the marker and the registry can verify ownership automatically.
+
+### Why
+
+Once published, MCP clients (Claude Desktop, Codex, Cursor, etc.) can discover and install this server through the official registry without scraping awesome lists.
+
 ## v0.6.1 - Discovery and SEO
 
 This release helps people who don't already know about the project actually find it.
