@@ -1,0 +1,26 @@
+---
+description: "Xiao Liu Ren skill — call the local CLI, never invent the draw"
+globs: ["**/*"]
+alwaysApply: false
+---
+
+# Cursor adapter — Xiao Liu Ren
+
+This skill lets the Cursor agent perform a Xiao Liu Ren reading.
+
+## Hard rules
+1. Never invent the cards / hexagram / position. Run the CLI:
+   ```bash
+   ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
+   ```
+   (Omit `--seed` for real readings; seeded mode is for tests and reproducible demos only.)
+2. Parse the JSON output. Interpret using `../SKILL.md` plus
+   `../references/interpretation-template.md`.
+3. Refuse medical / legal / financial / emergency / crisis advice — see
+   `../../../shared/safety-policy.md`.
+
+## When to trigger
+Cast Xiao Liu Ren for quick timing reflection.
+
+## Default example
+> Is now a good moment to send this message?

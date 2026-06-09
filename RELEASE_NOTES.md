@@ -1,5 +1,16 @@
 # Release Notes
 
+## v0.5.2 - Multi-agent Adapters and Branch Protection
+
+This release ships the skills to more agent runtimes and tightens the merge gate on `main`.
+
+### What's New
+
+- **Claude / Gemini / Cursor adapters** — each of `tarot`, `iching`, `xiaoliuren` now ships `agents/claude.yaml`, `agents/gemini.yaml`, and `agents/cursor.mdc` in addition to the existing OpenAI metadata. Every adapter routes through the same audited `ai-divination <skill>` CLI, so no host can let the model invent a draw.
+- **ROADMAP.md** — public list of what is in flight, what is next, and the explicit non-goals.
+- **Branch protection on main** — linear history, no force-pushes, no deletions, required conversation resolution, four-version CI gate (`unittest (3.9|3.10|3.11|3.12)`).
+- **Test coverage** — `tests/test_agent_adapters.py` adds 5 tests (49 total) that check adapter presence, CLI routing, frontmatter, and a "no invented draws" lint.
+
 ## v0.5.1 - Community Operations
 
 This release does not change skill logic. It makes the repo easier to contribute to and ship from.

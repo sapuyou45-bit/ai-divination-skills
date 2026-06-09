@@ -1,0 +1,24 @@
+# Gemini extension manifest for the I Ching skill.
+# Drop this folder into your Gemini CLI / Gemini Extensions config so the model
+# can invoke the audited CLI instead of inventing a draw.
+
+name: ai-divination-iching
+version: "0.5.1"
+display_name: "I Ching"
+description: "Cast I Ching hexagrams for change analysis. The model never generates the draw — it calls the CLI and interprets the JSON."
+
+mcp_servers:
+  divination:
+    command: "ai-divination"
+    args: ["iching"]
+    description: "Audited local divination script. Returns JSON with method, seed-mode, and traditional-source metadata."
+
+context_file: "../SKILL.md"
+
+safety:
+  inherits:
+    - "../../../shared/safety-policy.md"
+    - "../../../shared/methodology.md"
+
+example_invocations:
+  - "How should I approach the conversation with my co-founder this week?"

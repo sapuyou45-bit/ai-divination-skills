@@ -1,0 +1,24 @@
+# Gemini extension manifest for the Xiao Liu Ren skill.
+# Drop this folder into your Gemini CLI / Gemini Extensions config so the model
+# can invoke the audited CLI instead of inventing a draw.
+
+name: ai-divination-xiaoliuren
+version: "0.5.1"
+display_name: "Xiao Liu Ren"
+description: "Cast Xiao Liu Ren for quick timing reflection. The model never generates the draw — it calls the CLI and interprets the JSON."
+
+mcp_servers:
+  divination:
+    command: "ai-divination"
+    args: ["xiaoliuren"]
+    description: "Audited local divination script. Returns JSON with method, seed-mode, and traditional-source metadata."
+
+context_file: "../SKILL.md"
+
+safety:
+  inherits:
+    - "../../../shared/safety-policy.md"
+    - "../../../shared/methodology.md"
+
+example_invocations:
+  - "Is now a good moment to send this message?"
