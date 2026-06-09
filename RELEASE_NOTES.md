@@ -1,5 +1,18 @@
 # Release Notes
 
+## v0.5.1 - Community Operations
+
+This release does not change skill logic. It makes the repo easier to contribute to and ship from.
+
+### What's New
+
+- **Issue and PR templates**: bug report, feature request, new-skill proposal forms; PR template enforces the `shared/methodology.md` checklist.
+- **Community files**: `CODEOWNERS`, `FUNDING.yml`, and `dependabot.yml` (pip + GitHub Actions, monthly).
+- **Release workflow**: tagged pushes (`v*`) build sdist + wheel and attach them to an auto-generated GitHub Release.
+- **CI matrix**: tests now run on Python 3.9 / 3.10 / 3.11 / 3.12 with a CLI smoke test for all three skills.
+- **Social preview**: 1280×640 image checked in under `.github/social-preview-1280x640.png`.
+- **Discussions enabled**: linked from the issue template chooser.
+
 ## v0.5.0 - Skill Spec Hardening
 
 This release makes the repository stronger as an Agent skill collection, not just as a Python package.
