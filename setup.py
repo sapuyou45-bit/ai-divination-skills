@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="ai-divination-skills",
-    version="0.5.4",
+    version="0.6.0",
     description="Direct, practical divination skills for AI agents.",
     packages=find_packages(include=["ai_divination_skills*"]),
     package_data={"ai_divination_skills": ["templates/*.md"]},
@@ -16,6 +16,7 @@ setup(
     entry_points={
         "console_scripts": [
             "ai-divination=ai_divination_skills.cli:main",
+            "ai-divination-mcp=ai_divination_skills.mcp_server:main",
         ],
     },
 )

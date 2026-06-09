@@ -154,6 +154,44 @@ Every skill ships four adapter files in `skills/<skill>/agents/`:
 
 All four adapters route through the same audited `ai-divination <skill>` CLI, so the agent host never invents the result.
 
+## 🧠 Use it from Claude Desktop / Codex / any MCP host
+
+`ai-divination-skills` ships a built-in **MCP server** (`ai-divination-mcp`). Any
+[Model Context Protocol](https://modelcontextprotocol.io/) host — Claude Desktop, Codex,
+Continue, Cursor — can mount it with a single config line, and the model gets four tools:
+`tarot.draw`, `iching.cast`, `xiaoliuren.cast`, and `interpretation_template`.
+
+The model never invents the draw; the server runs the audited scripts locally.
+
+### Claude Desktop
+
+Install the package once:
+
+```bash
+pip install ai-divination-skills
+```
+
+Then edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or
+`%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{
+  "mcpServers": {
+    "divination": {
+      "command": "ai-divination-mcp"
+    }
+  }
+}
+```
+
+Restart Claude Desktop. Ask "draw three tarot cards for my decision" — Claude will call
+`tarot.draw` and interpret the JSON output.
+
+### Codex / Continue / Cursor
+
+Any MCP-aware host follows the same pattern. The server speaks JSON-RPC 2.0 over stdio
+with no third-party dependencies.
+
 ## 🤖 Agent Behavior
 
 Each skill instructs the agent to:

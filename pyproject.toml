@@ -1,6 +1,6 @@
 [project]
 name = "ai-divination-skills"
-version = "0.5.4"
+version = "0.6.0"
 description = "Direct, practical divination skills for AI agents."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -19,6 +19,7 @@ dev = [
 
 [project.scripts]
 ai-divination = "ai_divination_skills.cli:main"
+ai-divination-mcp = "ai_divination_skills.mcp_server:main"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]

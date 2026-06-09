@@ -7,6 +7,15 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-06-09
+
+### Added
+- **MCP server** (`ai-divination-mcp`): a zero-dependency Model Context Protocol server (JSON-RPC 2.0 over stdio) exposing four tools — `tarot.draw`, `iching.cast`, `xiaoliuren.cast`, `interpretation_template` — for Claude Desktop, Codex, Continue, Cursor, and any other MCP-aware host.
+- Console entry point `ai-divination-mcp` registered in `pyproject.toml` and `setup.py`.
+- README section "Use it from Claude Desktop / Codex / any MCP host" with full claude_desktop_config.json snippet.
+- `tests/test_mcp_server.py` — 12 tests (61 total) covering initialize, tools/list, tools/call for all 4 tools, JSON-RPC error mapping, invalid-JSON recovery, and the full stdio handshake.
+
+
 ## [0.5.4] - 2026-06-09
 
 ### Added
@@ -73,7 +82,8 @@ See `RELEASE_NOTES.md`.
 
 See `RELEASE_NOTES.md` and `git log`.
 
-[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.4...HEAD
+[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.4...v0.6.0
 [0.5.4]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.1...v0.5.2
