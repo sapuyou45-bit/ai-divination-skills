@@ -1,5 +1,16 @@
 # Release Notes
 
+## v0.5.4 - Final Ops Hardening
+
+This release closes the remaining operational gaps that don't require user credentials.
+
+### What's New
+
+- **Safety / Ethics Concern issue template** — structured form for non-sensitive safety reports, with a header directing sensitive ones to the private vulnerability flow.
+- **Copilot instructions** — `.github/copilot-instructions.md` tells AI tools the project's non-negotiable rules (never invent draws, system entropy by default, no telemetry, safety boundaries, schema + test expectations).
+- **Dependabot grouping** — pip and Actions each consolidate into a single monthly PR.
+- **Repo governance** — main now permits squash-merge only, auto-merge on, update-branch on, delete-branch-on-merge on; Wiki and Projects turned off for a solo maintainer; Dependabot security updates and automated security fixes enabled.
+
 ## v0.5.3 - Security Scanning, Link Hygiene, Docs Polish
 
 This release does not change skill logic. It adds two new CI workflows and finishes the multi-host adapter story in user-facing docs.

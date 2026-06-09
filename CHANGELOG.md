@@ -7,6 +7,22 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [0.5.4] - 2026-06-09
+
+### Added
+- Safety / Ethics Concern issue template (`.github/ISSUE_TEMPLATE/safety_concern.yml`) with structured repro fields.
+- `.github/ISSUE_TEMPLATE/config.yml` updated: direct link to GitHub private vulnerability reporting.
+- `.github/copilot-instructions.md`: explicit project shape + non-negotiable rules for AI code generators.
+- Dependabot grouping: GitHub Actions and pip updates each create a single monthly PR instead of several.
+- `.github/PULL_REQUEST_TEMPLATE.md` now referenced from root; UI picker shows it.
+
+### Changed
+- Repo settings hardened: squash-merge only (no merge commit, no rebase), auto-merge enabled, update-branch enabled, delete-branch-on-merge.
+- Wiki and Projects disabled (no content; solo repo).
+- Dependabot security updates enabled, automated security fixes enabled (were off).
+- Secret scanning validity checks and non-provider patterns remain off (opt-in by GitHub).
+
+
 ## [0.5.3] - 2026-06-09
 
 ### Added
@@ -57,7 +73,8 @@ See `RELEASE_NOTES.md`.
 
 See `RELEASE_NOTES.md` and `git log`.
 
-[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.3...HEAD
+[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.4...HEAD
+[0.5.4]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.0...v0.5.1
