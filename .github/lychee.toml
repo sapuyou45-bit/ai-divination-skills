@@ -1,0 +1,12 @@
+# Lychee config used by .github/workflows/link-check.yml
+no_progress = true
+max_concurrency = 4
+accept = [200, 206, 429]
+exclude_loopback = true
+exclude = [
+  # Anonymous fetches cannot see private settings pages.
+  "^https://github\\.com/[^/]+/[^/]+/settings(/|$)",
+  # Compare URLs for tags that have not been pushed yet (e.g. the [Unreleased] anchor and the just-bumped tag).
+  "^https://github\\.com/[^/]+/[^/]+/compare/.*\\.\\.\\.HEAD$",
+  "^https://github\\.com/sapuyou45-bit/ai-divination-skills/compare/v0\\.5\\.2\\.\\.\\.v0\\.5\\.3$",
+]

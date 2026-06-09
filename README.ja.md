@@ -2,6 +2,13 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
+[![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
+[![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
+[![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/ai-divination-skills?sort=semver)](https://github.com/sapuyou45-bit/ai-divination-skills/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
+[![GitHub Discussions](https://img.shields.io/github/discussions/sapuyou45-bit/ai-divination-skills)](https://github.com/sapuyou45-bit/ai-divination-skills/discussions)
+
 ✨ AI agent のためのオープンソース占術 skill 集です。乱数、カードドロー、起卦はツールが行い、AI は具体的な結果だけを解釈します。
 
 `ai-divination-skills` は、タロット、易経、小六壬、そして今後追加される象徴体系のための実用的な skill コレクションです。agent ワークフロー向けに、監査可能なランダム性、明確な方法境界、再利用できる解釈テンプレートを重視しています。

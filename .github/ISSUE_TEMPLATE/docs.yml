@@ -1,0 +1,39 @@
+name: 📚 Docs / Translation
+description: Report or propose changes to README, docs site, RELEASE_NOTES, or any of the translations.
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for typos, missing examples, broken links in markdown,
+        translation gaps in `README.zh-CN.md` / `README.ja.md`, or for the GitHub Pages site under `docs/`.
+        Use the bug template instead if a script or CLI is misbehaving.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - README (English)
+        - README (简体中文)
+        - README (日本語)
+        - GitHub Pages docs site (`docs/`)
+        - CONTRIBUTING / SECURITY / ETHICS
+        - CHANGELOG / RELEASE_NOTES
+        - ROADMAP
+        - other
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: File or URL
+      placeholder: "e.g. README.zh-CN.md or https://sapuyou45-bit.github.io/ai-divination-skills/"
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+      description: What is wrong or unclear today, and what should it say instead?
+    validations:
+      required: true

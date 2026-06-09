@@ -1,5 +1,18 @@
 # Release Notes
 
+## v0.5.3 - Security Scanning, Link Hygiene, Docs Polish
+
+This release does not change skill logic. It adds two new CI workflows and finishes the multi-host adapter story in user-facing docs.
+
+### What's New
+
+- **CodeQL** — static analysis on every push, PR, and weekly schedule. Findings land in the Security tab.
+- **Link check** — `lychee` runs on every markdown change and weekly to catch dead links across README, docs site, and reference files.
+- **Docs / Translation issue template** — explicit form for typos, missing examples, broken links, and translation gaps.
+- **Per-host adapters surfaced in README** — table covering OpenAI / Claude / Gemini / Cursor adapters with how each is invoked.
+- **Community section** in the English README pointing at Releases, Roadmap, Discussions, `good first issue` / `new-skill` labels, and the security policy.
+- **Status badges** now appear in the Simplified Chinese and Japanese READMEs as well.
+
 ## v0.5.2 - Multi-agent Adapters and Branch Protection
 
 This release ships the skills to more agent runtimes and tightens the merge gate on `main`.
