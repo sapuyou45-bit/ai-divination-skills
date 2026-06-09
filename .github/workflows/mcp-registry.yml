@@ -1,0 +1,43 @@
+name: mcp-registry
+
+# Publishes server.json to https://registry.modelcontextprotocol.io after a
+# tagged release succeeds, so the registry entry always matches the released
+# package version. Uses GitHub Actions OIDC (no PAT required).
+
+on:
+  workflow_run:
+    workflows: ["release"]
+    types: [completed]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'v') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out tag
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Install mcp-publisher
+        run: |
+          set -euo pipefail
+          os=$(uname -s | tr '[:upper:]' '[:lower:]')
+          arch=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+          curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_${os}_${arch}.tar.gz" \
+            | tar xz mcp-publisher
+          sudo mv mcp-publisher /usr/local/bin/
+
+      - name: Validate server.json
+        run: mcp-publisher validate
+
+      - name: Login via GitHub Actions OIDC
+        run: mcp-publisher login github-oidc
+
+      - name: Publish to MCP Registry
+        run: mcp-publisher publish
