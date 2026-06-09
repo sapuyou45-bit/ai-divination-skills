@@ -2,6 +2,13 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
+[![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
+[![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
+[![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/ai-divination-skills?sort=semver)](https://github.com/sapuyou45-bit/ai-divination-skills/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
+[![GitHub Discussions](https://img.shields.io/github/discussions/sapuyou45-bit/ai-divination-skills)](https://github.com/sapuyou45-bit/ai-divination-skills/discussions)
+
 ✨ Open-source divination skills for AI agents where the tool performs the draw or cast, and **AI interprets** the concrete result.
 
 `ai-divination-skills` is a practical skill collection for tarot, I Ching, Xiao Liu Ren, and future symbolic systems. It is built for agent workflows that need auditable randomness, clear method boundaries, and reusable interpretation templates.
