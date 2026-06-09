@@ -1,5 +1,31 @@
 # Release Notes
 
+## v0.6.0 - MCP server for Claude Desktop, Codex, and other MCP hosts
+
+This release adds first-party support for the [Model Context Protocol](https://modelcontextprotocol.io/). Any MCP-aware host can mount `ai-divination-skills` with one config line and get four audited divination tools.
+
+### What's New
+
+- **`ai-divination-mcp` console script** — zero-dependency JSON-RPC 2.0 server over stdio.
+- **4 MCP tools** — `tarot.draw`, `iching.cast`, `xiaoliuren.cast`, `interpretation_template`. Each tool routes through the audited local script; the host never invents the draw.
+- **Claude Desktop snippet** — paste 4 lines into `claude_desktop_config.json`, restart, ask "draw three tarot cards for my decision".
+- **Test coverage** — 12 new tests (61 total) for protocol handshake, tools/list, tools/call for every tool, JSON-RPC error mapping, invalid-JSON recovery, and the full stdio loop.
+- **Closes issue #13**.
+
+### Install
+
+```bash
+pip install ai-divination-skills
+```
+
+Then in `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{ "mcpServers": { "divination": { "command": "ai-divination-mcp" } } }
+```
+
+Restart Claude Desktop.
+
 ## v0.5.4 - Final Ops Hardening
 
 This release closes the remaining operational gaps that don't require user credentials.

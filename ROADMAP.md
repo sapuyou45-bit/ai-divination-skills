@@ -13,7 +13,7 @@ Live, opinion-driven list of where this project is going next. Each item is trac
 
 - [ ] **Bazi (四柱八字)** — new deterministic divination skill, issue [#11](https://github.com/sapuyou45-bit/ai-divination-skills/issues/11)
 - [ ] **Tarot deepening** — Celtic Cross, Relationship Cross, Year Wheel spreads; reversal-semantics layer
-- [ ] **MCP server** wrapping the three skills so Claude Desktop / Codex can mount them in one config line — issue [#13](https://github.com/sapuyou45-bit/ai-divination-skills/issues/13)
+- [x] **MCP server** wrapping the three skills (shipped in v0.6.0, closed issue [#13](https://github.com/sapuyou45-bit/ai-divination-skills/issues/13))
 
 ## Later (v0.7+)
 
