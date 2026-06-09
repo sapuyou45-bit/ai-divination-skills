@@ -4,6 +4,8 @@
 
 [![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
 [![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
+[![PyPI](https://img.shields.io/pypi/v/ai-divination-skills?color=blue)](https://pypi.org/project/ai-divination-skills/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/ai-divination-skills)](https://pypi.org/project/ai-divination-skills/)
 [![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/ai-divination-skills?sort=semver)](https://github.com/sapuyou45-bit/ai-divination-skills/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
@@ -64,7 +66,13 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 
 ## 🚀 Quick Start
 
-Install the local CLI from a checkout:
+Install from PyPI:
+
+```bash
+pip install ai-divination-skills
+```
+
+Or from a checkout:
 
 ```bash
 pip install .

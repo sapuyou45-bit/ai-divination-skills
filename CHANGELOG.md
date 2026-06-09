@@ -7,6 +7,19 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-06-09
+
+### Added
+- PyPI version and monthly-downloads badges on all three READMEs.
+- README (zh-CN + ja) now have the same "Use it from Claude Desktop / Codex / any MCP host" section as the English README.
+- Repo description updated to lead with "MCP server + Python CLI" so it surfaces in MCP search.
+- Repo topics: `mcp`, `mcp-server`, `model-context-protocol`, `claude`, `claude-desktop`, `anthropic` added.
+
+### Changed
+- README install blocks (all three languages) now lead with `pip install ai-divination-skills` and keep the editable install as a secondary option.
+- `docs/` site Quick Start now shows the PyPI install and mentions the MCP server.
+
+
 ## [0.6.0] - 2026-06-09
 
 ### Added
@@ -82,7 +95,8 @@ See `RELEASE_NOTES.md`.
 
 See `RELEASE_NOTES.md` and `git log`.
 
-[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.6.1...HEAD
+[0.6.1]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.4...v0.6.0
 [0.5.4]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.2...v0.5.3

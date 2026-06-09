@@ -1,5 +1,17 @@
 # Release Notes
 
+## v0.6.1 - Discovery and SEO
+
+This release helps people who don't already know about the project actually find it.
+
+### What's New
+
+- README badges for PyPI version and monthly downloads (all three languages).
+- README.zh-CN.md and README.ja.md now also have the "Use it from Claude Desktop / Codex / any MCP host" section.
+- GitHub repository description updated to lead with "MCP server + Python CLI" so MCP search results pick it up.
+- GitHub repository topics expanded with `mcp`, `mcp-server`, `model-context-protocol`, `claude`, `claude-desktop`, `anthropic`.
+- README and docs site install snippets now lead with `pip install ai-divination-skills` instead of `pip install .`.
+
 ## v0.6.0 - MCP server for Claude Desktop, Codex, and other MCP hosts
 
 This release adds first-party support for the [Model Context Protocol](https://modelcontextprotocol.io/). Any MCP-aware host can mount `ai-divination-skills` with one config line and get four audited divination tools.
