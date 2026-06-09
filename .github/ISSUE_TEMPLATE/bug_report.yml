@@ -1,0 +1,56 @@
+name: 🐛 Bug Report
+description: Report a reproducible problem with a skill, CLI, or script.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please include enough detail to reproduce the result, including any seed.
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      description: Output of `pip show ai-divination-skills` or the release tag you used.
+      placeholder: "0.5.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options:
+        - tarot
+        - iching
+        - xiaoliuren
+        - cli / packaging
+        - docs / site
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Exact command, including `--seed` when applicable.
+      placeholder: |
+        1. ai-divination tarot --spread three-card --seed demo
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs. actual result
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: OS, Python version, and how the skill was installed (pip, copied folder, etc.).
+      placeholder: |
+        - OS: macOS 14.5
+        - Python: 3.11.7
+        - Install: pip install ai-divination-skills
+    validations:
+      required: true

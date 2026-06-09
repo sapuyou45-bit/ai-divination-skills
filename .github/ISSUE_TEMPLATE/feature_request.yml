@@ -1,0 +1,42 @@
+name: ✨ Feature Request
+description: Suggest a new skill, spread, casting method, or agent integration.
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is this about?
+      options:
+        - New divination system (e.g. bazi, astrology)
+        - New spread / casting method for an existing skill
+        - New agent runtime adapter (e.g. Claude, Gemini, Cursor)
+        - CLI / packaging improvement
+        - Documentation / examples
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem this solves
+      description: What can a user not do today that this would unlock?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Sketch the script interface, JSON output, or skill contract you have in mind.
+    validations:
+      required: true
+  - type: textarea
+    id: rigor
+    attributes:
+      label: Methodological rigor
+      description: How does this respect `shared/methodology.md` (auditable randomness, source citations, AI interprets only)?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

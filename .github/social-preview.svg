@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f0c29"/>
+      <stop offset="0.5" stop-color="#302b63"/>
+      <stop offset="1" stop-color="#24243e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f1b4d"/>
+      <stop offset="1" stop-color="#0b0820"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="320" r="520" fill="url(#glow)"/>
+  <circle cx="960" cy="320" r="420" fill="url(#glow)"/>
+
+  <!-- subtle star field -->
+  <g fill="#ffffff" opacity="0.5">
+    <circle cx="120" cy="80" r="1.2"/>
+    <circle cx="220" cy="160" r="1"/>
+    <circle cx="400" cy="60" r="1.4"/>
+    <circle cx="640" cy="100" r="1"/>
+    <circle cx="900" cy="80" r="1.2"/>
+    <circle cx="1100" cy="160" r="1"/>
+    <circle cx="1180" cy="280" r="1.4"/>
+    <circle cx="80" cy="380" r="1"/>
+    <circle cx="200" cy="540" r="1.2"/>
+    <circle cx="520" cy="580" r="1"/>
+    <circle cx="780" cy="540" r="1.4"/>
+    <circle cx="1080" cy="560" r="1"/>
+    <circle cx="1200" cy="480" r="1.2"/>
+  </g>
+
+  <!-- three cards: tarot, iching, xiaoliuren -->
+  <g transform="translate(820 200)">
+    <g transform="rotate(-8)">
+      <rect x="0" y="0" width="120" height="200" rx="14" fill="url(#card)" stroke="#7C3AED" stroke-width="2"/>
+      <text x="60" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="64" fill="#E9D5FF">★</text>
+      <text x="60" y="184" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#C4B5FD">TAROT</text>
+    </g>
+    <g transform="translate(150 -10) rotate(2)">
+      <rect x="0" y="0" width="120" height="200" rx="14" fill="url(#card)" stroke="#FCD34D" stroke-width="2"/>
+      <g transform="translate(28 50)" stroke="#FCD34D" stroke-width="6" stroke-linecap="round">
+        <line x1="0" y1="0" x2="64" y2="0"/>
+        <line x1="0" y1="18" x2="28" y2="18"/>
+        <line x1="36" y1="18" x2="64" y2="18"/>
+        <line x1="0" y1="36" x2="64" y2="36"/>
+        <line x1="0" y1="54" x2="28" y2="54"/>
+        <line x1="36" y1="54" x2="64" y2="54"/>
+        <line x1="0" y1="72" x2="64" y2="72"/>
+        <line x1="0" y1="90" x2="64" y2="90"/>
+      </g>
+      <text x="60" y="184" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#FDE68A">I CHING</text>
+    </g>
+    <g transform="translate(300 6) rotate(8)">
+      <rect x="0" y="0" width="120" height="200" rx="14" fill="url(#card)" stroke="#F59E0B" stroke-width="2"/>
+      <text x="60" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="64" fill="#FDE68A">六</text>
+      <text x="60" y="184" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#FCD34D">XIAOLIUREN</text>
+    </g>
+  </g>
+
+  <!-- text block -->
+  <g transform="translate(80 180)">
+    <text font-family="Inter, system-ui, sans-serif" font-size="22" fill="#A5B4FC" letter-spacing="3">AI DIVINATION SKILLS</text>
+    <text y="76" font-family="Georgia, serif" font-size="68" font-weight="700" fill="#F5F3FF">Scripts cast.</text>
+    <text y="148" font-family="Georgia, serif" font-size="68" font-weight="700" fill="#F5F3FF">AI interprets.</text>
+    <text y="206" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#C7D2FE">Auditable randomness · Method boundaries</text>
+    <text y="238" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#C7D2FE">Reusable skills for OpenAI · Claude · Codex</text>
+    <text y="320" font-family="JetBrains Mono, ui-monospace, monospace" font-size="20" fill="#FCD34D">$ pip install ai-divination-skills</text>
+  </g>
+
+  <text x="80" y="600" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#94A3B8">github.com/sapuyou45-bit/ai-divination-skills · MIT</text>
+</svg>
