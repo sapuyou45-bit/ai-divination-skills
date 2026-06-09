@@ -4,6 +4,13 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
+
+<p align="center">
+  <a href="https://pypi.org/project/ai-divination-skills/">
+    <img src="docs/assets/demo.svg" alt="ai-divination-skills demo: pip install, tarot draw, I Ching cast, MCP server stdio" width="100%">
+  </a>
+</p>
+
 [![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
 [![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
 [![PyPI](https://img.shields.io/pypi/v/ai-divination-skills?color=blue)](https://pypi.org/project/ai-divination-skills/)
