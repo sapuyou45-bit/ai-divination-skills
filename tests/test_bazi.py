@@ -6,6 +6,14 @@ import unittest
 from ai_divination_skills import bazi
 
 
+try:
+    bazi.load_solar()
+    HAVE_LUNAR = True
+except ImportError:
+    HAVE_LUNAR = False
+
+
+@unittest.skipUnless(HAVE_LUNAR, "lunar-python not installed")
 class BaziCastTests(unittest.TestCase):
     """The bazi engine is a thin wrapper over lunar-python.
 
@@ -53,6 +61,7 @@ class BaziCastTests(unittest.TestCase):
         self.assertIn("invent", joined)
 
 
+@unittest.skipUnless(HAVE_LUNAR, "lunar-python not installed")
 class BaziCliTests(unittest.TestCase):
     def test_cli_subcommand(self):
         completed = subprocess.run(
@@ -79,6 +88,7 @@ class BaziCliTests(unittest.TestCase):
         self.assertIn("day_master", completed.stdout)
 
 
+@unittest.skipUnless(HAVE_LUNAR, "lunar-python not installed")
 class BaziMcpTests(unittest.TestCase):
     def test_mcp_tool_registered(self):
         from ai_divination_skills import mcp_server

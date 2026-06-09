@@ -81,7 +81,14 @@ class SkillContractTests(unittest.TestCase):
                 self.assertTrue((ROOT / "skills" / skill / icon_path).exists(), f"{skill} missing {icon_path}")
 
     def test_skill_script_runs_when_single_skill_folder_is_copied(self):
+        try:
+            import lunar_python  # noqa: F401
+            have_lunar = True
+        except ImportError:
+            have_lunar = False
         for skill, config in SKILLS.items():
+            if skill == "bazi" and not have_lunar:
+                continue
             with self.subTest(skill=skill):
                 with tempfile.TemporaryDirectory() as temp_dir:
                     copied = Path(temp_dir) / skill
