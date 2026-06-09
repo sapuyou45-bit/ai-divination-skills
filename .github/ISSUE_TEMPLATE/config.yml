@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussion / Reading Showcase
+    url: https://github.com/sapuyou45-bit/ai-divination-skills/discussions
+    about: Share readings, ask interpretation questions, or propose new divination systems.
+  - name: 🛡️ Safety / Ethics Concern
+    url: https://github.com/sapuyou45-bit/ai-divination-skills/blob/main/ETHICS.md
+    about: Read the ethics policy before reporting safety concerns.

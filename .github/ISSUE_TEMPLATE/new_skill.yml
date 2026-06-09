@@ -1,0 +1,50 @@
+name: 🔮 New Divination Skill Proposal
+description: Propose a new divination system to add to the collection.
+labels: ["new-skill", "enhancement"]
+body:
+  - type: input
+    id: system
+    attributes:
+      label: System name
+      placeholder: "e.g. Bazi (Four Pillars)"
+    validations:
+      required: true
+  - type: textarea
+    id: tradition
+    attributes:
+      label: Tradition and sources
+      description: Cite the traditional methodology and reputable references you would draw on.
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Inputs the script needs
+      description: e.g. lunar month / day / hour, GPS location, birth datetime.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Deterministic output shape
+      description: What concrete JSON structure does the script emit before the AI interprets?
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: Limits and approximations
+      description: Where will the script have to approximate? What warnings will it emit?
+    validations:
+      required: true
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Skill rules
+      options:
+        - label: AI will not generate the cast / draw itself; the script or user input does.
+          required: true
+        - label: Seeded mode is only used for tests or reproducible demos.
+          required: true
+        - label: Output will pass an accompanying JSON schema.
+          required: true
