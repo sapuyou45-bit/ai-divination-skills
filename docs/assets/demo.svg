@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 668 462" role="img" aria-label="ai-divination-skills demo">
+  <title>ai-divination-skills demo</title>
+  <desc>Terminal: pip install, tarot CLI emits deterministic JSON, MCP server answers initialize and tools/list. The model never invents the result, it only interprets the JSON.</desc>
+  <defs>
+    <clipPath id="termClip"><rect x="0" y="0" width="668" height="462" rx="10"/></clipPath>
+  </defs>
+  <g clip-path="url(#termClip)">
+    <rect width="668" height="462" fill="#0d1117"/>
+    <rect width="668" height="30" fill="#161b22"/>
+    <line x1="0" y1="30" x2="668" y2="30" stroke="#30363d" stroke-width="1"/>
+    <circle cx="16" cy="15" r="6" fill="#ff5f56"/>
+    <circle cx="36" cy="15" r="6" fill="#ffbd2e"/>
+    <circle cx="56" cy="15" r="6" fill="#27c93f"/>
+    <text x="334" y="20" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12" text-anchor="middle">ai-divination-skills — tarot · I Ching · Xiao Liu Ren · MCP</text>
+    <text x="22" y="48" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve"># 1. Install</text>
+<text x="22" y="70" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve"><tspan fill="#56d364">$ </tspan><tspan fill="#e6edf3">pip install ai-divination-skills</tspan></text>
+<text x="22" y="92" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">Successfully installed ai-divination-skills-0.6.2</text>
+<text x="22" y="136" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve"># 2. Use the CLI (no model, deterministic JSON)</text>
+<text x="22" y="158" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve"><tspan fill="#56d364">$ </tspan><tspan fill="#e6edf3">ai-divination tarot --deck major --spread three-card</tspan></text>
+<text x="22" y="180" fill="#a5d6ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">{ "system": "tarot",  "spread": "three-card",</text>
+<text x="22" y="202" fill="#a5d6ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">  "rng_mode": "system-entropy",  "shuffle": "fisher-yates",</text>
+<text x="22" y="224" fill="#a5d6ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">  "cards": [</text>
+<text x="22" y="246" fill="#ffa657" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">    { "position": "Situation",  "name": "The Magician",  "orientation": "upright" },</text>
+<text x="22" y="268" fill="#ffa657" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">    { "position": "Obstacle",   "name": "The Tower",     "orientation": "upright" },</text>
+<text x="22" y="290" fill="#ffa657" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">    { "position": "Guidance",   "name": "The Star",      "orientation": "upright" } ] }</text>
+<text x="22" y="334" fill="#6e7681" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve"># 3. Or register as an MCP server in Claude Desktop / Codex / Cursor</text>
+<text x="22" y="356" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve"><tspan fill="#56d364">$ </tspan><tspan fill="#e6edf3">ai-divination-mcp  # stdio JSON-RPC 2.0</tspan></text>
+<text x="22" y="378" fill="#56d364" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">✓ initialize        -&gt; serverInfo.name = ai-divination-skills</text>
+<text x="22" y="400" fill="#56d364" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">✓ tools/list        -&gt; tarot.draw, iching.cast, xiaoliuren.cast,</text>
+<text x="22" y="422" fill="#56d364" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" xml:space="preserve">                       interpretation_template</text>
+  </g>
+  <rect x="0.5" y="0.5" width="667" height="461" rx="10" fill="none" stroke="#30363d" stroke-width="1"/>
+</svg>
