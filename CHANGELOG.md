@@ -7,6 +7,16 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [0.5.3] - 2026-06-09
+
+### Added
+- CodeQL static-analysis workflow (`.github/workflows/codeql.yml`) on push, PR, and weekly cron.
+- Markdown link-check workflow (`.github/workflows/link-check.yml`) on markdown PRs and weekly cron, using lychee.
+- "📚 Docs / Translation" issue template (`.github/ISSUE_TEMPLATE/docs.yml`).
+- README now documents the four per-host adapters (OpenAI / Claude / Gemini / Cursor) and links to Discussions, Roadmap, Security.
+- Simplified Chinese and Japanese READMEs now also show the same status badges as the English README.
+
+
 ## [0.5.2] - 2026-06-09
 
 ### Added
@@ -47,7 +57,8 @@ See `RELEASE_NOTES.md`.
 
 See `RELEASE_NOTES.md` and `git log`.
 
-[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.2...HEAD
+[Unreleased]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.3...HEAD
+[0.5.3]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/sapuyou45-bit/ai-divination-skills/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/sapuyou45-bit/ai-divination-skills/releases/tag/v0.5.0

@@ -140,6 +140,20 @@ Install individual folders, not the entire repository, when you only want one sk
 
 Each skill script also works in single-folder mode. If the Python package is installed, the script delegates to the package runtime. If only the skill folder is copied, it falls back to the bundled standalone script in that skill.
 
+
+### Per-host adapters
+
+Every skill ships four adapter files in `skills/<skill>/agents/`:
+
+| Host | File | How it is invoked |
+|---|---|---|
+| OpenAI / Codex skills | `openai.yaml` | Skill metadata + brand icons. |
+| Claude Desktop / claude.ai project skills | `claude.yaml` | Tool spec that runs `ai-divination <skill>`. |
+| Gemini CLI / Gemini Extensions | `gemini.yaml` | Extension manifest that runs the same CLI. |
+| Cursor | `cursor.mdc` | Rule file with hard "never invent the draw" guard. |
+
+All four adapters route through the same audited `ai-divination <skill>` CLI, so the agent host never invents the result.
+
 ## 🤖 Agent Behavior
 
 Each skill instructs the agent to:
@@ -199,6 +213,14 @@ Current coverage checks:
 - tarot spread output
 - I Ching cast structure and manual lines
 - Xiao Liu Ren number and time fallback behavior
+
+## 💬 Community
+
+- Releases: <https://github.com/sapuyou45-bit/ai-divination-skills/releases>
+- Roadmap: [`ROADMAP.md`](./ROADMAP.md)
+- Discussions: <https://github.com/sapuyou45-bit/ai-divination-skills/discussions>
+- Issues: pick a [`good first issue`](https://github.com/sapuyou45-bit/ai-divination-skills/labels/good%20first%20issue) or propose a [`new-skill`](https://github.com/sapuyou45-bit/ai-divination-skills/labels/new-skill)
+- Security: see [`SECURITY.md`](./SECURITY.md) for private vulnerability reporting
 
 ## 🗺️ Roadmap
 
