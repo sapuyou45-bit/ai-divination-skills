@@ -8,10 +8,36 @@ on:
 jobs:
   unittest:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dev dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Run tests
+        run: python3 -m unittest discover -s tests
+
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run tests
-        run: python3 -m unittest discover -s tests
+      - name: Install build dependencies
+        run: python -m pip install build
+      - name: Build package
+        run: python -m build
+      - name: Smoke test built wheel
+        run: |
+          python -m venv /tmp/ai-divination-smoke
+          /tmp/ai-divination-smoke/bin/python -m pip install dist/*.whl
+          /tmp/ai-divination-smoke/bin/ai-divination tarot --deck major --spread single --seed ci
+          /tmp/ai-divination-smoke/bin/ai-divination iching --method yarrow --seed ci
+          /tmp/ai-divination-smoke/bin/ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
+          /tmp/ai-divination-smoke/bin/ai-divination template tarot

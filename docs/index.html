@@ -126,15 +126,16 @@
       <section class="section install-section" aria-labelledby="install-title">
         <div>
           <p class="section-label" data-i18n="install.label">安装</p>
-          <h2 id="install-title" data-i18n="install.title">只复制你需要的技能。</h2>
+          <h2 id="install-title" data-i18n="install.title">把一句话发给你的 AI agent。</h2>
         </div>
         <div class="install-copy">
           <p data-i18n="install.copy">
-            每个 skill 都是自包含目录，包含 SKILL.md、OpenAI agent 元数据、脚本和参考资料。
+            agent 会读取远程安装说明，把 tarot、iching、xiaoliuren 复制到 skill 目录，并验证脚本。
           </p>
-          <pre><code>cp -R skills/tarot ~/.codex/skills/tarot
-cp -R skills/iching ~/.codex/skills/iching
-cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren</code></pre>
+          <pre><code>请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md</code></pre>
+          <p data-i18n="install.shellCopy">也可以直接安装到 Claude 风格的本地 skills 目录：</p>
+          <pre><code>curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash</code></pre>
+          <p data-i18n="install.target">默认目标：~/.claude/skills。设置 AI_SKILLS_DIR 可安装到其他 agent 的 skill 目录。</p>
         </div>
       </section>
 

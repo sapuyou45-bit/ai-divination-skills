@@ -11,7 +11,7 @@ setup(
     install_requires=[],
     extras_require={
         "lunar": ["lunar-python>=1.4.4"],
-        "dev": ["build", "twine", "PyYAML>=6"],
+        "dev": ["build", "twine", "PyYAML>=6", "jsonschema>=4.25"],
     },
     entry_points={
         "console_scripts": [

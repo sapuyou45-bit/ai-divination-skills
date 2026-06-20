@@ -14,7 +14,8 @@ lunar = [
 dev = [
   "build",
   "twine",
-  "PyYAML>=6"
+  "PyYAML>=6",
+  "jsonschema>=4.25"
 ]
 
 [project.scripts]

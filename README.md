@@ -8,6 +8,22 @@
 
 This project treats divination as symbolic reasoning and reflection, not deterministic prediction.
 
+## ⚡ One-line Install for AI Agents
+
+Paste this into your AI agent:
+
+```text
+Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+```
+
+Or install directly for Claude-style local skills:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+```
+
+The default target is `~/.claude/skills`. Set `AI_SKILLS_DIR` for another agent skill directory.
+
 ## ✨ Overview
 
 Most AI divination prompts let the model invent the result. This repo separates the two jobs:
@@ -50,7 +66,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 ## 🧩 Included Skills
 
 | Skill | What it does | Script |
-|---|---|---|
+| --- | --- | --- |
 | `tarot` | Draws tarot cards for reflection, decisions, creative blocks, and project reframing. | `skills/tarot/scripts/draw.py` |
 | `iching` | Casts six-line I Ching hexagrams with primary and resulting hexagrams. | `skills/iching/scripts/cast.py` |
 | `xiaoliuren` | Casts Xiao Liu Ren from lunar-style numbers or a Gregorian time fallback. | `skills/xiaoliuren/scripts/cast.py` |
@@ -111,12 +127,27 @@ All scripts output JSON.
 
 ## 📦 Install as Agent Skills
 
-Copy the skill folders you want into your agent's skill directory:
+For AI-agent-guided setup, use the remote install runbook:
+
+```text
+Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+```
+
+For direct shell install:
 
 ```bash
-cp -R skills/tarot ~/.codex/skills/tarot
-cp -R skills/iching ~/.codex/skills/iching
-cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+```
+
+The installer copies `tarot`, `iching`, and `xiaoliuren` into `~/.claude/skills` by default. To target another agent, set `AI_SKILLS_DIR` before running it.
+
+Manual install is just copying the folders you want into your agent's skill directory:
+
+```bash
+mkdir -p ~/.claude/skills
+cp -R skills/tarot ~/.claude/skills/tarot
+cp -R skills/iching ~/.claude/skills/iching
+cp -R skills/xiaoliuren ~/.claude/skills/xiaoliuren
 ```
 
 Each skill is self-contained:

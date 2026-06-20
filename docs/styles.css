@@ -31,6 +31,13 @@ a {
   color: inherit;
 }
 
+a:focus-visible,
+.button:focus-visible,
+.language-switcher a:focus-visible {
+  outline: 3px solid var(--ochre);
+  outline-offset: 4px;
+}
+
 code,
 pre,
 .brand-mark,
@@ -362,6 +369,17 @@ pre {
 .site-footer a {
   color: rgba(250, 249, 244, 0.88);
   text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media (max-width: 920px) {
