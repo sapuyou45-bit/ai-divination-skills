@@ -26,6 +26,22 @@
 
 このプロジェクトは占術を、決定論的な予言ではなく、象徴的推論と内省の道具として扱います。
 
+## ⚡ AI Agent 向けワンラインインストール
+
+これを AI agent に貼り付けてください。
+
+```text
+Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+```
+
+Claude 形式のローカル skills ディレクトリへ直接インストールすることもできます。
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+```
+
+デフォルトのインストール先は `~/.claude/skills` です。別の agent skill ディレクトリを使う場合は `AI_SKILLS_DIR` を設定してください。
+
 ## ✨ 概要
 
 多くの AI 占いプロンプトでは、モデルが結果そのものを作ってしまいます。このリポジトリは役割を分けます。
@@ -68,7 +84,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 ## 🧩 含まれる Skills
 
 | Skill | 内容 | スクリプト |
-|---|---|---|
+| --- | --- | --- |
 | `tarot` | 内省、意思決定、創作の停滞、プロジェクトの見直しのためにカードを引きます。 | `skills/tarot/scripts/draw.py` |
 | `iching` | 六本の爻から本卦と之卦を出力します。 | `skills/iching/scripts/cast.py` |
 | `xiaoliuren` | 旧暦風の数値、または軽量なグレゴリオ暦 fallback から小六壬を起こします。 | `skills/xiaoliuren/scripts/cast.py` |
@@ -136,12 +152,27 @@ python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 
 ## 📦 Agent Skill としてインストール
 
-必要な skill フォルダを agent の skill ディレクトリへコピーします。
+AI agent にリモートのインストール手順を読ませて setup できます。
+
+```text
+Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+```
+
+shell から直接インストールすることもできます。
 
 ```bash
-cp -R skills/tarot ~/.codex/skills/tarot
-cp -R skills/iching ~/.codex/skills/iching
-cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+```
+
+インストーラーはデフォルトで `tarot`、`iching`、`xiaoliuren` を `~/.claude/skills` にコピーします。他の agent skill ディレクトリを使う場合は `AI_SKILLS_DIR` を設定してください。
+
+手動インストールは、必要な skill フォルダを agent の skill ディレクトリへコピーするだけです。
+
+```bash
+mkdir -p ~/.claude/skills
+cp -R skills/tarot ~/.claude/skills/tarot
+cp -R skills/iching ~/.claude/skills/iching
+cp -R skills/xiaoliuren ~/.claude/skills/xiaoliuren
 ```
 
 各 skill は自己完結型です。

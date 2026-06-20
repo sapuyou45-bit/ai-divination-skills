@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -11,6 +12,28 @@ from test_scripts import ROOT
 
 
 class PackagedInstallTests(unittest.TestCase):
+    def test_version_metadata_is_consistent(self):
+        pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+        package_init = (ROOT / "ai_divination_skills" / "__init__.py").read_text(encoding="utf-8")
+        setup_py = (ROOT / "setup.py").read_text(encoding="utf-8")
+
+        pyproject_version = re.search(r'^version = "([^"]+)"', pyproject, re.MULTILINE).group(1)
+        package_version = re.search(r'^__version__ = "([^"]+)"', package_init, re.MULTILINE).group(1)
+        setup_version = re.search(r'version="([^"]+)"', setup_py).group(1)
+
+        self.assertEqual(pyproject_version, package_version)
+        self.assertEqual(pyproject_version, setup_version)
+
+    def test_ci_builds_and_smoke_tests_wheel(self):
+        workflow = (ROOT / ".github" / "workflows" / "tests.yml").read_text(encoding="utf-8")
+
+        self.assertIn('python-version: ["3.9", "3.10", "3.11", "3.12"]', workflow)
+        self.assertIn('python -m pip install -e ".[dev]"', workflow)
+        self.assertIn("python3 -m unittest discover -s tests", workflow)
+        self.assertIn("python -m build", workflow)
+        self.assertIn("ai-divination tarot", workflow)
+        self.assertIn("ai-divination template tarot", workflow)
+
     def test_cli_runs_from_package_without_repo_layout(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             package_root = Path(temp_dir) / "ai_divination_skills"

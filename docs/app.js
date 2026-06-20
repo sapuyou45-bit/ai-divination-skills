@@ -37,8 +37,10 @@ const translations = {
     "quick.title": "Install once, call one CLI.",
     "quick.copy": "Install with pip install ai-divination-skills, then call tarot, I Ching, Xiao Liu Ren via ai-divination, or mount the built-in MCP server (ai-divination-mcp) in Claude Desktop / Codex.",
     "install.label": "Install",
-    "install.title": "Copy only the skills you need.",
-    "install.copy": "Each skill is self-contained with a SKILL.md file, OpenAI agent metadata, scripts, and references.",
+    "install.title": "Paste one line into your AI agent.",
+    "install.copy": "The agent reads the remote install runbook, copies tarot, iching, and xiaoliuren into its skill directory, and verifies the scripts.",
+    "install.shellCopy": "Or install directly into a Claude-style local skills directory:",
+    "install.target": "Default target: ~/.claude/skills. Set AI_SKILLS_DIR to install into another agent skill directory.",
     "safety.label": "Safety",
     "safety.title": "Symbolic reflection, not certainty.",
     "safety.item1": "Do not use readings as medical, legal, financial, or crisis guidance.",
@@ -84,8 +86,10 @@ const translations = {
     "quick.title": "安装一次，用一个 CLI 调用。",
     "quick.copy": "用 pip install ai-divination-skills 安装，然后通过 ai-divination 调用塔罗、易经、小六壬，或在 Claude Desktop / Codex 里挂载内置的 MCP server (ai-divination-mcp)。",
     "install.label": "安装",
-    "install.title": "只复制你需要的技能。",
-    "install.copy": "每个 skill 都是自包含目录，包含 SKILL.md、OpenAI agent 元数据、脚本和参考资料。",
+    "install.title": "把一句话发给你的 AI agent。",
+    "install.copy": "agent 会读取远程安装说明，把 tarot、iching、xiaoliuren 复制到 skill 目录，并验证脚本。",
+    "install.shellCopy": "也可以直接安装到 Claude 风格的本地 skills 目录：",
+    "install.target": "默认目标：~/.claude/skills。设置 AI_SKILLS_DIR 可安装到其他 agent 的 skill 目录。",
     "safety.label": "安全边界",
     "safety.title": "象征性反思，不是确定性预言。",
     "safety.item1": "不要把解读用作医疗、法律、金融或危机处置建议。",
@@ -131,8 +135,10 @@ const translations = {
     "quick.title": "一度インストールして、1 つの CLI で呼び出します。",
     "quick.copy": "pip install ai-divination-skills でインストールし、ai-divination からタロット・易経・小六壬を呼び出すか、Claude Desktop / Codex で内蔵 MCP サーバー (ai-divination-mcp) をマウントできます。",
     "install.label": "インストール",
-    "install.title": "必要な skill だけをコピーします。",
-    "install.copy": "各 skill は SKILL.md、OpenAI agent メタデータ、スクリプト、参照資料を含む自己完結型です。",
+    "install.title": "AI agent に 1 行貼り付けます。",
+    "install.copy": "agent がリモートのインストール手順を読み、tarot、iching、xiaoliuren を skill ディレクトリへコピーし、スクリプトを検証します。",
+    "install.shellCopy": "Claude 形式のローカル skills ディレクトリへ直接インストールすることもできます。",
+    "install.target": "デフォルトのインストール先は ~/.claude/skills です。別の agent skill ディレクトリを使う場合は AI_SKILLS_DIR を設定してください。",
     "safety.label": "安全性",
     "safety.title": "象徴的な内省であり、確定的な予言ではありません。",
     "safety.item1": "医療、法律、金融、危機対応の助言として使わないでください。",
@@ -198,6 +204,7 @@ setLanguage(preferredLanguage());
 
 const canvas = document.getElementById("system-map");
 const ctx = canvas.getContext("2d");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let width = 0;
 let height = 0;
 let particles = [];
@@ -285,9 +292,15 @@ function animate(time) {
   drawHexagram(width * 0.61, height * 0.64, 54, time);
   drawHexagram(width * 0.88, height * 0.28, 38, time + 800);
 
-  requestAnimationFrame(animate);
+  if (!prefersReducedMotion) {
+    requestAnimationFrame(animate);
+  }
 }
 
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
-requestAnimationFrame(animate);
+if (prefersReducedMotion) {
+  animate(0);
+} else {
+  requestAnimationFrame(animate);
+}

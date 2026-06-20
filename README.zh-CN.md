@@ -26,6 +26,22 @@
 
 本项目将占卜视为象征推理与反思工具，而不是确定性预言。
 
+## ⚡ 给 AI Agent 一键安装
+
+把这句话发给你的 AI agent：
+
+```text
+请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+```
+
+也可以直接安装到 Claude 风格的本地 skills 目录：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+```
+
+默认安装到 `~/.claude/skills`。如需安装到其他 agent 的 skill 目录，请设置 `AI_SKILLS_DIR`。
+
 ## ✨ 项目概览
 
 很多 AI 占卜 prompt 会让模型自己编出结果。本项目把两件事分开：
@@ -68,7 +84,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 ## 🧩 已包含 Skills
 
 | Skill | 作用 | 脚本 |
-|---|---|---|
+| --- | --- | --- |
 | `tarot` | 用于反思、决策、创作卡点和项目复盘的塔罗抽牌。 | `skills/tarot/scripts/draw.py` |
 | `iching` | 生成六爻易经卦象，输出本卦与之卦。 | `skills/iching/scripts/cast.py` |
 | `xiaoliuren` | 使用农历式数字或轻量公历时间 fallback 起小六壬。 | `skills/xiaoliuren/scripts/cast.py` |
@@ -136,12 +152,27 @@ python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 
 ## 📦 安装为 Agent Skills
 
-把需要的 skill 文件夹复制到 agent 的 skill 目录：
+让 AI agent 自己按远程安装说明完成 setup：
+
+```text
+请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+```
+
+也可以直接用 shell 安装：
 
 ```bash
-cp -R skills/tarot ~/.codex/skills/tarot
-cp -R skills/iching ~/.codex/skills/iching
-cp -R skills/xiaoliuren ~/.codex/skills/xiaoliuren
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+```
+
+安装脚本默认把 `tarot`、`iching`、`xiaoliuren` 复制到 `~/.claude/skills`。如果要安装到其他 agent 的 skill 目录，请先设置 `AI_SKILLS_DIR`。
+
+手动安装也只是把需要的 skill 文件夹复制到 agent 的 skill 目录：
+
+```bash
+mkdir -p ~/.claude/skills
+cp -R skills/tarot ~/.claude/skills/tarot
+cp -R skills/iching ~/.claude/skills/iching
+cp -R skills/xiaoliuren ~/.claude/skills/xiaoliuren
 ```
 
 每个 skill 都是自包含目录：

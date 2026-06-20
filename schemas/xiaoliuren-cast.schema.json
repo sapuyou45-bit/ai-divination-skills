@@ -12,14 +12,35 @@
     "position"
   ],
   "properties": {
-    "system": {"type": "string"},
-    "method": {"type": "string"},
-    "accuracy": {"type": "string"},
-    "inputs": {"type": "object"},
+    "system": {"const": "xiaoliuren"},
+    "method": {"enum": ["numbers", "time", "lunar-time"]},
+    "accuracy": {"enum": ["traditional-input", "gregorian-fallback", "traditional-lunar-calendar"]},
+    "inputs": {
+      "type": "object",
+      "required": ["month", "day", "hour"],
+      "properties": {
+        "month": {"type": "integer", "minimum": 1, "maximum": 12},
+        "day": {"type": "integer", "minimum": 1, "maximum": 30},
+        "hour": {"type": "integer", "minimum": 1, "maximum": 12}
+      }
+    },
     "formula": {"type": "string"},
-    "position": {"type": "object"},
+    "position": {
+      "type": "object",
+      "required": ["index", "name_pinyin", "name_en", "keywords"],
+      "properties": {
+        "index": {"type": "integer", "minimum": 1, "maximum": 6},
+        "name_pinyin": {"type": "string"},
+        "name_en": {"type": "string"},
+        "keywords": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
     "datetime": {"type": "string"},
     "lunar_date": {"type": "object"},
+    "calendar_note": {"type": "string"},
     "warning": {"type": "string"}
   }
 }

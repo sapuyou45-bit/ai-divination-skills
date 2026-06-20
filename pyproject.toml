@@ -15,7 +15,8 @@ dev = [
   "build",
   "twine",
   "PyYAML>=6",
-  "lunar-python>=1.4.4"
+  "lunar-python>=1.4.4",
+  "jsonschema>=4.25"
 ]
 
 [project.scripts]
