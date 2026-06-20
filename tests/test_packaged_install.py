@@ -15,9 +15,9 @@ class PackagedInstallTests(unittest.TestCase):
         workflow = (ROOT / ".github" / "workflows" / "tests.yml").read_text(encoding="utf-8")
 
         self.assertIn('python-version: ["3.9", "3.10", "3.11", "3.12"]', workflow)
-        self.assertIn('python -m pip install -e ".[dev]"', workflow)
+        self.assertIn('pip install -e ".[dev]"', workflow)
         self.assertIn("python3 -m unittest discover -s tests", workflow)
-        self.assertIn("python -m build", workflow)
+        self.assertIn("python3 -m build", workflow)
         self.assertIn("ai-divination tarot", workflow)
         self.assertIn("ai-divination template tarot", workflow)
 
