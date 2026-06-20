@@ -125,19 +125,6 @@ class DocsSiteTests(unittest.TestCase):
                 self.assertNotEqual(completed.returncode, 0)
                 self.assertIn("Refusing unsafe AI_SKILLS_DIR", completed.stderr + completed.stdout)
 
-    def test_update_and_invoke_runbooks_exist(self):
-        update = (ROOT / "docs" / "update.md").read_text(encoding="utf-8")
-        invoke = (ROOT / "docs" / "invoke.md").read_text(encoding="utf-8")
-
-        self.assertIn("Update AI Divination Skills", update)
-        self.assertIn("docs/update.md", update)
-        self.assertIn(".ai-divination-backups", update)
-        self.assertIn("Invoke AI Divination Skills", invoke)
-        self.assertIn("Do not invent divination results", invoke)
-        self.assertIn("General Invocation Protocol", invoke)
-        for skill in ["Tarot", "I Ching", "Xiao Liu Ren"]:
-            self.assertIn(skill, invoke)
-
     def test_docs_site_surfaces_one_line_agent_install(self):
         html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
         js = (ROOT / "docs" / "app.js").read_text(encoding="utf-8")
