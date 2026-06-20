@@ -84,6 +84,10 @@ Preview the target directory and skill list without changing files:
 curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash -s -- --dry-run
 ```
 
+### Update
+
+To update an existing install, run the same installer again. Existing `tarot`, `iching`, and `xiaoliuren` folders are backed up under `<skills-dir>/.ai-divination-backups/<timestamp>/` before replacement.
+
 ### Verify
 
 After installing to the default Claude-style directory, run:
@@ -99,7 +103,7 @@ If using a custom directory, replace `$HOME/.claude/skills` with the selected di
 ## Installed Skills
 
 | Skill | Trigger examples | Script |
-|---|---|---|
+| --- | --- | --- |
 | `tarot` | tarot, card pull, card reading, 塔罗 | `scripts/draw.py` |
 | `iching` | I Ching, Yi Jing, 易经, 周易, hexagram | `scripts/cast.py` |
 | `xiaoliuren` | Xiao Liu Ren, 小六壬, quick timing reflection | `scripts/cast.py` |
