@@ -116,7 +116,7 @@ TOOLS = [
                 },
                 "spread": {
                     "type": "string",
-                    "enum": ["single", "three-card", "decision"],
+                    "enum": ["single", "three-card", "decision", "creative", "project"],
                     "default": "three-card",
                 },
                 "reversals": {"type": "boolean", "default": False},
@@ -161,7 +161,7 @@ TOOLS = [
                 },
                 "month": {"type": "integer", "minimum": 1, "maximum": 12},
                 "day": {"type": "integer", "minimum": 1, "maximum": 31},
-                "hour": {"type": "integer", "minimum": 0, "maximum": 23},
+                "hour": {"type": "integer", "minimum": 1, "maximum": 12, "description": "Chinese hour branch index (1-12), not clock hour."},
                 "datetime": {"type": "string", "description": "ISO 8601 datetime for method=time or lunar_time."},
             },
         },

@@ -5,6 +5,14 @@ from jsonschema import Draft202012Validator
 
 from test_scripts import ROOT, assert_script_exists, run_json
 
+try:
+    from ai_divination_skills import bazi
+
+    bazi.load_solar()
+    HAVE_LUNAR = True
+except ImportError:
+    HAVE_LUNAR = False
+
 
 def load_schema(name):
     path = ROOT / "schemas" / name
@@ -43,6 +51,11 @@ class SchemaTests(unittest.TestCase):
         data = run_json(script, "--method", "numbers", "--month", "3", "--day", "12", "--hour", "7")
 
         validate_with_schema(data, "xiaoliuren-cast.schema.json")
+
+    @unittest.skipUnless(HAVE_LUNAR, "lunar-python not installed")
+    def test_bazi_output_matches_schema(self):
+        data = bazi.cast("1990-05-20T14:30:00")
+        validate_with_schema(data, "bazi-cast.schema.json")
 
 
 if __name__ == "__main__":

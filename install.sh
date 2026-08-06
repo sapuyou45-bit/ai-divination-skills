@@ -18,7 +18,7 @@ case "$TARGET_DIR" in
 esac
 
 printf 'Target skills directory: %s\n' "$TARGET_DIR"
-printf 'Skills to install: tarot, iching, xiaoliuren\n'
+printf 'Skills to install: tarot, iching, xiaoliuren, bazi\n'
 
 if [ "$DRY_RUN" = "1" ]; then
   printf 'Dry run only. No files changed.\n'
@@ -35,7 +35,7 @@ git clone --depth 1 "$REPO_URL" "$tmp_dir/repo"
 backup_root="$TARGET_DIR/.ai-divination-backups/$(date +%Y%m%d-%H%M%S)"
 backup_created=0
 
-for skill in tarot iching xiaoliuren; do
+for skill in tarot iching xiaoliuren bazi; do
   if [ -e "$TARGET_DIR/$skill" ]; then
     mkdir -p "$backup_root"
     mv "$TARGET_DIR/$skill" "$backup_root/$skill"
@@ -59,4 +59,4 @@ printf '\nAI Divination Skills installed to:\n%s\n' "$TARGET_DIR"
 if [ "$backup_created" = "1" ]; then
   printf 'Previous skill folders were backed up under:\n%s\n' "$backup_root"
 fi
-printf 'Ask your agent to use tarot, iching, or xiaoliuren when you want a symbolic reading.\n'
+printf 'Ask your agent to use tarot, iching, xiaoliuren, or bazi when you want a symbolic reading.\n'

@@ -195,7 +195,7 @@ def cast(method: str, seed: str | None, manual_lines: str | None) -> dict[str, A
 
     primary_bits = "".join("1" if value in [7, 9] else "0" for value in values)
     resulting_bits = "".join(
-        "0" if value == 9 else "1" if value == 6 else "1" if value == 7 else "0"
+        "0" if value == 9 else "1" if value in (6, 7) else "0"
         for value in values
     )
     changing_lines = [line["line"] for line in lines if line["changing"]]
