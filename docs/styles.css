@@ -306,6 +306,10 @@ pre,
   color: var(--jade);
 }
 
+.bazi-token {
+  color: var(--ochre);
+}
+
 .command-section,
 .install-section {
   background: #eeeeea;
