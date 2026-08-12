@@ -17,32 +17,137 @@
     "cards"
   ],
   "properties": {
-    "system": {"const": "tarot"},
-    "deck": {"enum": ["major", "full"]},
-    "spread": {"enum": ["single", "three-card", "decision", "creative", "project"]},
-    "deck_size": {"type": "integer", "enum": [22, 78]},
-    "draw_count": {"type": "integer", "minimum": 1},
+    "system": {
+      "const": "tarot"
+    },
+    "deck": {
+      "enum": [
+        "major",
+        "full"
+      ]
+    },
+    "spread": {
+      "enum": [
+        "single",
+        "three-card",
+        "decision",
+        "creative",
+        "project"
+      ]
+    },
+    "deck_size": {
+      "type": "integer",
+      "enum": [
+        22,
+        78
+      ]
+    },
+    "draw_count": {
+      "type": "integer",
+      "minimum": 1
+    },
     "drawn_indices": {
       "type": "array",
-      "items": {"type": "integer", "minimum": 0}
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      }
     },
-    "shuffle_algorithm": {"const": "fisher-yates"},
-    "rng_mode": {"enum": ["seeded-demo", "system"]},
-    "randomness": {"enum": ["seeded", "system"]},
-    "reversals_enabled": {"type": "boolean"},
+    "shuffle_algorithm": {
+      "const": "fisher-yates"
+    },
+    "rng_mode": {
+      "enum": [
+        "seeded-demo",
+        "system"
+      ]
+    },
+    "randomness": {
+      "enum": [
+        "seeded",
+        "system"
+      ]
+    },
+    "reversals_enabled": {
+      "type": "boolean"
+    },
     "cards": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["position", "name", "index", "arcana", "suit", "reversed", "orientation"],
+        "required": [
+          "position",
+          "name",
+          "index",
+          "arcana",
+          "suit",
+          "reversed",
+          "orientation",
+          "meanings"
+        ],
         "properties": {
-          "position": {"type": "string"},
-          "name": {"type": "string"},
-          "index": {"type": "integer", "minimum": 0},
-          "arcana": {"enum": ["major", "minor"]},
-          "suit": {"type": "string"},
-          "reversed": {"type": "boolean"},
-          "orientation": {"enum": ["upright", "reversed"]}
+          "position": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "arcana": {
+            "enum": [
+              "major",
+              "minor"
+            ]
+          },
+          "suit": {
+            "type": "string"
+          },
+          "reversed": {
+            "type": "boolean"
+          },
+          "orientation": {
+            "enum": [
+              "upright",
+              "reversed"
+            ]
+          },
+          "meanings": {
+            "type": "object",
+            "required": [
+              "keywords_upright",
+              "reading_cue"
+            ],
+            "properties": {
+              "keywords_upright": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              },
+              "reading_cue": {
+                "type": "string"
+              },
+              "shadow": {
+                "type": "string"
+              },
+              "question": {
+                "type": "string"
+              },
+              "rank_theme": {
+                "type": "string"
+              },
+              "suit_themes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       }
     }

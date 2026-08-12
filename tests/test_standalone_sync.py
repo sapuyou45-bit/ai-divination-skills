@@ -9,6 +9,7 @@ class StandaloneSyncTests(unittest.TestCase):
             ("oraclebone/tarot.py", "skills/tarot/scripts/_standalone_tarot.py"),
             ("oraclebone/iching.py", "skills/iching/scripts/_standalone_iching.py"),
             ("oraclebone/xiaoliuren.py", "skills/xiaoliuren/scripts/_standalone_xiaoliuren.py"),
+            ("oraclebone/bazi.py", "skills/bazi/scripts/_standalone_bazi.py"),
         ]
 
         for package_path, standalone_path in pairs:

@@ -71,6 +71,26 @@ class TarotDrawTests(unittest.TestCase):
         self.assertEqual(len({card["name"] for card in result["cards"]}), 3)
         self.assertTrue(all("reversed" in card for card in result["cards"]))
 
+    def test_draw_attaches_audited_meanings(self):
+        script = assert_script_exists(self, ROOT / "skills" / "tarot" / "scripts" / "draw.py")
+
+        major = run_json(script, "--deck", "major", "--spread", "single", "--seed", "meanings")
+        card = major["cards"][0]
+        meanings = card["meanings"]
+        self.assertIn("keywords_upright", meanings)
+        self.assertGreaterEqual(len(meanings["keywords_upright"]), 1)
+        self.assertIn("shadow", meanings)  # major arcana carry the shadow cue
+        self.assertIn("question", meanings)
+        self.assertIn("reading_cue", meanings)
+
+        full = run_json(script, "--deck", "full", "--spread", "project", "--seed", "meanings-full")
+        for card in full["cards"]:
+            self.assertIn("meanings", card)
+            self.assertGreaterEqual(len(card["meanings"]["keywords_upright"]), 1)
+            if card["arcana"] == "minor":
+                self.assertIn("suit_themes", card["meanings"])
+                self.assertIn("rank_theme", card["meanings"])
+
     def test_decision_spread_has_clear_options(self):
         script = assert_script_exists(self, ROOT / "skills" / "tarot" / "scripts" / "draw.py")
         result = run_json(script, "--spread", "decision", "--seed", "choice")

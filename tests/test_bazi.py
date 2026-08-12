@@ -50,6 +50,30 @@ class BaziCastTests(unittest.TestCase):
             self.assertIn(pillar["branch"]["element"], {"wood", "fire", "earth", "metal", "water"})
             self.assertIn(pillar["stem"]["polarity"], {"yin", "yang"})
 
+    def test_timezone_recorded_in_inputs(self):
+        # 1990-01-20: winter date, outside the 1986-1991 China DST period
+        result = bazi.cast("1990-01-20T14:30:00", timezone="Asia/Shanghai")
+        self.assertEqual(result["inputs"]["timezone"], "Asia/Shanghai")
+        self.assertIsNone(result["inputs"]["true_solar_time"])
+        self.assertIn("+08:00", result["inputs"]["datetime"])
+
+    def test_true_solar_time_correction(self):
+        # Urumqi (87.6E) in Asia/Shanghai (meridian 120E): correction = (87.6-120)*4 = -129.6 min
+        result = bazi.cast("1990-01-20T14:30:00", timezone="Asia/Shanghai", longitude=87.6)
+        tst = result["inputs"]["true_solar_time"]
+        self.assertEqual(tst["longitude_east"], 87.6)
+        self.assertEqual(tst["standard_meridian_east"], 120.0)
+        self.assertAlmostEqual(tst["correction_minutes"], -129.6, places=1)
+        self.assertIn("12:20", result["inputs"]["datetime"])  # 14:30 - 129.6 min = 12:20:24
+
+    def test_longitude_requires_timezone(self):
+        with self.assertRaises(ValueError):
+            bazi.cast("1990-05-20T14:30:00", longitude=87.6)
+
+    def test_unknown_timezone_rejected(self):
+        with self.assertRaises(ValueError):
+            bazi.cast("1990-05-20T14:30:00", timezone="Mars/Olympus")
+
     def test_missing_datetime_raises(self):
         with self.assertRaises(ValueError):
             bazi.cast(None)
