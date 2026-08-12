@@ -1,0 +1,11 @@
+name: oraclebone-codeql-config
+
+# py/clear-text-logging-sensitive-data is disabled intentionally:
+# the CLI/MCP stdout JSON IS the product output (a birth chart the user
+# explicitly requested on their own machine). There is no logging
+# infrastructure; nothing is written to disk or sent anywhere.
+# The query misfires on `print(json.dumps(result))` because birth
+# datetimes match the "private data" heuristic.
+query-filters:
+  - exclude:
+      id: py/clear-text-logging-sensitive-data
