@@ -7,6 +7,18 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [8.0.0] - 2026-08-13
+
+### Changed — Rebrand
+- **The project is now Oraclebone.** The bone cracks; the model reads. New name, same audited-divination discipline.
+- PyPI package renamed to `oraclebone` (`pip install oraclebone`). The old `ai-divination-skills` package is frozen at 0.7.1 with a deprecation notice.
+- Python package renamed: `oraclebone` (was `ai_divination_skills`).
+- CLI renamed: `oraclebone` / `oraclebone-mcp`. The old `ai-divination` / `ai-divination-mcp` entry points still work and print a deprecation warning.
+- MCP server name is now `oraclebone`; MCP Registry listing moves to `io.github.sapuyou45-bit/oraclebone`.
+- Environment variable renamed to `ORACLEBONE_DISABLE_LUNAR_PYTHON` (the old `AI_DIVINATION_DISABLE_LUNAR_PYTHON` is still honored).
+- Version jumps to 8.0.0 — eight is the number of the trigrams; the version is part of the brand.
+
+
 ## [0.7.1] - 2026-08-13
 
 ### Fixed

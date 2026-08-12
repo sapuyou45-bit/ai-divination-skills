@@ -10,7 +10,7 @@ body:
     id: version
     attributes:
       label: Package version
-      description: Output of `pip show ai-divination-skills` or the release tag you used.
+      description: Output of `pip show oraclebone` or the release tag you used.
       placeholder: "0.5.0"
     validations:
       required: true
@@ -51,6 +51,6 @@ body:
       placeholder: |
         - OS: macOS 14.5
         - Python: 3.11.7
-        - Install: pip install ai-divination-skills
+        - Install: pip install oraclebone
     validations:
       required: true

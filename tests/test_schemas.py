@@ -6,7 +6,7 @@ from jsonschema import Draft202012Validator
 from test_scripts import ROOT, assert_script_exists, run_json
 
 try:
-    from ai_divination_skills import bazi
+    from oraclebone import bazi
 
     bazi.load_solar()
     HAVE_LUNAR = True

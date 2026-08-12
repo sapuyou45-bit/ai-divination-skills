@@ -23,13 +23,13 @@ class PackagedInstallTests(unittest.TestCase):
 
     def test_cli_runs_from_package_without_repo_layout(self):
         with tempfile.TemporaryDirectory() as temp_dir:
-            package_root = Path(temp_dir) / "ai_divination_skills"
-            shutil.copytree(ROOT / "ai_divination_skills", package_root)
+            package_root = Path(temp_dir) / "oraclebone"
+            shutil.copytree(ROOT / "oraclebone", package_root)
             completed = subprocess.run(
                 [
                     sys.executable,
                     "-m",
-                    "ai_divination_skills.cli",
+                    "oraclebone.cli",
                     "tarot",
                     "--deck",
                     "major",
@@ -51,9 +51,9 @@ class PackagedInstallTests(unittest.TestCase):
         self.assertEqual(result["rng_mode"], "seeded-demo")
 
     def test_package_exposes_core_api_functions(self):
-        from ai_divination_skills.iching import cast
-        from ai_divination_skills.tarot import draw
-        from ai_divination_skills.xiaoliuren import cast_numbers
+        from oraclebone.iching import cast
+        from oraclebone.tarot import draw
+        from oraclebone.xiaoliuren import cast_numbers
 
         tarot = draw("major", "single", False, "api")
         iching = cast("yarrow", "api", None)
@@ -65,13 +65,13 @@ class PackagedInstallTests(unittest.TestCase):
 
     def test_package_includes_interpretation_templates(self):
         with tempfile.TemporaryDirectory() as temp_dir:
-            package_root = Path(temp_dir) / "ai_divination_skills"
-            shutil.copytree(ROOT / "ai_divination_skills", package_root)
+            package_root = Path(temp_dir) / "oraclebone"
+            shutil.copytree(ROOT / "oraclebone", package_root)
             completed = subprocess.run(
                 [
                     sys.executable,
                     "-m",
-                    "ai_divination_skills.cli",
+                    "oraclebone.cli",
                     "template",
                     "iching",
                 ],

@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.sapuyou45-bit/ai-divination-skills",
-  "title": "AI Divination Skills",
+  "name": "io.github.sapuyou45-bit/oraclebone",
+  "title": "Oraclebone",
   "description": "Audited tarot, I Ching, Xiao Liu Ren, Bazi (Four Pillars). Model never invents results.",
   "repository": {
-    "url": "https://github.com/sapuyou45-bit/ai-divination-skills",
+    "url": "https://github.com/sapuyou45-bit/oraclebone",
     "source": "github"
   },
-  "version": "0.7.1",
+  "version": "8.0.0",
   "packages": [
     {
       "registryType": "pypi",
-      "identifier": "ai-divination-skills",
-      "version": "0.7.1",
+      "identifier": "oraclebone",
+      "version": "8.0.0",
       "transport": {
         "type": "stdio"
       }

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://sapuyou45-bit.github.io/ai-divination-skills/schemas/tarot-draw.schema.json",
+  "$id": "https://sapuyou45-bit.github.io/oraclebone/schemas/tarot-draw.schema.json",
   "title": "Tarot Draw",
   "type": "object",
   "required": [

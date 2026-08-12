@@ -17,7 +17,7 @@ For **non-sensitive** issues (e.g. dependency hardening, packaging mistakes), op
 
 For **sensitive** issues (anything that could harm a user if disclosed before a fix), please **do not** open a public issue. Use GitHub's private vulnerability reporting:
 
-1. Go to https://github.com/sapuyou45-bit/ai-divination-skills/security/advisories/new.
+1. Go to https://github.com/sapuyou45-bit/oraclebone/security/advisories/new.
 2. Describe the impact, the affected version(s), and a minimal reproduction.
 3. The maintainer aims to acknowledge within 7 days and ship a fix or mitigation within 30 days for high-severity reports.
 

@@ -21,17 +21,17 @@ This project ships a release each time a tag matching `v*` is pushed. The releas
    git tag vX.Y.Z
    git push origin vX.Y.Z
    ```
-5. Watch the release workflow at https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml.
+5. Watch the release workflow at https://github.com/sapuyou45-bit/oraclebone/actions/workflows/release.yml.
 
 ## Enabling PyPI publishing
 
 The release workflow has a `pypi-publish` job that runs only when the `PYPI_API_TOKEN` repository secret is set. To enable it once:
 
-1. Generate a PyPI API token scoped to the `ai-divination-skills` project at https://pypi.org/manage/account/token/.
+1. Generate a PyPI API token scoped to the `oraclebone` project at https://pypi.org/manage/account/token/.
    - First-time release: scope it to "Entire account", run the first release, then rotate to a project-scoped token.
 2. Add the token to the repo:
    ```bash
-   gh secret set PYPI_API_TOKEN -R sapuyou45-bit/ai-divination-skills
+   gh secret set PYPI_API_TOKEN -R sapuyou45-bit/oraclebone
    ```
    Paste the `pypi-AgEIcHl…` value when prompted.
 3. Push the next tag (e.g. `v0.5.2`). The `pypi-publish` job will now run after the build job and upload to PyPI.

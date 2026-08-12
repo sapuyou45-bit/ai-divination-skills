@@ -1,11 +1,11 @@
-# Use `ai-divination-skills` in Continue (VS Code / JetBrains)
+# Use `oraclebone` in Continue (VS Code / JetBrains)
 
 [Continue](https://continue.dev/) supports MCP servers via its `~/.continue/config.json` (or `config.yaml`).
 
 ## 1. Install
 
 ```bash
-pip install 'ai-divination-skills[lunar]'
+pip install 'oraclebone[lunar]'
 ```
 
 ## 2. Configure

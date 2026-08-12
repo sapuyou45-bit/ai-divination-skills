@@ -5,13 +5,13 @@
 Paste this into your AI agent:
 
 ```text
-Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md
 ```
 
 中文：
 
 ```text
-请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md
 ```
 
 The agent should read this file, choose the right skill directory, install the three skill folders, and verify the scripts.
@@ -48,14 +48,14 @@ The default installer target is:
 ### One-command install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash
 ```
 
 ### Install to a custom skill directory
 
 ```bash
 export AI_SKILLS_DIR="$HOME/.codex/skills"
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash
 ```
 
 or, from a local checkout:
@@ -69,11 +69,11 @@ AI_SKILLS_DIR="$HOME/.claude/skills" bash install.sh
 Use this when the user does not want `curl | bash`:
 
 ```bash
-git clone https://github.com/sapuyou45-bit/ai-divination-skills.git
+git clone https://github.com/sapuyou45-bit/oraclebone.git
 mkdir -p "$HOME/.claude/skills"
-cp -R ai-divination-skills/skills/tarot "$HOME/.claude/skills/tarot"
-cp -R ai-divination-skills/skills/iching "$HOME/.claude/skills/iching"
-cp -R ai-divination-skills/skills/xiaoliuren "$HOME/.claude/skills/xiaoliuren"
+cp -R oraclebone/skills/tarot "$HOME/.claude/skills/tarot"
+cp -R oraclebone/skills/iching "$HOME/.claude/skills/iching"
+cp -R oraclebone/skills/xiaoliuren "$HOME/.claude/skills/xiaoliuren"
 ```
 
 ### Dry run
@@ -81,7 +81,7 @@ cp -R ai-divination-skills/skills/xiaoliuren "$HOME/.claude/skills/xiaoliuren"
 Preview the target directory and skill list without changing files:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash -s -- --dry-run
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash -s -- --dry-run
 ```
 
 ### Update

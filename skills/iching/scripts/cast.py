@@ -12,7 +12,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 try:
-    from ai_divination_skills.iching import main
+    from oraclebone.iching import main
 except ImportError:
     from _standalone_iching import main
 

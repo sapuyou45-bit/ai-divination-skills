@@ -7,14 +7,14 @@ on:
       - "Dockerfile"
       - ".dockerignore"
       - "pyproject.toml"
-      - "ai_divination_skills/**"
+      - "oraclebone_skills/**"
       - ".github/workflows/docker.yml"
   pull_request:
     paths:
       - "Dockerfile"
       - ".dockerignore"
       - "pyproject.toml"
-      - "ai_divination_skills/**"
+      - "oraclebone_skills/**"
       - ".github/workflows/docker.yml"
 
 permissions:
@@ -46,7 +46,7 @@ jobs:
           RESP=$(printf '%s\n' "$REQ" | docker run -i --rm ai-divination-mcp:ci)
           echo "$RESP"
           echo "$RESP" | grep -q '"serverInfo"' || { echo "MCP initialize response missing serverInfo"; exit 1; }
-          echo "$RESP" | grep -q '"name": "ai-divination-skills"' || { echo "MCP serverInfo.name unexpected"; exit 1; }
+          echo "$RESP" | grep -q '"name": "oraclebone"' || { echo "MCP serverInfo.name unexpected"; exit 1; }
 
       - name: MCP tools/list smoke test
         run: |

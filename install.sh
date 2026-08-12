@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TARGET_DIR="${AI_SKILLS_DIR:-$HOME/.claude/skills}"
-REPO_URL="${AI_DIVINATION_REPO_URL:-https://github.com/sapuyou45-bit/ai-divination-skills.git}"
+REPO_URL="${ORACLEBONE_REPO_URL:-https://github.com/sapuyou45-bit/oraclebone.git}"
 DRY_RUN=0
 
 if [ "${1:-}" = "--dry-run" ]; then

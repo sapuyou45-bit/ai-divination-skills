@@ -27,7 +27,7 @@ body:
     id: file
     attributes:
       label: File or URL
-      placeholder: "e.g. README.zh-CN.md or https://sapuyou45-bit.github.io/ai-divination-skills/"
+      placeholder: "e.g. README.zh-CN.md or https://sapuyou45-bit.github.io/oraclebone/"
     validations:
       required: true
   - type: textarea

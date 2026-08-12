@@ -7,7 +7,7 @@ each a Heavenly Stem (天干) + Earthly Branch (地支) pair, plus Five Elements
 This module is a thin, audited wrapper around the ``lunar-python`` package so
 the AI host never invents a chart. Install with::
 
-    pip install 'ai-divination-skills[lunar]'
+    pip install 'oraclebone[lunar]'
 
 CLI::
 
@@ -64,17 +64,17 @@ SHENGXIAO_EN = {
 
 def load_solar():
     """Import ``lunar_python.Solar`` lazily so the dep stays optional."""
-    if os.environ.get("AI_DIVINATION_DISABLE_LUNAR_PYTHON"):
+    if os.environ.get("ORACLEBONE_DISABLE_LUNAR_PYTHON") or os.environ.get("AI_DIVINATION_DISABLE_LUNAR_PYTHON"):
         raise ImportError(
             "lunar_python is required for bazi. "
-            "Install with: pip install 'ai-divination-skills[lunar]'"
+            "Install with: pip install 'oraclebone[lunar]'"
         )
     try:
         from lunar_python import Solar
     except ImportError as exc:
         raise ImportError(
             "lunar_python is required for bazi. "
-            "Install with: pip install 'ai-divination-skills[lunar]'"
+            "Install with: pip install 'oraclebone[lunar]'"
         ) from exc
     return Solar
 

@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: 💬 Discussion / Reading Showcase
-    url: https://github.com/sapuyou45-bit/ai-divination-skills/discussions
+    url: https://github.com/sapuyou45-bit/oraclebone/discussions
     about: Share readings, ask interpretation questions, or propose new divination systems.
   - name: 🛡️ Private vulnerability report
-    url: https://github.com/sapuyou45-bit/ai-divination-skills/security/advisories/new
+    url: https://github.com/sapuyou45-bit/oraclebone/security/advisories/new
     about: For sensitive security issues — please do not file a public issue.
   - name: 📜 Ethics policy
-    url: https://github.com/sapuyou45-bit/ai-divination-skills/blob/main/ETHICS.md
+    url: https://github.com/sapuyou45-bit/oraclebone/blob/main/ETHICS.md
     about: Read the ethics policy before reporting safety concerns.

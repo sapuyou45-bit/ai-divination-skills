@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://sapuyou45-bit.github.io/ai-divination-skills/schemas/xiaoliuren-cast.schema.json",
+  "$id": "https://sapuyou45-bit.github.io/oraclebone/schemas/xiaoliuren-cast.schema.json",
   "title": "Xiao Liu Ren Cast",
   "type": "object",
   "required": [

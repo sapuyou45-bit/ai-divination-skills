@@ -1,11 +1,11 @@
-# Use `ai-divination-skills` in Claude Desktop
+# Use `oraclebone` in Claude Desktop
 
 Claude Desktop discovers MCP servers via `claude_desktop_config.json`.
 
 ## 1. Install
 
 ```bash
-pip install 'ai-divination-skills[lunar]'
+pip install 'oraclebone[lunar]'
 ```
 
 The `[lunar]` extra is required for the bazi (八字) and Xiao Liu Ren lunar-time tools.
@@ -49,5 +49,5 @@ The model will call the appropriate tool, then read `interpretation_template` an
 ## 5. Troubleshooting
 
 - **"command not found: ai-divination-mcp"** → make sure your Claude Desktop is using a Python env that has the package installed. If you installed with `pipx`, point `command` at the full path printed by `which ai-divination-mcp`.
-- **Bazi or lunar-time fails** → install the optional dep: `pip install 'ai-divination-skills[lunar]'`.
+- **Bazi or lunar-time fails** → install the optional dep: `pip install 'oraclebone[lunar]'`.
 - **No tools show up** → fully quit Claude Desktop (Cmd-Q on macOS) and reopen; the config is read at launch only.

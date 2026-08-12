@@ -72,8 +72,8 @@
     <text y="148" font-family="Georgia, serif" font-size="68" font-weight="700" fill="#F5F3FF">AI interprets.</text>
     <text y="206" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#C7D2FE">Auditable randomness · Method boundaries</text>
     <text y="238" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#C7D2FE">Reusable skills for OpenAI · Claude · Codex</text>
-    <text y="320" font-family="JetBrains Mono, ui-monospace, monospace" font-size="20" fill="#FCD34D">$ pip install ai-divination-skills</text>
+    <text y="320" font-family="JetBrains Mono, ui-monospace, monospace" font-size="20" fill="#FCD34D">$ pip install oraclebone</text>
   </g>
 
-  <text x="80" y="600" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#94A3B8">github.com/sapuyou45-bit/ai-divination-skills · MIT</text>
+  <text x="80" y="600" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#94A3B8">github.com/sapuyou45-bit/oraclebone · MIT</text>
 </svg>

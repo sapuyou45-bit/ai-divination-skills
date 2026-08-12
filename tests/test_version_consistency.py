@@ -13,7 +13,7 @@ def version_from_pyproject():
 
 
 def version_from_init():
-    text = (ROOT / "ai_divination_skills" / "__init__.py").read_text(encoding="utf-8")
+    text = (ROOT / "oraclebone" / "__init__.py").read_text(encoding="utf-8")
     match = re.search(r"__version__\s*=\s*[\"']([^\"']+)[\"']", text)
     return match.group(1) if match else None
 

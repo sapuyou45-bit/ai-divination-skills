@@ -4,7 +4,7 @@ import io
 import json
 import unittest
 
-from ai_divination_skills import mcp_server
+from oraclebone import mcp_server
 
 
 class HandleTests(unittest.TestCase):

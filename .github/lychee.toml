@@ -9,5 +9,5 @@ exclude = [
   # Compare URLs for tags that have not been pushed yet (e.g. [Unreleased] anchor).
   "^https://github\\.com/[^/]+/[^/]+/compare/.*\\.\\.\\.HEAD$",
   # Compare URLs for our own version bumps — the tag is pushed only after this PR merges.
-  "^https://github\\.com/sapuyou45-bit/ai-divination-skills/compare/v[0-9]+\\.[0-9]+\\.[0-9]+\\.\\.\\.v[0-9]+\\.[0-9]+\\.[0-9]+$",
+  "^https://github\\.com/sapuyou45-bit/oraclebone/compare/v[0-9]+\\.[0-9]+\\.[0-9]+\\.\\.\\.v[0-9]+\\.[0-9]+\\.[0-9]+$",
 ]

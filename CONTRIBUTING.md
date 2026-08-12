@@ -35,8 +35,8 @@ The skill should explain:
 ## Local development
 
 ```bash
-git clone https://github.com/sapuyou45-bit/ai-divination-skills.git
-cd ai-divination-skills
+git clone https://github.com/sapuyou45-bit/oraclebone.git
+cd oraclebone
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 python3 -m unittest discover -s tests

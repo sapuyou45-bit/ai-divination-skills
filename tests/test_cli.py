@@ -8,7 +8,7 @@ from test_scripts import ROOT
 
 def run_cli(*args, check=True):
     return subprocess.run(
-        [sys.executable, "-m", "ai_divination_skills.cli", *args],
+        [sys.executable, "-m", "oraclebone.cli", *args],
         cwd=ROOT,
         check=check,
         capture_output=True,
