@@ -1,5 +1,9 @@
 # AI Divination Skills
 
+> ⚠️ **This project has been renamed to [Oraclebone](https://github.com/sapuyou45-bit/oraclebone).**
+> The bone cracks. The model reads. Install the new package: `pip install oraclebone`.
+> This package (`ai-divination-skills`) is frozen at 0.7.2 and will receive no further updates.
+
 <!-- mcp-name: io.github.sapuyou45-bit/ai-divination-skills -->
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
