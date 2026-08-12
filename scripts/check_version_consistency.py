@@ -2,7 +2,7 @@
 """Verify all declared version strings match across the repository.
 
 Checks that ``project.version`` in pyproject.toml, ``__version__`` in
-ai_divination_skills/__init__.py, ``version`` in server.json, and the
+oraclebone/__init__.py, ``version`` in server.json, and the
 ``version`` field in every skills/*/agents/gemini.yaml all agree.
 
 Run in CI so a release bump can never drift out of sync again.
@@ -27,10 +27,10 @@ def version_from_pyproject() -> str:
 
 
 def version_from_init() -> str:
-    text = (ROOT / "ai_divination_skills" / "__init__.py").read_text(encoding="utf-8")
+    text = (ROOT / "oraclebone" / "__init__.py").read_text(encoding="utf-8")
     match = re.search(r"__version__\s*=\s*[\"']([^\"']+)[\"']", text)
     if not match:
-        raise SystemExit("ERROR: __version__ not found in ai_divination_skills/__init__.py")
+        raise SystemExit("ERROR: __version__ not found in oraclebone/__init__.py")
     return match.group(1)
 
 
@@ -53,7 +53,7 @@ def version_from_gemini_yamls() -> dict[str, str]:
 def main() -> int:
     sources: dict[str, str] = {
         "pyproject.toml": version_from_pyproject(),
-        "ai_divination_skills/__init__.py": version_from_init(),
+        "oraclebone/__init__.py": version_from_init(),
         "server.json": version_from_server_json(),
     }
     sources.update(version_from_gemini_yamls())

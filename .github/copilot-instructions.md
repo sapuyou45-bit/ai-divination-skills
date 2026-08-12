@@ -4,7 +4,7 @@ Read `AGENTS.md` first, then this file.
 
 ## Project shape
 
-- Python package `ai_divination_skills` exposes the CLI `ai-divination`.
+- Python package `oraclebone` exposes the CLI `oraclebone`.
 - Per-skill skill folders live under `skills/<skill>/` and each ships:
   - `SKILL.md` (trigger description + workflow)
   - `agents/openai.yaml`, `agents/claude.yaml`, `agents/gemini.yaml`, `agents/cursor.mdc`

@@ -1,11 +1,11 @@
-"""Unified CLI for ai-divination-skills."""
+"""Unified CLI for oraclebone."""
 
 from __future__ import annotations
 
 import sys
 from importlib import resources
 
-from ai_divination_skills import bazi, iching, tarot, xiaoliuren
+from oraclebone import bazi, iching, tarot, xiaoliuren
 
 
 COMMANDS = {
@@ -20,32 +20,32 @@ TEMPLATE_NAMES = {"shared", "tarot", "iching", "xiaoliuren", "bazi"}
 
 def print_usage() -> None:
     print(
-        """ai-divination
+        """oraclebone — the bone cracks, the model reads
 
 Usage:
-  ai-divination tarot [draw options]
-  ai-divination iching [cast options]
-  ai-divination xiaoliuren [cast options]
-  ai-divination bazi --datetime <ISO 8601>
-  ai-divination template [shared|tarot|iching|xiaoliuren|bazi]
+  oraclebone tarot [draw options]
+  oraclebone iching [cast options]
+  oraclebone xiaoliuren [cast options]
+  oraclebone bazi --datetime <ISO 8601>
+  oraclebone template [shared|tarot|iching|xiaoliuren|bazi]
 
 Examples:
-  ai-divination tarot --deck major --spread three-card
-  ai-divination iching --method yarrow
-  ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
-  ai-divination bazi --datetime 1990-05-20T14:30:00
-  ai-divination template bazi
+  oraclebone tarot --deck major --spread three-card
+  oraclebone iching --method yarrow
+  oraclebone xiaoliuren --method numbers --month 3 --day 12 --hour 7
+  oraclebone bazi --datetime 1990-05-20T14:30:00
+  oraclebone template bazi
 """
     )
 
 
 def template_text(name: str) -> str:
-    return resources.files("ai_divination_skills.templates").joinpath(f"{name}.md").read_text(encoding="utf-8")
+    return resources.files("oraclebone.templates").joinpath(f"{name}.md").read_text(encoding="utf-8")
 
 
 def print_template(args: list[str]) -> int:
     if len(args) != 1 or args[0] not in TEMPLATE_NAMES:
-        print("Usage: ai-divination template [shared|tarot|iching|xiaoliuren|bazi]", file=sys.stderr)
+        print("Usage: oraclebone template [shared|tarot|iching|xiaoliuren|bazi]", file=sys.stderr)
         return 2
 
     template_name = args[0]
@@ -79,6 +79,15 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Unknown command: {command}", file=sys.stderr)
     print_usage()
     return 2
+
+
+def main_legacy(argv: list[str] | None = None) -> int:
+    print(
+        "Warning: 'ai-divination' is deprecated. The project is now Oraclebone — "
+        "use the 'oraclebone' command (package: pip install oraclebone).",
+        file=sys.stderr,
+    )
+    return main(argv)
 
 
 if __name__ == "__main__":

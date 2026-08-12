@@ -17,8 +17,8 @@ class PackagedSchemaSyncTests(unittest.TestCase):
             with self.subTest(schema=name):
                 self.assertEqual(
                     (ROOT / "schemas" / name).read_text(encoding="utf-8"),
-                    (ROOT / "ai_divination_skills" / "schemas" / name).read_text(encoding="utf-8"),
-                    f"ai_divination_skills/schemas/{name} must stay in sync with schemas/{name}",
+                    (ROOT / "oraclebone" / "schemas" / name).read_text(encoding="utf-8"),
+                    f"oraclebone/schemas/{name} must stay in sync with schemas/{name}",
                 )
 
 

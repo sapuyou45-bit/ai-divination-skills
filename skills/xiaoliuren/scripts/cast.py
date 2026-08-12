@@ -12,7 +12,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 try:
-    from ai_divination_skills.xiaoliuren import main
+    from oraclebone.xiaoliuren import main
 except ImportError:
     from _standalone_xiaoliuren import main
 

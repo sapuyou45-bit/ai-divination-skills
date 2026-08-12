@@ -6,9 +6,9 @@ from test_scripts import ROOT
 class StandaloneSyncTests(unittest.TestCase):
     def test_standalone_fallbacks_match_package_modules(self):
         pairs = [
-            ("ai_divination_skills/tarot.py", "skills/tarot/scripts/_standalone_tarot.py"),
-            ("ai_divination_skills/iching.py", "skills/iching/scripts/_standalone_iching.py"),
-            ("ai_divination_skills/xiaoliuren.py", "skills/xiaoliuren/scripts/_standalone_xiaoliuren.py"),
+            ("oraclebone/tarot.py", "skills/tarot/scripts/_standalone_tarot.py"),
+            ("oraclebone/iching.py", "skills/iching/scripts/_standalone_iching.py"),
+            ("oraclebone/xiaoliuren.py", "skills/xiaoliuren/scripts/_standalone_xiaoliuren.py"),
         ]
 
         for package_path, standalone_path in pairs:

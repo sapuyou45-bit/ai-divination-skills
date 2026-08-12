@@ -3,7 +3,7 @@ import subprocess
 import sys
 import unittest
 
-from ai_divination_skills import bazi
+from oraclebone import bazi
 
 
 try:
@@ -65,7 +65,7 @@ class BaziCastTests(unittest.TestCase):
 class BaziCliTests(unittest.TestCase):
     def test_cli_subcommand(self):
         completed = subprocess.run(
-            [sys.executable, "-m", "ai_divination_skills.cli", "bazi",
+            [sys.executable, "-m", "oraclebone.cli", "bazi",
              "--datetime", "1990-05-20T14:30:00"],
             check=True, capture_output=True, text=True,
         )
@@ -74,14 +74,14 @@ class BaziCliTests(unittest.TestCase):
 
     def test_cli_missing_datetime_exits_nonzero(self):
         completed = subprocess.run(
-            [sys.executable, "-m", "ai_divination_skills.cli", "bazi"],
+            [sys.executable, "-m", "oraclebone.cli", "bazi"],
             capture_output=True, text=True,
         )
         self.assertNotEqual(completed.returncode, 0)
 
     def test_template_bazi_is_available(self):
         completed = subprocess.run(
-            [sys.executable, "-m", "ai_divination_skills.cli", "template", "bazi"],
+            [sys.executable, "-m", "oraclebone.cli", "template", "bazi"],
             check=True, capture_output=True, text=True,
         )
         self.assertIn("Bazi", completed.stdout)
@@ -91,12 +91,12 @@ class BaziCliTests(unittest.TestCase):
 @unittest.skipUnless(HAVE_LUNAR, "lunar-python not installed")
 class BaziMcpTests(unittest.TestCase):
     def test_mcp_tool_registered(self):
-        from ai_divination_skills import mcp_server
+        from oraclebone import mcp_server
         names = [t["name"] for t in mcp_server.TOOLS]
         self.assertIn("bazi_cast", names)
 
     def test_mcp_call_returns_chart(self):
-        from ai_divination_skills import mcp_server
+        from oraclebone import mcp_server
         resp = mcp_server.handle({
             "jsonrpc": "2.0", "id": 1, "method": "tools/call",
             "params": {"name": "bazi.cast",

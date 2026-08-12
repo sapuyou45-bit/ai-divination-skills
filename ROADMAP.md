@@ -5,10 +5,10 @@ Live, opinion-driven list of where this project is going next. Each item is trac
 ## Done recently
 
 - [x] Community templates, dependabot, release workflow, social preview (v0.5.1)
-- [x] Multi-agent adapters: `claude.yaml`, `gemini.yaml`, `cursor.mdc` (v0.5.2 — issue [#12](https://github.com/sapuyou45-bit/ai-divination-skills/issues/12))
-- [x] **MCP server** wrapping the skills (v0.6.0, closed issue [#13](https://github.com/sapuyou45-bit/ai-divination-skills/issues/13))
+- [x] Multi-agent adapters: `claude.yaml`, `gemini.yaml`, `cursor.mdc` (v0.5.2 — issue [#12](https://github.com/sapuyou45-bit/oraclebone/issues/12))
+- [x] **MCP server** wrapping the skills (v0.6.0, closed issue [#13](https://github.com/sapuyou45-bit/oraclebone/issues/13))
 - [x] MCP Registry publish (`server.json` + `mcp-name` token, v0.6.2)
-- [x] **Bazi (四柱八字)** skill + per-client config docs (v0.7.0 — issue [#11](https://github.com/sapuyou45-bit/ai-divination-skills/issues/11))
+- [x] **Bazi (四柱八字)** skill + per-client config docs (v0.7.0 — issue [#11](https://github.com/sapuyou45-bit/oraclebone/issues/11))
 - [x] Xiao Liu Ren traditional-count fix + MCP 2025-06-18 upgrade (spec-compliant tool names, `outputSchema` / `structuredContent`) (v0.7.1)
 
 ## Now (v0.8 — data layer)
@@ -42,4 +42,4 @@ Live, opinion-driven list of where this project is going next. Each item is trac
 
 - Comment on an open issue with a use case or a methodology source.
 - Open a new issue with the "🔮 New Divination Skill Proposal" template.
-- Open a discussion in the [Ideas](https://github.com/sapuyou45-bit/ai-divination-skills/discussions/categories/ideas) category.
+- Open a discussion in the [Ideas](https://github.com/sapuyou45-bit/oraclebone/discussions/categories/ideas) category.

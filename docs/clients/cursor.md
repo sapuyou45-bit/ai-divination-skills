@@ -1,11 +1,11 @@
-# Use `ai-divination-skills` in Cursor
+# Use `oraclebone` in Cursor
 
 Cursor supports MCP servers from its Settings → Features → MCP panel, or directly via `~/.cursor/mcp.json`.
 
 ## 1. Install
 
 ```bash
-pip install 'ai-divination-skills[lunar]'
+pip install 'oraclebone[lunar]'
 ```
 
 ## 2. Configure

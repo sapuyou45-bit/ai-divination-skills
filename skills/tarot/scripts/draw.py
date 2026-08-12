@@ -12,7 +12,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 try:
-    from ai_divination_skills.tarot import main
+    from oraclebone.tarot import main
 except ImportError:
     from _standalone_tarot import main
 

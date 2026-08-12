@@ -1,11 +1,11 @@
-# Use `ai-divination-skills` in Codex (OpenAI Codex CLI)
+# Use `oraclebone` in Codex (OpenAI Codex CLI)
 
 The Codex CLI supports MCP servers via its config file.
 
 ## 1. Install
 
 ```bash
-pip install 'ai-divination-skills[lunar]'
+pip install 'oraclebone[lunar]'
 ```
 
 ## 2. Configure
@@ -38,5 +38,5 @@ The agent will run the audited tool, then call `interpretation_template` to fetc
 ## 5. Troubleshooting
 
 - **`command not found`** → check `which ai-divination-mcp` and use the absolute path in `command`.
-- **Lunar tools fail** → install with `pip install 'ai-divination-skills[lunar]'`.
+- **Lunar tools fail** → install with `pip install 'oraclebone[lunar]'`.
 - **Tools missing after edit** → restart the codex session.

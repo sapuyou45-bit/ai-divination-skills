@@ -12,7 +12,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 try:
-    from ai_divination_skills.bazi import main
+    from oraclebone.bazi import main
 except ImportError:
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from _standalone_bazi import main

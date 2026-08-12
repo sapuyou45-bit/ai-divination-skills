@@ -1,4 +1,4 @@
-"""Model Context Protocol server exposing the ai-divination-skills toolkit.
+"""Model Context Protocol server exposing the oraclebone toolkit.
 
 Implements MCP 2025-06-18 (initialize, tools/list, tools/call) over JSON-RPC 2.0
 on stdio with no third-party dependencies. Older protocol revisions
@@ -29,13 +29,13 @@ import sys
 from importlib import resources
 from typing import Any, Callable, Dict
 
-from ai_divination_skills import __version__, bazi, iching, tarot, xiaoliuren
-from ai_divination_skills.cli import template_text, TEMPLATE_NAMES
+from oraclebone import __version__, bazi, iching, tarot, xiaoliuren
+from oraclebone.cli import template_text, TEMPLATE_NAMES
 
 
 PROTOCOL_VERSION = "2025-06-18"
 SUPPORTED_PROTOCOL_VERSIONS = ("2024-11-05", "2025-03-26", "2025-06-18")
-SERVER_NAME = "ai-divination-skills"
+SERVER_NAME = "oraclebone"
 
 # Spec-compliant tool names (^[a-zA-Z0-9_-]{1,64}$). The original dotted names
 # keep working as deprecated aliases so existing client configs do not break.
@@ -48,7 +48,7 @@ LEGACY_TOOL_ALIASES = {
 
 
 def _load_output_schema(name: str) -> Dict[str, Any]:
-    schema_path = resources.files("ai_divination_skills.schemas").joinpath(f"{name}.schema.json")
+    schema_path = resources.files("oraclebone.schemas").joinpath(f"{name}.schema.json")
     return json.loads(schema_path.read_text(encoding="utf-8"))
 
 
@@ -337,6 +337,16 @@ def serve(stdin=None, stdout=None) -> int:
 
 
 def main(argv=None) -> int:
+    return serve()
+
+
+def main_legacy(argv=None) -> int:
+    import sys as _sys
+    print(
+        "Warning: 'ai-divination-mcp' is deprecated. The project is now Oraclebone — "
+        "use the 'oraclebone-mcp' command (package: pip install oraclebone).",
+        file=_sys.stderr,
+    )
     return serve()
 
 

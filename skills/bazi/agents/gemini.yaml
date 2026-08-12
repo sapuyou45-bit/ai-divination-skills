@@ -3,7 +3,7 @@
 # can invoke the audited CLI instead of inventing a chart.
 
 name: ai-divination-bazi
-version: "0.7.1"
+version: "8.0.0"
 display_name: "Bazi (Four Pillars)"
 description: "Cast a bazi (八字 / 四柱) chart from a Gregorian birth datetime. The model never generates the chart — it calls the CLI and interprets the JSON."
 

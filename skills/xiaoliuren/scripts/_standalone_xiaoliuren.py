@@ -95,7 +95,7 @@ def cast_time(raw_datetime: str | None) -> dict[str, Any]:
 
 
 def load_lunar_solar():
-    if os.environ.get("AI_DIVINATION_DISABLE_LUNAR_PYTHON"):
+    if os.environ.get("ORACLEBONE_DISABLE_LUNAR_PYTHON") or os.environ.get("AI_DIVINATION_DISABLE_LUNAR_PYTHON"):
         raise ImportError("lunar_python is required for --method lunar-time. Install with: pip install '.[lunar]'")
     try:
         from lunar_python import Solar

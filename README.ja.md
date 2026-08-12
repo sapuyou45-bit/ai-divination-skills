@@ -1,28 +1,32 @@
-# AI Divination Skills
+# Oraclebone（甲骨）
 
-<!-- mcp-name: io.github.sapuyou45-bit/ai-divination-skills -->
+> **骨は裂ける。モデルは読む。**
+>
+> 三千年前、殷の王は占卜を骨に刻んだ——人類最初の「監査可能な神託記録」。Oraclebone は同じ規律を AI エージェントにもたらす：監査済みスクリプトが結果を生成し、モデルは与えられた結果を解釈するだけで、決して捏造しない。
+
+<!-- mcp-name: io.github.sapuyou45-bit/oraclebone -->
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
 
 <p align="center">
-  <a href="https://pypi.org/project/ai-divination-skills/">
-    <img src="docs/assets/demo.svg" alt="ai-divination-skills demo: pip install, tarot draw, I Ching cast, MCP server stdio" width="100%">
+  <a href="https://pypi.org/project/oraclebone/">
+    <img src="docs/assets/demo.svg" alt="oraclebone demo: pip install, tarot draw, I Ching cast, MCP server stdio" width="100%">
   </a>
 </p>
 
-[![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
-[![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
-[![PyPI](https://img.shields.io/pypi/v/ai-divination-skills?color=blue)](https://pypi.org/project/ai-divination-skills/)
-[![PyPI Downloads](https://img.shields.io/pypi/dm/ai-divination-skills)](https://pypi.org/project/ai-divination-skills/)
-[![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/ai-divination-skills?sort=semver)](https://github.com/sapuyou45-bit/ai-divination-skills/releases)
+[![tests](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml)
+[![release](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/release.yml)
+[![PyPI](https://img.shields.io/pypi/v/oraclebone?color=blue)](https://pypi.org/project/oraclebone/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/oraclebone)](https://pypi.org/project/oraclebone/)
+[![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/oraclebone?sort=semver)](https://github.com/sapuyou45-bit/oraclebone/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
-[![GitHub Discussions](https://img.shields.io/github/discussions/sapuyou45-bit/ai-divination-skills)](https://github.com/sapuyou45-bit/ai-divination-skills/discussions)
+[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml)
+[![GitHub Discussions](https://img.shields.io/github/discussions/sapuyou45-bit/oraclebone)](https://github.com/sapuyou45-bit/oraclebone/discussions)
 
 ✨ AI agent のためのオープンソース占術 skill 集です。乱数、カードドロー、起卦はツールが行い、AI は具体的な結果だけを解釈します。
 
-`ai-divination-skills` は、タロット、易経、小六壬、そして今後追加される象徴体系のための実用的な skill コレクションです。agent ワークフロー向けに、監査可能なランダム性、明確な方法境界、再利用できる解釈テンプレートを重視しています。
+`oraclebone` は、タロット、易経、小六壬、そして今後追加される象徴体系のための実用的な skill コレクションです。agent ワークフロー向けに、監査可能なランダム性、明確な方法境界、再利用できる解釈テンプレートを重視しています。
 
 このプロジェクトは占術を、決定論的な予言ではなく、象徴的推論と内省の道具として扱います。
 
@@ -31,13 +35,13 @@
 これを AI agent に貼り付けてください。
 
 ```text
-Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md
 ```
 
 Claude 形式のローカル skills ディレクトリへ直接インストールすることもできます。
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash
 ```
 
 デフォルトのインストール先は `~/.claude/skills` です。別の agent skill ディレクトリを使う場合は `AI_SKILLS_DIR` を設定してください。
@@ -67,7 +71,7 @@ curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/
 
 GitHub Pages のルートページは、デフォルトで簡体中文を表示します。English や 日本語に切り替える場合は、ページ上部の言語スイッチャーを使います。
 
-[公開ページを開く](https://sapuyou45-bit.github.io/ai-divination-skills/)
+[公開ページを開く](https://sapuyou45-bit.github.io/oraclebone/)
 
 ローカルプレビュー：
 
@@ -78,7 +82,7 @@ python3 -m http.server 8000 -d docs
 公開ページ：
 
 ```text
-https://sapuyou45-bit.github.io/ai-divination-skills/
+https://sapuyou45-bit.github.io/oraclebone/
 ```
 
 ## 🧩 含まれる Skills
@@ -95,7 +99,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 PyPI からインストール：
 
 ```bash
-pip install ai-divination-skills
+pip install oraclebone
 ```
 
 またはローカル checkout から：
@@ -127,9 +131,9 @@ ai-divination template tarot
 Python API から直接使うこともできます。
 
 ```python
-from ai_divination_skills.tarot import draw
-from ai_divination_skills.iching import cast
-from ai_divination_skills.xiaoliuren import cast_numbers
+from oraclebone.tarot import draw
+from oraclebone.iching import cast
+from oraclebone.xiaoliuren import cast_numbers
 ```
 
 従来どおり、下層のスクリプトを直接実行することもできます。
@@ -155,13 +159,13 @@ python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 AI agent にリモートのインストール手順を読ませて setup できます。
 
 ```text
-Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md
 ```
 
 shell から直接インストールすることもできます。
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash
 ```
 
 インストーラーはデフォルトで `tarot`、`iching`、`xiaoliuren` を `~/.claude/skills` にコピーします。他の agent skill ディレクトリを使う場合は `AI_SKILLS_DIR` を設定してください。
@@ -215,7 +219,7 @@ skills/name/
 
 ## 🧠 Claude Desktop / Codex など MCP ホストから使う
 
-`ai-divination-skills` には **MCP サーバー**（`ai-divination-mcp`）が同梱されています。
+`oraclebone` には **MCP サーバー**（`ai-divination-mcp`）が同梱されています。
 [Model Context Protocol](https://modelcontextprotocol.io/) 対応ホスト（Claude Desktop、Codex、
 Continue、Cursor など）は 1 行の設定でマウントでき、モデルは 5 つのツール
 `tarot_draw`、`iching_cast`、`xiaoliuren_cast`、`bazi_cast`、`interpretation_template` を使えます。
@@ -225,7 +229,7 @@ Continue、Cursor など）は 1 行の設定でマウントでき、モデル�
 ### Claude Desktop での設定
 
 ```bash
-pip install ai-divination-skills
+pip install oraclebone
 ```
 
 その後 `~/Library/Application Support/Claude/claude_desktop_config.json`（macOS）または

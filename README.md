@@ -1,28 +1,32 @@
-# AI Divination Skills
+# Oraclebone
 
-<!-- mcp-name: io.github.sapuyou45-bit/ai-divination-skills -->
+> **The bone cracks. The model reads.**
+>
+> Three thousand years ago, Shang kings carved their divinations into bone — the first auditable record of an oracle at work. Oraclebone brings the same discipline to AI agents: audited scripts produce the draw, the hexagram, the pillars; the model only interprets what it is given. It never invents the result.
+
+<!-- mcp-name: io.github.sapuyou45-bit/oraclebone -->
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
 
 <p align="center">
-  <a href="https://pypi.org/project/ai-divination-skills/">
-    <img src="docs/assets/demo.svg" alt="ai-divination-skills demo: pip install, tarot draw, I Ching cast, MCP server stdio" width="100%">
+  <a href="https://pypi.org/project/oraclebone/">
+    <img src="docs/assets/demo.svg" alt="oraclebone demo: pip install, tarot draw, I Ching cast, MCP server stdio" width="100%">
   </a>
 </p>
 
-[![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
-[![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
-[![PyPI](https://img.shields.io/pypi/v/ai-divination-skills?color=blue)](https://pypi.org/project/ai-divination-skills/)
-[![PyPI Downloads](https://img.shields.io/pypi/dm/ai-divination-skills)](https://pypi.org/project/ai-divination-skills/)
-[![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/ai-divination-skills?sort=semver)](https://github.com/sapuyou45-bit/ai-divination-skills/releases)
+[![tests](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml)
+[![release](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/release.yml)
+[![PyPI](https://img.shields.io/pypi/v/oraclebone?color=blue)](https://pypi.org/project/oraclebone/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/oraclebone)](https://pypi.org/project/oraclebone/)
+[![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/oraclebone?sort=semver)](https://github.com/sapuyou45-bit/oraclebone/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
-[![GitHub Discussions](https://img.shields.io/github/discussions/sapuyou45-bit/ai-divination-skills)](https://github.com/sapuyou45-bit/ai-divination-skills/discussions)
+[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml)
+[![GitHub Discussions](https://img.shields.io/github/discussions/sapuyou45-bit/oraclebone)](https://github.com/sapuyou45-bit/oraclebone/discussions)
 
-✨ Open-source divination skills for AI agents where the tool performs the draw or cast, and **AI interprets** the concrete result.
+🔮 Open-source divination toolkit for AI agents, formerly known as **ai-divination-skills** (renamed in v8.0.0 — the old PyPI package is frozen; install `oraclebone` instead).
 
-`ai-divination-skills` is a practical skill collection for tarot, I Ching, Xiao Liu Ren, and future symbolic systems. It is built for agent workflows that need auditable randomness, clear method boundaries, and reusable interpretation templates.
+`oraclebone` is a practical skill collection for tarot, I Ching, Xiao Liu Ren, and future symbolic systems. It is built for agent workflows that need auditable randomness, clear method boundaries, and reusable interpretation templates.
 
 This project treats divination as symbolic reasoning and reflection, not deterministic prediction.
 
@@ -31,13 +35,13 @@ This project treats divination as symbolic reasoning and reflection, not determi
 Paste this into your AI agent:
 
 ```text
-Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+Install Oraclebone for this agent: https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md
 ```
 
 Or install directly for Claude-style local skills:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash
 ```
 
 The default target is `~/.claude/skills`. Set `AI_SKILLS_DIR` for another agent skill directory.
@@ -67,7 +71,7 @@ This is not scientific proof of divination efficacy. It is a stricter workflow f
 
 The GitHub Pages site now defaults to Simplified Chinese. Use the page header switcher there when you want English or Japanese.
 
-[Open the published site](https://sapuyou45-bit.github.io/ai-divination-skills/)
+[Open the published site](https://sapuyou45-bit.github.io/oraclebone/)
 
 Local preview:
 
@@ -78,7 +82,7 @@ python3 -m http.server 8000 -d docs
 Published site:
 
 ```text
-https://sapuyou45-bit.github.io/ai-divination-skills/
+https://sapuyou45-bit.github.io/oraclebone/
 ```
 
 ## 🧩 Included Skills
@@ -95,7 +99,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 Install from PyPI:
 
 ```bash
-pip install ai-divination-skills
+pip install oraclebone
 ```
 
 Or from a checkout:
@@ -127,9 +131,9 @@ ai-divination template tarot
 Use the Python API directly:
 
 ```python
-from ai_divination_skills.tarot import draw
-from ai_divination_skills.iching import cast
-from ai_divination_skills.xiaoliuren import cast_numbers
+from oraclebone.tarot import draw
+from oraclebone.iching import cast
+from oraclebone.xiaoliuren import cast_numbers
 ```
 
 You can still run the underlying scripts directly:
@@ -155,13 +159,13 @@ All scripts output JSON.
 For AI-agent-guided setup, use the remote install runbook:
 
 ```text
-Install AI Divination Skills for this agent: https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+Install Oraclebone for this agent: https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md
 ```
 
 For direct shell install:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash
 ```
 
 The installer copies `tarot`, `iching`, and `xiaoliuren` into `~/.claude/skills` by default. To target another agent, set `AI_SKILLS_DIR` before running it.
@@ -205,7 +209,7 @@ All four adapters route through the same audited `ai-divination <skill>` CLI, so
 
 ## 🧠 Use it from Claude Desktop / Codex / any MCP host
 
-`ai-divination-skills` ships a built-in **MCP server** (`ai-divination-mcp`). Any
+`oraclebone` ships a built-in **MCP server** (`ai-divination-mcp`). Any
 [Model Context Protocol](https://modelcontextprotocol.io/) host — Claude Desktop, Codex,
 Continue, Cursor — can mount it with a single config line, and the model gets five tools:
 `tarot_draw`, `iching_cast`, `xiaoliuren_cast`, `bazi_cast`, and `interpretation_template`.
@@ -217,7 +221,7 @@ The model never invents the draw; the server runs the audited scripts locally.
 Install the package once:
 
 ```bash
-pip install ai-divination-skills
+pip install oraclebone
 ```
 
 Then edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or
@@ -312,10 +316,10 @@ Current coverage checks:
 
 ## 💬 Community
 
-- Releases: <https://github.com/sapuyou45-bit/ai-divination-skills/releases>
+- Releases: <https://github.com/sapuyou45-bit/oraclebone/releases>
 - Roadmap: [`ROADMAP.md`](./ROADMAP.md)
-- Discussions: <https://github.com/sapuyou45-bit/ai-divination-skills/discussions>
-- Issues: pick a [`good first issue`](https://github.com/sapuyou45-bit/ai-divination-skills/labels/good%20first%20issue) or propose a [`new-skill`](https://github.com/sapuyou45-bit/ai-divination-skills/labels/new-skill)
+- Discussions: <https://github.com/sapuyou45-bit/oraclebone/discussions>
+- Issues: pick a [`good first issue`](https://github.com/sapuyou45-bit/oraclebone/labels/good%20first%20issue) or propose a [`new-skill`](https://github.com/sapuyou45-bit/oraclebone/labels/new-skill)
 - Security: see [`SECURITY.md`](./SECURITY.md) for private vulnerability reporting
 
 ## 🗺️ Roadmap

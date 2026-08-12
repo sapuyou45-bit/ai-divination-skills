@@ -1,28 +1,32 @@
-# AI 占卜 Skills
+# Oraclebone（甲骨）
 
-<!-- mcp-name: io.github.sapuyou45-bit/ai-divination-skills -->
+> **骨自裂，模型读之。**
+>
+> 三千年前，商王将占卜刻于甲骨之上——那是人类最早可审计的神谕档案。Oraclebone 把同样的纪律带给 AI agent：由可审计的脚本起卦、抽牌、排盘，模型只负责解读既定结果，绝不自己编造。
+
+<!-- mcp-name: io.github.sapuyou45-bit/oraclebone -->
 
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
 
 <p align="center">
-  <a href="https://pypi.org/project/ai-divination-skills/">
-    <img src="docs/assets/demo.svg" alt="ai-divination-skills demo: pip install, tarot draw, I Ching cast, MCP server stdio" width="100%">
+  <a href="https://pypi.org/project/oraclebone/">
+    <img src="docs/assets/demo.svg" alt="oraclebone demo: pip install, tarot draw, I Ching cast, MCP server stdio" width="100%">
   </a>
 </p>
 
-[![tests](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
-[![release](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/release.yml)
-[![PyPI](https://img.shields.io/pypi/v/ai-divination-skills?color=blue)](https://pypi.org/project/ai-divination-skills/)
-[![PyPI Downloads](https://img.shields.io/pypi/dm/ai-divination-skills)](https://pypi.org/project/ai-divination-skills/)
-[![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/ai-divination-skills?sort=semver)](https://github.com/sapuyou45-bit/ai-divination-skills/releases)
+[![tests](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml/badge.svg)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml)
+[![release](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/release.yml/badge.svg)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/release.yml)
+[![PyPI](https://img.shields.io/pypi/v/oraclebone?color=blue)](https://pypi.org/project/oraclebone/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/oraclebone)](https://pypi.org/project/oraclebone/)
+[![Latest release](https://img.shields.io/github/v/release/sapuyou45-bit/oraclebone?sort=semver)](https://github.com/sapuyou45-bit/oraclebone/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/ai-divination-skills/actions/workflows/tests.yml)
-[![GitHub Discussions](https://img.shields.io/github/discussions/sapuyou45-bit/ai-divination-skills)](https://github.com/sapuyou45-bit/ai-divination-skills/discussions)
+[![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/sapuyou45-bit/oraclebone/actions/workflows/tests.yml)
+[![GitHub Discussions](https://img.shields.io/github/discussions/sapuyou45-bit/oraclebone)](https://github.com/sapuyou45-bit/oraclebone/discussions)
 
 ✨ 给 AI agent 使用的开源占卜技能集：工具负责随机、抽牌和起课，**AI 只负责解读**具体结果。
 
-`ai-divination-skills` 是一个实用的 skill 集合，覆盖塔罗、易经、小六壬，以及后续更多象征系统。它面向 agent 工作流，强调可审计的随机过程、清晰的方法边界，以及可复用的解读模板。
+`oraclebone` 是一个实用的 skill 集合，覆盖塔罗、易经、小六壬，以及后续更多象征系统。它面向 agent 工作流，强调可审计的随机过程、清晰的方法边界，以及可复用的解读模板。
 
 本项目将占卜视为象征推理与反思工具，而不是确定性预言。
 
@@ -31,13 +35,13 @@
 把这句话发给你的 AI agent：
 
 ```text
-请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md
 ```
 
 也可以直接安装到 Claude 风格的本地 skills 目录：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash
 ```
 
 默认安装到 `~/.claude/skills`。如需安装到其他 agent 的 skill 目录，请设置 `AI_SKILLS_DIR`。
@@ -67,7 +71,7 @@ curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/
 
 GitHub Pages 根页面现在默认显示简体中文；如果要切到 English 或 日本語，直接用页面顶部的语言切换即可。
 
-[打开线上页面](https://sapuyou45-bit.github.io/ai-divination-skills/)
+[打开线上页面](https://sapuyou45-bit.github.io/oraclebone/)
 
 本地预览：
 
@@ -78,7 +82,7 @@ python3 -m http.server 8000 -d docs
 线上页面：
 
 ```text
-https://sapuyou45-bit.github.io/ai-divination-skills/
+https://sapuyou45-bit.github.io/oraclebone/
 ```
 
 ## 🧩 已包含 Skills
@@ -95,7 +99,7 @@ https://sapuyou45-bit.github.io/ai-divination-skills/
 从 PyPI 安装：
 
 ```bash
-pip install ai-divination-skills
+pip install oraclebone
 ```
 
 或者从本地 checkout 安装：
@@ -127,9 +131,9 @@ ai-divination template tarot
 也可以直接用 Python API：
 
 ```python
-from ai_divination_skills.tarot import draw
-from ai_divination_skills.iching import cast
-from ai_divination_skills.xiaoliuren import cast_numbers
+from oraclebone.tarot import draw
+from oraclebone.iching import cast
+from oraclebone.xiaoliuren import cast_numbers
 ```
 
 也可以继续直接运行底层脚本：
@@ -155,13 +159,13 @@ python3 skills/iching/scripts/cast.py --method yarrow --seed demo
 让 AI agent 自己按远程安装说明完成 setup：
 
 ```text
-请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md
+请帮我安装 AI Divination Skills：https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md
 ```
 
 也可以直接用 shell 安装：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/install.sh | bash
 ```
 
 安装脚本默认把 `tarot`、`iching`、`xiaoliuren` 复制到 `~/.claude/skills`。如果要安装到其他 agent 的 skill 目录，请先设置 `AI_SKILLS_DIR`。
@@ -191,7 +195,7 @@ skills/name/
 
 ## 🧠 在 Claude Desktop / Codex 等 MCP 宿主里使用
 
-`ai-divination-skills` 自带 **MCP server**（`ai-divination-mcp`）。任何支持
+`oraclebone` 自带 **MCP server**（`ai-divination-mcp`）。任何支持
 [Model Context Protocol](https://modelcontextprotocol.io/) 的宿主 —— Claude Desktop、Codex、
 Continue、Cursor —— 都能用一行配置挂载它，模型会得到 4 个工具：
 `tarot_draw`、`iching_cast`、`xiaoliuren_cast`、`bazi_cast`、`interpretation_template`。
@@ -201,7 +205,7 @@ Continue、Cursor —— 都能用一行配置挂载它，模型会得到 4 个�
 ### Claude Desktop 配置
 
 ```bash
-pip install ai-divination-skills
+pip install oraclebone
 ```
 
 然后编辑 `~/Library/Application Support/Claude/claude_desktop_config.json`（macOS）或

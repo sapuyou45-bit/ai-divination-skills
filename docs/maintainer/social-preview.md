@@ -2,7 +2,7 @@
 
 GitHub's REST/GraphQL API does not currently accept Open Graph image uploads, so this is a one-time manual step.
 
-1. Go to https://github.com/sapuyou45-bit/ai-divination-skills/settings.
+1. Go to https://github.com/sapuyou45-bit/oraclebone/settings.
 2. Scroll to **Social preview**.
 3. Click **Edit** → **Upload an image…**.
 4. Pick `.github/social-preview-1280x640.png` from this repository.

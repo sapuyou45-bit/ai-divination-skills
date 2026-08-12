@@ -24,7 +24,7 @@ class DocsSiteTests(unittest.TestCase):
         html = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
 
         self.assertIn('<html lang="zh-CN">', html)
-        self.assertIn("<title>AI 占卜 Skills</title>", html)
+        self.assertIn("<title>Oraclebone 甲骨", html)
         self.assertIn("给 AI agent 使用的直接、实用占卜技能集", html)
         self.assertIn('data-lang="zh" aria-pressed="true"', html)
         self.assertIn("直接、可验证的占卜工具", html)
@@ -74,10 +74,10 @@ class DocsSiteTests(unittest.TestCase):
     def test_readme_points_to_published_pages_url(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
 
-        self.assertIn("https://sapuyou45-bit.github.io/ai-divination-skills/", readme)
+        self.assertIn("https://sapuyou45-bit.github.io/oraclebone/", readme)
 
     def test_readmes_point_agents_to_remote_install_runbook(self):
-        install_url = "https://raw.githubusercontent.com/sapuyou45-bit/ai-divination-skills/main/docs/install.md"
+        install_url = "https://raw.githubusercontent.com/sapuyou45-bit/oraclebone/main/docs/install.md"
         for path in [ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "README.ja.md"]:
             readme = path.read_text(encoding="utf-8")
             with self.subTest(path=path.name):
