@@ -27,9 +27,9 @@ jobs:
         run: python3 scripts/check_version_consistency.py
       - name: Verify CLI entry point
         run: |
-          ai-divination tarot --spread three-card --seed demo > /tmp/tarot.json
-          ai-divination iching --method yarrow --seed demo > /tmp/iching.json
-          ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7 > /tmp/xlr.json
+          oraclebone tarot --spread three-card --seed demo > /tmp/tarot.json
+          oraclebone iching --method yarrow --seed demo > /tmp/iching.json
+          oraclebone xiaoliuren --method numbers --month 3 --day 12 --hour 7 > /tmp/xlr.json
           python3 - <<'PY'
           import json, pathlib
           for path in ["/tmp/tarot.json", "/tmp/iching.json", "/tmp/xlr.json"]:
@@ -43,9 +43,9 @@ jobs:
       - name: Smoke test built wheel
         if: matrix.python-version == '3.11'
         run: |
-          python3 -m venv /tmp/ai-divination-smoke
-          /tmp/ai-divination-smoke/bin/python -m pip install dist/*.whl
-          /tmp/ai-divination-smoke/bin/ai-divination tarot --deck major --spread single --seed ci
-          /tmp/ai-divination-smoke/bin/ai-divination iching --method yarrow --seed ci
-          /tmp/ai-divination-smoke/bin/ai-divination xiaoliuren --method numbers --month 3 --day 12 --hour 7
-          /tmp/ai-divination-smoke/bin/ai-divination template tarot
+          python3 -m venv /tmp/oraclebone-smoke
+          /tmp/oraclebone-smoke/bin/python -m pip install dist/*.whl
+          /tmp/oraclebone-smoke/bin/oraclebone tarot --deck major --spread single --seed ci
+          /tmp/oraclebone-smoke/bin/oraclebone iching --method yarrow --seed ci
+          /tmp/oraclebone-smoke/bin/oraclebone xiaoliuren --method numbers --month 3 --day 12 --hour 7
+          /tmp/oraclebone-smoke/bin/oraclebone template tarot

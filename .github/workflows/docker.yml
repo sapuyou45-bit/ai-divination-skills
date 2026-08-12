@@ -35,7 +35,7 @@ jobs:
         with:
           context: .
           load: true
-          tags: ai-divination-mcp:ci
+          tags: oraclebone-mcp:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -43,7 +43,7 @@ jobs:
         run: |
           set -euo pipefail
           REQ='{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}'
-          RESP=$(printf '%s\n' "$REQ" | docker run -i --rm ai-divination-mcp:ci)
+          RESP=$(printf '%s\n' "$REQ" | docker run -i --rm oraclebone-mcp:ci)
           echo "$RESP"
           echo "$RESP" | grep -q '"serverInfo"' || { echo "MCP initialize response missing serverInfo"; exit 1; }
           echo "$RESP" | grep -q '"name": "oraclebone"' || { echo "MCP serverInfo.name unexpected"; exit 1; }
@@ -52,7 +52,7 @@ jobs:
         run: |
           set -euo pipefail
           REQ='{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
-          RESP=$(printf '%s\n' "$REQ" | docker run -i --rm ai-divination-mcp:ci)
+          RESP=$(printf '%s\n' "$REQ" | docker run -i --rm oraclebone-mcp:ci)
           echo "$RESP"
           for tool in tarot_draw iching_cast xiaoliuren_cast interpretation_template; do
             echo "$RESP" | grep -q "\"$tool\"" || { echo "Expected tool $tool not advertised"; exit 1; }

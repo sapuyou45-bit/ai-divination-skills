@@ -33,7 +33,7 @@ body:
       label: Steps to reproduce
       description: Exact command, including `--seed` when applicable.
       placeholder: |
-        1. ai-divination tarot --spread three-card --seed demo
+        1. oraclebone tarot --spread three-card --seed demo
         2. ...
     validations:
       required: true

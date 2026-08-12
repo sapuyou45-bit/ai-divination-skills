@@ -43,7 +43,7 @@ body:
       placeholder: |
         Host: Claude Desktop
         Prompt: "..."
-        ai-divination tarot --spread three-card --seed demo
+        oraclebone tarot --spread three-card --seed demo
         Result: ...
     validations:
       required: true
