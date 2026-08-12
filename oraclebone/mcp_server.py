@@ -104,7 +104,13 @@ def tool_xiaoliuren_cast(args: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def tool_bazi_cast(args: Dict[str, Any]) -> Dict[str, Any]:
-    return _ok(bazi.cast(raw_datetime=args.get("datetime")))
+    return _ok(
+        bazi.cast(
+            raw_datetime=args.get("datetime"),
+            timezone=args.get("timezone"),
+            longitude=args.get("longitude"),
+        )
+    )
 
 
 def tool_interpretation_template(args: Dict[str, Any]) -> Dict[str, Any]:
@@ -204,6 +210,16 @@ TOOLS = [
                 "datetime": {
                     "type": "string",
                     "description": "Gregorian ISO 8601 birth datetime, e.g. 1990-05-20T14:30:00. The hour pillar requires an exact birth time.",
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "IANA timezone name for the birth time, e.g. Asia/Shanghai.",
+                },
+                "longitude": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180,
+                    "description": "Birth longitude in degrees East; enables true-solar-time correction. Requires timezone.",
                 },
             },
             "required": ["datetime"],

@@ -23,7 +23,7 @@ import argparse
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any
 
 
@@ -64,7 +64,7 @@ SHENGXIAO_EN = {
 
 def load_solar():
     """Import ``lunar_python.Solar`` lazily so the dep stays optional."""
-    if os.environ.get("ORACLEBONE_DISABLE_LUNAR_PYTHON"):
+    if os.environ.get("ORACLEBONE_DISABLE_LUNAR_PYTHON") or os.environ.get("AI_DIVINATION_DISABLE_LUNAR_PYTHON"):
         raise ImportError(
             "lunar_python is required for bazi. "
             "Install with: pip install 'oraclebone[lunar]'"
@@ -107,17 +107,54 @@ def _element_tally(pillars: dict[str, dict[str, Any]]) -> dict[str, int]:
     return tally
 
 
-def cast(raw_datetime: str | None) -> dict[str, Any]:
+def cast(
+    raw_datetime: str | None,
+    timezone: str | None = None,
+    longitude: float | None = None,
+) -> dict[str, Any]:
     """Cast a bazi chart from a Gregorian ISO 8601 datetime string.
 
     ``raw_datetime`` must include date and time (e.g. ``1990-05-20T14:30:00``).
     The hour is critical — bazi without an exact birth hour is incomplete.
+
+    ``timezone`` is an IANA name (e.g. ``Asia/Tokyo``) declaring which civil
+    time the input is in. ``longitude`` (degrees East) enables true-solar-time
+    correction: the civil time is shifted by 4 minutes per degree of longitude
+    away from the timezone's standard meridian. The equation of time is not
+    applied; the correction is reported in the output for auditability.
     """
     if not raw_datetime:
         raise ValueError(
             "--datetime is required for bazi (Gregorian ISO 8601, e.g. 1990-05-20T14:30:00)"
         )
     dt = datetime.fromisoformat(raw_datetime)
+
+    tzinfo = None
+    if timezone:
+        from zoneinfo import ZoneInfo
+
+        try:
+            tzinfo = ZoneInfo(timezone)
+        except Exception as exc:
+            raise ValueError(f"Unknown IANA timezone: {timezone}") from exc
+        dt = dt.replace(tzinfo=tzinfo)
+
+    true_solar = None
+    if longitude is not None:
+        if tzinfo is None:
+            raise ValueError("--longitude requires --timezone so the standard meridian is known")
+        if not -180.0 <= longitude <= 180.0:
+            raise ValueError("--longitude must be between -180 and 180 degrees East")
+        offset_hours = dt.utcoffset().total_seconds() / 3600
+        correction_minutes = (longitude - 15 * offset_hours) * 4
+        dt = dt + timedelta(minutes=correction_minutes)
+        true_solar = {
+            "longitude_east": longitude,
+            "standard_meridian_east": 15 * offset_hours,
+            "correction_minutes": round(correction_minutes, 2),
+            "note": "Longitude correction only; the equation of time is not applied.",
+        }
+
     Solar = load_solar()
     solar = Solar.fromYmdHms(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second or 0)
     lunar = solar.getLunar()
@@ -139,7 +176,11 @@ def cast(raw_datetime: str | None) -> dict[str, Any]:
         "system": "bazi",
         "accuracy": "traditional-lunar-calendar",
         "engine": "lunar-python",
-        "inputs": {"datetime": dt.isoformat(timespec="seconds")},
+        "inputs": {
+            "datetime": dt.isoformat(timespec="seconds"),
+            "timezone": timezone,
+            "true_solar_time": true_solar,
+        },
         "lunar_date": {
             "year": int(lunar.getYear()),
             "month": int(lunar.getMonth()),
@@ -171,13 +212,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         required=False,
         help="Gregorian ISO 8601 birth datetime, e.g. 1990-05-20T14:30:00",
     )
+    parser.add_argument(
+        "--timezone",
+        help="IANA timezone name for the birth time, e.g. Asia/Shanghai.",
+    )
+    parser.add_argument(
+        "--longitude",
+        type=float,
+        help="Birth longitude in degrees East; enables true-solar-time correction. Requires --timezone.",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     try:
-        result = cast(args.datetime)
+        result = cast(args.datetime, timezone=args.timezone, longitude=args.longitude)
     except (ImportError, ValueError) as exc:
         print(str(exc), file=sys.stderr)
         return 2
