@@ -23,28 +23,59 @@ class HandleTests(unittest.TestCase):
         names = [t["name"] for t in tools]
         self.assertEqual(
             sorted(names),
-            sorted(["tarot.draw", "iching.cast", "xiaoliuren.cast", "bazi.cast", "interpretation_template"]),
+            sorted(["tarot_draw", "iching_cast", "xiaoliuren_cast", "bazi_cast", "interpretation_template"]),
         )
         for tool in tools:
             self.assertIn("description", tool)
             self.assertIn("inputSchema", tool)
             self.assertNotIn("_call", tool)
+            # MCP tool names must match ^[a-zA-Z0-9_-]{1,64}$
+            self.assertRegex(tool["name"], r"^[a-zA-Z0-9_-]{1,64}$")
+        for tool in tools:
+            if tool["name"] != "interpretation_template":
+                self.assertIn("outputSchema", tool)
+
+    def test_initialize_negotiates_older_protocol_version(self):
+        resp = mcp_server.handle({
+            "jsonrpc": "2.0", "id": 10, "method": "initialize",
+            "params": {"protocolVersion": "2024-11-05"},
+        })
+        self.assertEqual(resp["result"]["protocolVersion"], "2024-11-05")
+
+    def test_initialize_falls_back_to_latest_for_unknown_version(self):
+        resp = mcp_server.handle({
+            "jsonrpc": "2.0", "id": 11, "method": "initialize",
+            "params": {"protocolVersion": "1999-01-01"},
+        })
+        self.assertEqual(resp["result"]["protocolVersion"], mcp_server.PROTOCOL_VERSION)
+
+    def test_legacy_dotted_tool_name_still_works_with_deprecation_meta(self):
+        resp = mcp_server.handle({
+            "jsonrpc": "2.0", "id": 12, "method": "tools/call",
+            "params": {"name": "tarot.draw", "arguments": {"spread": "single", "seed": "demo"}},
+        })
+        result = resp["result"]
+        data = json.loads(result["content"][0]["text"])
+        self.assertEqual(data["system"], "tarot")
+        self.assertTrue(result["_meta"]["deprecated"])
+        self.assertEqual(result["_meta"]["successor"], "tarot_draw")
 
     def test_tarot_draw_via_tools_call(self):
         resp = mcp_server.handle({
             "jsonrpc": "2.0", "id": 3, "method": "tools/call",
-            "params": {"name": "tarot.draw", "arguments": {"spread": "single", "seed": "demo"}},
+            "params": {"name": "tarot_draw", "arguments": {"spread": "single", "seed": "demo"}},
         })
         text = resp["result"]["content"][0]["text"]
         data = json.loads(text)
         self.assertEqual(data["system"], "tarot")
         self.assertEqual(data["spread"], "single")
         self.assertEqual(data["rng_mode"], "seeded-demo")
+        self.assertEqual(resp["result"]["structuredContent"], data)
 
     def test_iching_cast_via_tools_call(self):
         resp = mcp_server.handle({
             "jsonrpc": "2.0", "id": 4, "method": "tools/call",
-            "params": {"name": "iching.cast", "arguments": {"method": "yarrow", "seed": "demo"}},
+            "params": {"name": "iching_cast", "arguments": {"method": "yarrow", "seed": "demo"}},
         })
         data = json.loads(resp["result"]["content"][0]["text"])
         self.assertEqual(data["system"], "iching")
@@ -53,7 +84,7 @@ class HandleTests(unittest.TestCase):
     def test_xiaoliuren_cast_numbers_via_tools_call(self):
         resp = mcp_server.handle({
             "jsonrpc": "2.0", "id": 5, "method": "tools/call",
-            "params": {"name": "xiaoliuren.cast", "arguments": {"method": "numbers", "month": 3, "day": 12, "hour": 7}},
+            "params": {"name": "xiaoliuren_cast", "arguments": {"method": "numbers", "month": 3, "day": 12, "hour": 7}},
         })
         data = json.loads(resp["result"]["content"][0]["text"])
         self.assertEqual(data["system"], "xiaoliuren")
@@ -77,7 +108,7 @@ class HandleTests(unittest.TestCase):
     def test_invalid_tool_args_returned_as_isError(self):
         resp = mcp_server.handle({
             "jsonrpc": "2.0", "id": 8, "method": "tools/call",
-            "params": {"name": "xiaoliuren.cast", "arguments": {"method": "numbers"}},
+            "params": {"name": "xiaoliuren_cast", "arguments": {"method": "numbers"}},
         })
         result = resp["result"]
         self.assertTrue(result.get("isError"))

@@ -7,6 +7,19 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-08-13
+
+### Fixed
+- **Xiao Liu Ren casting formula off-by-one** — the three-step count now follows the traditional method (month from Da An, day from the month palace, hour from the day palace, each step counting its starting palace as one): `((month + day + hour - 3) % 6) + 1`. Previously every cast landed one palace too late (e.g. lunar month 1 / day 1 / hour Zi wrongly returned Liu Lian instead of Da An). Added anchored test cases against known traditional results.
+- MCP `xiaoliuren_cast` input schema: `day` maximum corrected from 31 to 30 to match the validated lunar-day range.
+
+### Changed
+- **MCP tool names are now spec-compliant** (`^[a-zA-Z0-9_-]{1,64}$`): `tarot_draw`, `iching_cast`, `xiaoliuren_cast`, `bazi_cast`. The old dotted names (`tarot.draw`, etc.) keep working as deprecated aliases and return `_meta.deprecated` with the successor name.
+- **MCP protocol upgraded to 2025-06-18** with version negotiation — clients requesting 2024-11-05 or 2025-03-26 are still accepted.
+- Tool results now include `structuredContent`, and all four casting tools declare an `outputSchema` loaded from the canonical JSON Schemas (now also shipped as package data under `ai_divination_skills/schemas/`).
+- Updated client setup docs, READMEs (EN/中文/日本語), and the Docker smoke workflow to the new tool names.
+
+
 ## [0.7.0] - 2026-06-09
 
 ### Added

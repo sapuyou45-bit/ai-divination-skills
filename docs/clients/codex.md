@@ -21,10 +21,10 @@ Restart `codex` (or open a new session).
 
 ## 3. Five tools become available
 
-- `tarot.draw`
-- `iching.cast`
-- `xiaoliuren.cast`
-- `bazi.cast`
+- `tarot_draw`
+- `iching_cast`
+- `xiaoliuren_cast`
+- `bazi_cast`
 - `interpretation_template`
 
 ## 4. Example prompts

@@ -28,10 +28,10 @@ Reload Cursor. The MCP panel should show `divination` with five tools.
 
 | Tool                      | What it does                                                  |
 |---------------------------|---------------------------------------------------------------|
-| `tarot.draw`              | Audited Fisher-Yates tarot draw                               |
-| `iching.cast`             | I Ching cast — coins, yarrow, or manual lines                 |
-| `xiaoliuren.cast`         | Xiao Liu Ren (小六壬) cast                                    |
-| `bazi.cast`               | Bazi / Four Pillars (八字) from a Gregorian birth datetime    |
+| `tarot_draw`              | Audited Fisher-Yates tarot draw                               |
+| `iching_cast`             | I Ching cast — coins, yarrow, or manual lines                 |
+| `xiaoliuren_cast`         | Xiao Liu Ren (小六壬) cast                                    |
+| `bazi_cast`               | Bazi / Four Pillars (八字) from a Gregorian birth datetime    |
 | `interpretation_template` | The hard-rules template the model must follow before reading  |
 
 ## 4. Example chat prompts

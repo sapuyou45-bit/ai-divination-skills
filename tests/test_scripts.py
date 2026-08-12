@@ -140,9 +140,31 @@ class XiaoLiuRenCastTests(unittest.TestCase):
 
         self.assertEqual(result["system"], "xiaoliuren")
         self.assertEqual(result["inputs"], {"month": 3, "day": 12, "hour": 7})
-        self.assertEqual(result["position"]["index"], 3)
-        self.assertEqual(result["position"]["name_en"], "Swift Joy")
+        self.assertEqual(result["position"]["index"], 2)
+        self.assertEqual(result["position"]["name_en"], "Lingering Delay")
         self.assertIn("keywords", result["position"])
+
+    def test_number_cast_matches_traditional_anchored_cases(self):
+        # Traditional three-step count: month from Da An, day from the month
+        # palace, hour from the day palace, each step counting its start as one.
+        script = assert_script_exists(self, ROOT / "skills" / "xiaoliuren" / "scripts" / "cast.py")
+        anchored_cases = [
+            # (month, day, hour, expected_index, expected_name_en)
+            (1, 1, 1, 1, "Great Peace"),      # 正月初一子时 -> 大安
+            (1, 1, 2, 2, "Lingering Delay"),  # 正月初一丑时 -> 留连
+            (2, 1, 1, 2, "Lingering Delay"),  # 二月初一子时 -> 留连
+            (3, 5, 5, 5, "Small Fortune"),    # 三月初五辰时 -> 小吉
+            (6, 15, 12, 1, "Great Peace"),    # 六月十五亥时 -> 大安
+            (12, 30, 12, 4, "Red Mouth"),     # 腊月三十亥时 -> 赤口
+        ]
+        for month, day, hour, index, name_en in anchored_cases:
+            with self.subTest(month=month, day=day, hour=hour):
+                result = run_json(
+                    script, "--method", "numbers",
+                    "--month", str(month), "--day", str(day), "--hour", str(hour),
+                )
+                self.assertEqual(result["position"]["index"], index)
+                self.assertEqual(result["position"]["name_en"], name_en)
 
     def test_time_cast_accepts_explicit_datetime(self):
         script = assert_script_exists(self, ROOT / "skills" / "xiaoliuren" / "scripts" / "cast.py")

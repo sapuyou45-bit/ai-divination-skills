@@ -1,8 +1,10 @@
 """Model Context Protocol server exposing the ai-divination-skills toolkit.
 
-This implements a minimal subset of MCP 2024-11-05 (initialize, tools/list,
-tools/call) over JSON-RPC 2.0 on stdio with no third-party dependencies. It is
-designed to be mounted by Claude Desktop, Codex, Continue, or any other MCP host.
+Implements MCP 2025-06-18 (initialize, tools/list, tools/call) over JSON-RPC 2.0
+on stdio with no third-party dependencies. Older protocol revisions
+(2024-11-05, 2025-03-26) are accepted during initialize for backward
+compatibility. It is designed to be mounted by Claude Desktop, Codex, Continue,
+or any other MCP host.
 
 Run as a CLI:
 
@@ -24,18 +26,37 @@ from __future__ import annotations
 
 import json
 import sys
+from importlib import resources
 from typing import Any, Callable, Dict
 
 from ai_divination_skills import __version__, bazi, iching, tarot, xiaoliuren
 from ai_divination_skills.cli import template_text, TEMPLATE_NAMES
 
 
-PROTOCOL_VERSION = "2024-11-05"
+PROTOCOL_VERSION = "2025-06-18"
+SUPPORTED_PROTOCOL_VERSIONS = ("2024-11-05", "2025-03-26", "2025-06-18")
 SERVER_NAME = "ai-divination-skills"
+
+# Spec-compliant tool names (^[a-zA-Z0-9_-]{1,64}$). The original dotted names
+# keep working as deprecated aliases so existing client configs do not break.
+LEGACY_TOOL_ALIASES = {
+    "tarot.draw": "tarot_draw",
+    "iching.cast": "iching_cast",
+    "xiaoliuren.cast": "xiaoliuren_cast",
+    "bazi.cast": "bazi_cast",
+}
+
+
+def _load_output_schema(name: str) -> Dict[str, Any]:
+    schema_path = resources.files("ai_divination_skills.schemas").joinpath(f"{name}.schema.json")
+    return json.loads(schema_path.read_text(encoding="utf-8"))
 
 
 def _ok(result: Any) -> Dict[str, Any]:
-    return {"content": [{"type": "text", "text": json.dumps(result, ensure_ascii=False, indent=2)}]}
+    return {
+        "content": [{"type": "text", "text": json.dumps(result, ensure_ascii=False, indent=2)}],
+        "structuredContent": result,
+    }
 
 
 def _ok_text(text: str) -> Dict[str, Any]:
@@ -99,7 +120,7 @@ def tool_interpretation_template(args: Dict[str, Any]) -> Dict[str, Any]:
 
 TOOLS = [
     {
-        "name": "tarot.draw",
+        "name": "tarot_draw",
         "description": (
             "Draw tarot cards with audited Fisher-Yates shuffle. "
             "The host MUST NOT invent the draw. Omit `seed` for real readings; "
@@ -123,10 +144,11 @@ TOOLS = [
                 "seed": {"type": "string", "description": "Optional. Test/demo only."},
             },
         },
+        "outputSchema": _load_output_schema("tarot-draw"),
         "_call": tool_tarot_draw,
     },
     {
-        "name": "iching.cast",
+        "name": "iching_cast",
         "description": (
             "Cast an I Ching hexagram. The host MUST NOT invent the cast. "
             "Use method=coins, yarrow, or manual (with manual_lines)."
@@ -142,12 +164,13 @@ TOOLS = [
                 },
             },
         },
+        "outputSchema": _load_output_schema("iching-cast"),
         "_call": tool_iching_cast,
     },
     {
-        "name": "xiaoliuren.cast",
+        "name": "xiaoliuren_cast",
         "description": (
-            "Cast Xiao Liu Ren (\u5c0f\u516d\u58ec). The host MUST NOT invent the cast. "
+            "Cast Xiao Liu Ren (小六壬). The host MUST NOT invent the cast. "
             "method=numbers needs month/day/hour, method=time and method=lunar_time take an ISO datetime "
             "(lunar_time requires the optional lunar-python dependency)."
         ),
@@ -160,17 +183,18 @@ TOOLS = [
                     "default": "numbers",
                 },
                 "month": {"type": "integer", "minimum": 1, "maximum": 12},
-                "day": {"type": "integer", "minimum": 1, "maximum": 31},
+                "day": {"type": "integer", "minimum": 1, "maximum": 30},
                 "hour": {"type": "integer", "minimum": 1, "maximum": 12, "description": "Chinese hour branch index (1-12), not clock hour."},
                 "datetime": {"type": "string", "description": "ISO 8601 datetime for method=time or lunar_time."},
             },
         },
+        "outputSchema": _load_output_schema("xiaoliuren-cast"),
         "_call": tool_xiaoliuren_cast,
     },
     {
-        "name": "bazi.cast",
+        "name": "bazi_cast",
         "description": (
-            "Cast a Bazi (\u516b\u5b57 / Four Pillars) chart from a Gregorian birth datetime. "
+            "Cast a Bazi (八字 / Four Pillars) chart from a Gregorian birth datetime. "
             "The host MUST NOT invent pillars, stems, branches, or wuxing. "
             "Requires the optional lunar-python dependency."
         ),
@@ -184,6 +208,7 @@ TOOLS = [
             },
             "required": ["datetime"],
         },
+        "outputSchema": _load_output_schema("bazi-cast"),
         "_call": tool_bazi_cast,
     },
     {
@@ -207,6 +232,8 @@ TOOLS = [
 TOOL_REGISTRY: Dict[str, Callable[[Dict[str, Any]], Dict[str, Any]]] = {
     t["name"]: t["_call"] for t in TOOLS
 }
+for _legacy_name, _new_name in LEGACY_TOOL_ALIASES.items():
+    TOOL_REGISTRY[_legacy_name] = TOOL_REGISTRY[_new_name]
 
 
 def _tools_public() -> list:
@@ -219,11 +246,13 @@ def handle(request: Dict[str, Any]) -> Dict[str, Any] | None:
     params = request.get("params") or {}
 
     if method == "initialize":
+        requested = params.get("protocolVersion")
+        negotiated = requested if requested in SUPPORTED_PROTOCOL_VERSIONS else PROTOCOL_VERSION
         return {
             "jsonrpc": "2.0",
             "id": req_id,
             "result": {
-                "protocolVersion": PROTOCOL_VERSION,
+                "protocolVersion": negotiated,
                 "capabilities": {"tools": {"listChanged": False}},
                 "serverInfo": {"name": SERVER_NAME, "version": __version__},
                 "instructions": (
@@ -251,6 +280,12 @@ def handle(request: Dict[str, Any]) -> Dict[str, Any] | None:
             }
         try:
             result = TOOL_REGISTRY[name](arguments)
+            if name in LEGACY_TOOL_ALIASES:
+                result["_meta"] = {
+                    "deprecated": True,
+                    "successor": LEGACY_TOOL_ALIASES[name],
+                    "message": f"Tool name '{name}' is deprecated; use '{LEGACY_TOOL_ALIASES[name]}' instead.",
+                }
             return {"jsonrpc": "2.0", "id": req_id, "result": result}
         except Exception as exc:  # noqa: BLE001 - protocol-level error wrap
             return {

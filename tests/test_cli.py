@@ -40,7 +40,7 @@ class UnifiedCliTests(unittest.TestCase):
 
         self.assertEqual(result["system"], "xiaoliuren")
         self.assertEqual(result["method"], "numbers")
-        self.assertEqual(result["position"]["name_en"], "Swift Joy")
+        self.assertEqual(result["position"]["name_en"], "Lingering Delay")
 
     def test_template_command_prints_agent_interpretation_protocol(self):
         completed = run_cli("template", "tarot")

@@ -31,10 +31,10 @@ Reload the Continue window. Five new tools become available to the chat.
 
 ## 3. Tools
 
-- `tarot.draw`
-- `iching.cast`
-- `xiaoliuren.cast`
-- `bazi.cast`
+- `tarot_draw`
+- `iching_cast`
+- `xiaoliuren_cast`
+- `bazi_cast`
 - `interpretation_template`
 
 ## 4. Example prompts

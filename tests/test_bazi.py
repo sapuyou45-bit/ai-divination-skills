@@ -93,7 +93,7 @@ class BaziMcpTests(unittest.TestCase):
     def test_mcp_tool_registered(self):
         from ai_divination_skills import mcp_server
         names = [t["name"] for t in mcp_server.TOOLS]
-        self.assertIn("bazi.cast", names)
+        self.assertIn("bazi_cast", names)
 
     def test_mcp_call_returns_chart(self):
         from ai_divination_skills import mcp_server

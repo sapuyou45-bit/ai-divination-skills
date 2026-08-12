@@ -194,7 +194,7 @@ skills/name/
 `ai-divination-skills` 自带 **MCP server**（`ai-divination-mcp`）。任何支持
 [Model Context Protocol](https://modelcontextprotocol.io/) 的宿主 —— Claude Desktop、Codex、
 Continue、Cursor —— 都能用一行配置挂载它，模型会得到 4 个工具：
-`tarot.draw`、`iching.cast`、`xiaoliuren.cast`、`bazi.cast`、`interpretation_template`。
+`tarot_draw`、`iching_cast`、`xiaoliuren_cast`、`bazi_cast`、`interpretation_template`。
 
 模型永远不会自己编造结果；server 在本地运行经过审计的脚本。
 
