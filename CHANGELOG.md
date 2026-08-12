@@ -7,6 +7,18 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ## [Unreleased]
 
+## [8.1.0] - 2026-08-13
+
+### Added — data layer: the model now interprets data, not memory
+- **Tarot meanings in output** — every drawn card carries a `meanings` object: major arcana get `keywords_upright` + `shadow` (reversed cue) + `question`; minor arcana get composed suit-themes × rank-theme; `reading_cue` honors orientation. Structured from `skills/tarot/references/cards.md`.
+- **I Ching classical texts in output** — primary and resulting hexagrams now include the Zhou Yi judgment and line texts (卦辭/爻辭, public domain, via Chinese Wikisource), plus a `changing_line_texts` convenience array for the moving lines actually read.
+- **Bazi timezone + true solar time** — `--timezone` (IANA, stdlib zoneinfo) and `--longitude` (true-solar-time correction, 4 minutes per degree off the standard meridian; correction reported in output). MCP `bazi_cast` exposes both.
+- Output schemas updated for all three systems (root `schemas/` + packaged copies).
+
+### Notes
+- Data provenance: Zhou Yi classical text is public domain; Wilhelm-Bayes was deliberately avoided (still under copyright).
+
+
 ## [8.0.0] - 2026-08-13
 
 ### Changed — Rebrand

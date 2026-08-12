@@ -14,58 +14,210 @@
     "lines",
     "changing_lines",
     "primary_hexagram",
-    "resulting_hexagram"
+    "resulting_hexagram",
+    "changing_line_texts"
   ],
   "properties": {
-    "system": {"const": "iching"},
-    "method": {"enum": ["coins", "yarrow", "manual"]},
-    "requested_method": {"enum": ["random", "coins", "yarrow", "manual"]},
-    "randomness": {"enum": ["seeded", "system", "manual"]},
-    "line_order": {"const": "bottom-to-top"},
-    "method_details": {"type": "object"},
-    "line_probabilities": {"type": "object"},
+    "system": {
+      "const": "iching"
+    },
+    "method": {
+      "enum": [
+        "coins",
+        "yarrow",
+        "manual"
+      ]
+    },
+    "requested_method": {
+      "enum": [
+        "random",
+        "coins",
+        "yarrow",
+        "manual"
+      ]
+    },
+    "randomness": {
+      "enum": [
+        "seeded",
+        "system",
+        "manual"
+      ]
+    },
+    "line_order": {
+      "const": "bottom-to-top"
+    },
+    "method_details": {
+      "type": "object"
+    },
+    "line_probabilities": {
+      "type": "object"
+    },
     "lines": {
       "type": "array",
       "minItems": 6,
       "maxItems": 6,
       "items": {
         "type": "object",
-        "required": ["line", "value", "type", "polarity", "changing"],
+        "required": [
+          "line",
+          "value",
+          "type",
+          "polarity",
+          "changing"
+        ],
         "properties": {
-          "line": {"type": "integer", "minimum": 1, "maximum": 6},
-          "value": {"enum": [6, 7, 8, 9]},
-          "type": {"enum": ["old yin", "young yang", "young yin", "old yang"]},
-          "polarity": {"enum": ["yin", "yang"]},
-          "changing": {"type": "boolean"},
+          "line": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "value": {
+            "enum": [
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "type": {
+            "enum": [
+              "old yin",
+              "young yang",
+              "young yin",
+              "old yang"
+            ]
+          },
+          "polarity": {
+            "enum": [
+              "yin",
+              "yang"
+            ]
+          },
+          "changing": {
+            "type": "boolean"
+          },
           "coin_tosses": {
             "type": "array",
-            "items": {"enum": ["heads", "tails"]}
+            "items": {
+              "enum": [
+                "heads",
+                "tails"
+              ]
+            }
           },
           "coin_values": {
             "type": "array",
-            "items": {"enum": [2, 3]}
+            "items": {
+              "enum": [
+                2,
+                3
+              ]
+            }
           }
         }
       }
     },
     "changing_lines": {
       "type": "array",
-      "items": {"type": "integer", "minimum": 1, "maximum": 6}
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 6
+      }
     },
-    "primary_hexagram": {"$ref": "#/$defs/hexagram"},
-    "resulting_hexagram": {"$ref": "#/$defs/hexagram"},
-    "warning": {"type": "string"}
+    "primary_hexagram": {
+      "$ref": "#/$defs/hexagram"
+    },
+    "resulting_hexagram": {
+      "$ref": "#/$defs/hexagram"
+    },
+    "warning": {
+      "type": "string"
+    },
+    "changing_line_texts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "line",
+          "label",
+          "text"
+        ],
+        "properties": {
+          "line": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "label": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    }
   },
   "$defs": {
     "hexagram": {
       "type": "object",
-      "required": ["number", "name", "binary", "upper_trigram", "lower_trigram"],
+      "required": [
+        "number",
+        "name",
+        "binary",
+        "upper_trigram",
+        "lower_trigram",
+        "texts"
+      ],
       "properties": {
-        "number": {"type": "integer", "minimum": 1, "maximum": 64},
-        "name": {"type": "string"},
-        "binary": {"type": "string", "pattern": "^[01]{6}$"},
-        "upper_trigram": {"type": "string"},
-        "lower_trigram": {"type": "string"}
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "name": {
+          "type": "string"
+        },
+        "binary": {
+          "type": "string",
+          "pattern": "^[01]{6}$"
+        },
+        "upper_trigram": {
+          "type": "string"
+        },
+        "lower_trigram": {
+          "type": "string"
+        },
+        "texts": {
+          "type": "object",
+          "required": [
+            "judgment",
+            "line_labels",
+            "line_texts",
+            "source"
+          ],
+          "properties": {
+            "judgment": {
+              "type": "string"
+            },
+            "line_labels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "line_texts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "source": {
+              "type": "string"
+            }
+          }
+        }
       }
     }
   }

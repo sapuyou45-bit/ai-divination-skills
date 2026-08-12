@@ -152,6 +152,25 @@ class IChingCastTests(unittest.TestCase):
         self.assertIn("Use --method coins or --method yarrow", result["warning"])
 
 
+class IChingTextTests(unittest.TestCase):
+    def test_cast_includes_classical_texts(self):
+        script = assert_script_exists(self, ROOT / "skills" / "iching" / "scripts" / "cast.py")
+
+        result = run_json(script, "--method", "manual", "--lines", "6,7,8,9,7,8")
+
+        primary = result["primary_hexagram"]
+        self.assertEqual(primary["number"], 47)  # 困 Kun / Oppression
+        texts = primary["texts"]
+        self.assertEqual(texts["judgment"], "亨，貞大人吉，无咎，有言不信。")
+        self.assertEqual(len(texts["line_texts"]), 6)
+        self.assertIn("Wikisource", texts["source"])
+        changing = result["changing_line_texts"]
+        self.assertEqual([c["line"] for c in changing], [1, 4])
+        self.assertEqual(changing[0]["label"], "初六")
+        self.assertIn("臀困于株木", changing[0]["text"])
+        self.assertEqual(result["resulting_hexagram"]["texts"]["judgment"], "亨。苦節不可貞。")
+
+
 class XiaoLiuRenCastTests(unittest.TestCase):
     def test_number_cast_returns_position_and_inputs(self):
         script = assert_script_exists(self, ROOT / "skills" / "xiaoliuren" / "scripts" / "cast.py")
