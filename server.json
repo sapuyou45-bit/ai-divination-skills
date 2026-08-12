@@ -7,12 +7,12 @@
     "url": "https://github.com/sapuyou45-bit/ai-divination-skills",
     "source": "github"
   },
-  "version": "0.7.0",
+  "version": "0.7.1",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "ai-divination-skills",
-      "version": "0.7.0",
+      "version": "0.7.1",
       "transport": {
         "type": "stdio"
       }

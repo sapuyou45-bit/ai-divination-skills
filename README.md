@@ -208,7 +208,7 @@ All four adapters route through the same audited `ai-divination <skill>` CLI, so
 `ai-divination-skills` ships a built-in **MCP server** (`ai-divination-mcp`). Any
 [Model Context Protocol](https://modelcontextprotocol.io/) host — Claude Desktop, Codex,
 Continue, Cursor — can mount it with a single config line, and the model gets five tools:
-`tarot.draw`, `iching.cast`, `xiaoliuren.cast`, `bazi.cast`, and `interpretation_template`.
+`tarot_draw`, `iching_cast`, `xiaoliuren_cast`, `bazi_cast`, and `interpretation_template`.
 
 The model never invents the draw; the server runs the audited scripts locally.
 
@@ -234,7 +234,7 @@ Then edit `~/Library/Application Support/Claude/claude_desktop_config.json` (mac
 ```
 
 Restart Claude Desktop. Ask "draw three tarot cards for my decision" — Claude will call
-`tarot.draw` and interpret the JSON output.
+`tarot_draw` and interpret the JSON output.
 
 ### Codex / Continue / Cursor
 

@@ -40,7 +40,9 @@ Leap lunar months are rejected by default. If a reading falls in a leap month, a
 The script uses:
 
 ```text
-((month + day + hour - 2) % 6) + 1
+((month + day + hour - 3) % 6) + 1
 ```
 
 The result maps to the six positions in `positions.md`.
+
+The count follows the traditional three-step method: the month starts at Da An, the day counts from the month palace, and the hour counts from the day palace — each step counts its starting palace as one. Anchor case: lunar month 1, day 1, hour 1 (Zi) lands on Da An.

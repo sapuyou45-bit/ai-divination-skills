@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sapuyou45-bit.github.io/ai-divination-skills/schemas/bazi-cast.schema.json",
+  "title": "Bazi Cast",
+  "type": "object",
+  "required": [
+    "system",
+    "accuracy",
+    "engine",
+    "inputs",
+    "lunar_date",
+    "shengxiao",
+    "day_master",
+    "pillars",
+    "five_elements_tally",
+    "notes"
+  ],
+  "properties": {
+    "system": {"const": "bazi"},
+    "accuracy": {"const": "traditional-lunar-calendar"},
+    "engine": {"const": "lunar-python"},
+    "inputs": {
+      "type": "object",
+      "required": ["datetime"],
+      "properties": {
+        "datetime": {"type": "string"}
+      }
+    },
+    "lunar_date": {
+      "type": "object",
+      "required": ["year", "month", "day", "label"],
+      "properties": {
+        "year": {"type": "integer"},
+        "month": {"type": "integer", "minimum": 1, "maximum": 12},
+        "day": {"type": "integer", "minimum": 1, "maximum": 30},
+        "label": {"type": "string"}
+      }
+    },
+    "shengxiao": {
+      "type": "object",
+      "required": ["char", "english"],
+      "properties": {
+        "char": {"type": "string"},
+        "english": {"type": "string"}
+      }
+    },
+    "day_master": {
+      "type": "object",
+      "required": ["stem", "pinyin", "element", "polarity"],
+      "properties": {
+        "stem": {"type": "string"},
+        "pinyin": {"type": "string"},
+        "element": {"enum": ["wood", "fire", "earth", "metal", "water"]},
+        "polarity": {"enum": ["yin", "yang"]}
+      }
+    },
+    "pillars": {
+      "type": "object",
+      "required": ["year", "month", "day", "hour"],
+      "properties": {
+        "year": {"$ref": "#/$defs/pillar"},
+        "month": {"$ref": "#/$defs/pillar"},
+        "day": {"$ref": "#/$defs/pillar"},
+        "hour": {"$ref": "#/$defs/pillar"}
+      }
+    },
+    "five_elements_tally": {
+      "type": "object",
+      "required": ["wood", "fire", "earth", "metal", "water"],
+      "properties": {
+        "wood": {"type": "integer", "minimum": 0},
+        "fire": {"type": "integer", "minimum": 0},
+        "earth": {"type": "integer", "minimum": 0},
+        "metal": {"type": "integer", "minimum": 0},
+        "water": {"type": "integer", "minimum": 0}
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "$defs": {
+    "pillar": {
+      "type": "object",
+      "required": ["ganzhi", "stem", "branch", "nayin"],
+      "properties": {
+        "ganzhi": {"type": "string"},
+        "stem": {
+          "type": "object",
+          "required": ["char", "pinyin", "element", "polarity"],
+          "properties": {
+            "char": {"type": "string"},
+            "pinyin": {"type": "string"},
+            "element": {"enum": ["wood", "fire", "earth", "metal", "water"]},
+            "polarity": {"enum": ["yin", "yang"]}
+          }
+        },
+        "branch": {
+          "type": "object",
+          "required": ["char", "pinyin", "element", "polarity"],
+          "properties": {
+            "char": {"type": "string"},
+            "pinyin": {"type": "string"},
+            "element": {"enum": ["wood", "fire", "earth", "metal", "water"]},
+            "polarity": {"enum": ["yin", "yang"]}
+          }
+        },
+        "nayin": {"type": "string"}
+      }
+    }
+  }
+}

@@ -54,6 +54,6 @@ jobs:
           REQ='{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
           RESP=$(printf '%s\n' "$REQ" | docker run -i --rm ai-divination-mcp:ci)
           echo "$RESP"
-          for tool in tarot.draw iching.cast xiaoliuren.cast interpretation_template; do
+          for tool in tarot_draw iching_cast xiaoliuren_cast interpretation_template; do
             echo "$RESP" | grep -q "\"$tool\"" || { echo "Expected tool $tool not advertised"; exit 1; }
           done

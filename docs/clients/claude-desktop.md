@@ -31,10 +31,10 @@ Restart Claude Desktop. The "Search and tools" indicator should now list the `di
 
 | Tool                      | What it does                                                  |
 |---------------------------|---------------------------------------------------------------|
-| `tarot.draw`              | Audited Fisher-Yates tarot draw (major or full deck)          |
-| `iching.cast`             | I Ching cast — coins, yarrow, or manual lines                 |
-| `xiaoliuren.cast`         | Xiao Liu Ren (小六壬) — numbers, time, or lunar-time          |
-| `bazi.cast`               | Bazi / Four Pillars (八字) from a Gregorian birth datetime    |
+| `tarot_draw`              | Audited Fisher-Yates tarot draw (major or full deck)          |
+| `iching_cast`             | I Ching cast — coins, yarrow, or manual lines                 |
+| `xiaoliuren_cast`         | Xiao Liu Ren (小六壬) — numbers, time, or lunar-time          |
+| `bazi_cast`               | Bazi / Four Pillars (八字) from a Gregorian birth datetime    |
 | `interpretation_template` | The hard-rules template the model must follow before reading  |
 
 ## 4. Example prompts

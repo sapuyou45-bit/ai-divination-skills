@@ -218,7 +218,7 @@ skills/name/
 `ai-divination-skills` には **MCP サーバー**（`ai-divination-mcp`）が同梱されています。
 [Model Context Protocol](https://modelcontextprotocol.io/) 対応ホスト（Claude Desktop、Codex、
 Continue、Cursor など）は 1 行の設定でマウントでき、モデルは 5 つのツール
-`tarot.draw`、`iching.cast`、`xiaoliuren.cast`、`bazi.cast`、`interpretation_template` を使えます。
+`tarot_draw`、`iching_cast`、`xiaoliuren_cast`、`bazi_cast`、`interpretation_template` を使えます。
 
 モデルが結果を捏造することはありません。サーバーがローカルで監査済みスクリプトを実行します。
 

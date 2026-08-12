@@ -61,7 +61,10 @@ def position_for(month: int, day: int, hour: int) -> dict[str, Any]:
     for label, value, lower, upper in [("month", month, 1, 12), ("day", day, 1, 30), ("hour", hour, 1, 12)]:
         if value < lower or value > upper:
             raise ValueError(f"{label} must be between {lower} and {upper}")
-    index = ((month + day + hour - 2) % 6) + 1
+    # Traditional three-step count: start the month at Da An, then count the day
+    # from the month palace, then the hour from the day palace — each step counts
+    # its starting palace as one. Anchor: lunar month 1, day 1, hour 1 (Zi) -> Da An.
+    index = ((month + day + hour - 3) % 6) + 1
     return POSITIONS[index - 1]
 
 
@@ -72,7 +75,7 @@ def cast_numbers(month: int, day: int, hour: int) -> dict[str, Any]:
         "method": "numbers",
         "accuracy": "traditional-input",
         "inputs": {"month": month, "day": day, "hour": hour},
-        "formula": "((month + day + hour - 2) % 6) + 1",
+        "formula": "((month + day + hour - 3) % 6) + 1",
         "position": position,
     }
 
