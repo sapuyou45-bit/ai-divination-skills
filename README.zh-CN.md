@@ -131,9 +131,9 @@ ai-divination template tarot
 也可以直接用 Python API：
 
 ```python
-from oraclebone_skills.tarot import draw
-from oraclebone_skills.iching import cast
-from oraclebone_skills.xiaoliuren import cast_numbers
+from oraclebone.tarot import draw
+from oraclebone.iching import cast
+from oraclebone.xiaoliuren import cast_numbers
 ```
 
 也可以继续直接运行底层脚本：

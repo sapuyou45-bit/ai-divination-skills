@@ -131,9 +131,9 @@ ai-divination template tarot
 Python API から直接使うこともできます。
 
 ```python
-from oraclebone_skills.tarot import draw
-from oraclebone_skills.iching import cast
-from oraclebone_skills.xiaoliuren import cast_numbers
+from oraclebone.tarot import draw
+from oraclebone.iching import cast
+from oraclebone.xiaoliuren import cast_numbers
 ```
 
 従来どおり、下層のスクリプトを直接実行することもできます。
