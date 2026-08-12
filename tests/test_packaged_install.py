@@ -18,8 +18,8 @@ class PackagedInstallTests(unittest.TestCase):
         self.assertIn('pip install -e ".[dev]"', workflow)
         self.assertIn("python3 -m unittest discover -s tests", workflow)
         self.assertIn("python3 -m build", workflow)
-        self.assertIn("ai-divination tarot", workflow)
-        self.assertIn("ai-divination template tarot", workflow)
+        self.assertIn("oraclebone tarot", workflow)
+        self.assertIn("oraclebone template tarot", workflow)
 
     def test_cli_runs_from_package_without_repo_layout(self):
         with tempfile.TemporaryDirectory() as temp_dir:
