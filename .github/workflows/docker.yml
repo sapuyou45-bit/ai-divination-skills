@@ -7,14 +7,14 @@ on:
       - "Dockerfile"
       - ".dockerignore"
       - "pyproject.toml"
-      - "oraclebone_skills/**"
+      - "oraclebone/**"
       - ".github/workflows/docker.yml"
   pull_request:
     paths:
       - "Dockerfile"
       - ".dockerignore"
       - "pyproject.toml"
-      - "oraclebone_skills/**"
+      - "oraclebone/**"
       - ".github/workflows/docker.yml"
 
 permissions:
